@@ -1,0 +1,99 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+ <x:aside class="left-side sidebar-offcanvas">
+   <x:section class="sidebar">
+     <x:div class="user-panel">
+       <div class="pull-left image">
+         <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
+       </div>
+       <div class="pull-left info">
+         <x:p>Ola, White</x:p>
+         <x:a href="#"><x:i class="fa fa-circle text-success">
+         </x:i> Activo</x:a>
+       </div>
+     </x:div>
+     <x:ul class="sidebar-menu">
+       <x:li class="active">
+         <x:a href="index.html">
+           <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
+         </x:a>
+       </x:li>
+       <x:li>
+         <x:a href="pages/widgets.html">
+           <x:i class="fa fa-th"></x:i> <x:span>Modelo 1</x:span> 
+           <x:small class="badge pull-right bg-green">3</x:small>
+         </x:a>
+       </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-bar-chart-o"></x:i>
+           <x:span>Modelo 2</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-laptop"></x:i>
+           <x:span>Modelo 3</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li><x:a href="pages/UI/general.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-edit"></x:i> <x:span>Modelo 4</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li><x:a href="pages/forms/general.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-table"></x:i> <x:span>Modelo 5</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li><x:a href="pages/tables/simple.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
+       <x:li>
+         <x:a href="pages/calendar.html">
+           <x:i class="fa fa-calendar"></x:i> <x:span>Modelo 6</x:span>
+           <x:small class="badge pull-right bg-red">3</x:small>
+         </x:a>
+       </x:li>
+       <x:li>
+         <x:a href="pages/mailbox.html">
+           <x:i class="fa fa-envelope"></x:i> <x:span>Modelo 7</x:span>
+           <x:small class="badge pull-right bg-yellow">12</x:small>
+         </x:a>
+       </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-folder"></x:i> <x:span>Modelo 8</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li>
+             <x:a href="pages/examples/invoice.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Modelo 9</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
+     </x:ul>
+   </x:section>
+ </x:aside>
+</zk>
