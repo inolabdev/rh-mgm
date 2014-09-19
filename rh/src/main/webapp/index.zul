@@ -88,6 +88,7 @@
           </x:section>
           <!-- Main content -->
           <x:section class="content">
+          	<include src="@load(vm.page)"  id="mainInclude" />
           </x:section>
         </x:aside>
       </x:div>

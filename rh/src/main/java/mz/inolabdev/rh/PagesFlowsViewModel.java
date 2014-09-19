@@ -11,7 +11,7 @@ public class PagesFlowsViewModel {
 
 	@Init
 	public void init() {
-		setPage("/webapp/dashboard.zul");
+		setPage("dashboard.zul");
 	}
 
 	@Command
