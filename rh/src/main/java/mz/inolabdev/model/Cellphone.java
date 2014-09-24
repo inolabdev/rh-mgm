@@ -1,7 +1,10 @@
 package mz.inolabdev.model;
 
+import javax.persistence.Table;
+
+@Table(name = "cell_phones")
 public class Cellphone extends ContactPoint {
-	
+
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String prefix;

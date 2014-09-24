@@ -2,14 +2,21 @@ package mz.inolabdev.model;
 
 import java.util.Date;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Table(name = "documents")
 public class Document extends IdEntity {
 
 	private static final long serialVersionUID = -4654818069177689714L;
 	private String name;
+	@ManyToOne
+	@JoinColumn(name = "documentType")
 	private DocumentType documentType;
 	private String category;
 	private String status;
-	private Date created_at;	
+	private Date created_at;
 	private Date updated_at;
 
 	public String getStatus() {

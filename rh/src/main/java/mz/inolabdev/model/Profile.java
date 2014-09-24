@@ -2,6 +2,8 @@ package mz.inolabdev.model;
 
 import java.util.List;
 
+import javax.persistence.Table;
+@Table(name="profiles")
 public class Profile extends IdEntity{
 
 	private static final long serialVersionUID = 1L;

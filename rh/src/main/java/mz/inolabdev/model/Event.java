@@ -2,8 +2,11 @@ package mz.inolabdev.model;
 
 import java.util.Date;
 
+import javax.persistence.Table;
+
+@Table(name = "events")
 public class Event {
-	
+
 	private String type;
 	private String hapenned;
 	private Date created_at;

@@ -2,6 +2,9 @@ package mz.inolabdev.model;
 
 import java.util.Date;
 
+import javax.persistence.Table;
+
+@Table(name = "user")
 public class User extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
