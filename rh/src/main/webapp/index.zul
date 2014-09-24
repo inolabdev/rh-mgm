@@ -11,6 +11,7 @@
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 
   <window apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
