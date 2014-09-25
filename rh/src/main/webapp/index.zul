@@ -10,13 +10,15 @@
 <?link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
 
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 
   <window apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
   	viewModel="@id('vm')@init('mz.inolabdev.rh.PagesFlowsViewModel')">
     <x:div class="skin-blue body">
       <x:header class="header">
-       <a href="#" class="logo">Nome da Aplicacao</a>
+       <a href="#" class="logo">${c:l('appName')}</a>
         <x:nav class="navbar navbar-static-top" role="navigation">
           <x:div class="navbar-right">
             <x:ul class="nav navbar-nav">
@@ -47,7 +49,7 @@
                 <x:ul class="dropdown-menu">
                   <x:li class="user-header bg-light-blue">
                     <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
-                    <x:p> Jorge White - Programador <x:small>Membro desde Nov. 2013</x:small></x:p>
+                    <x:p> Jorge White - Programador <x:small>${c:l('member_since')} Nov. 2013</x:small></x:p>
                   </x:li>
                   <x:li class="user-body">
                     <div class="col-xs-4 text-center">
@@ -62,10 +64,10 @@
                   </x:li>
                   <x:li class="user-footer">
                     <div class="pull-left">
-                      <x:a href="#" class="btn btn-default btn-flat">Perfil</x:a>
+                      <x:a href="#" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
                     </div>
                     <div class="pull-right">
-                      <x:a href="#" class="btn btn-default btn-flat">Sair</x:a>
+                      <x:a href="#" class="btn btn-default btn-flat">${c:l('out')}</x:a>
                     </div>
                   </x:li>
                 </x:ul>
