@@ -2,12 +2,15 @@ package mz.inolabdev.model;
 
 import java.util.Date;
 
+import javax.persistence.Table;
+
+@Table(name = "job_positions")
 public class JobPosition extends IdEntity {
 
 	private static final long serialVersionUID = -2994535517681373646L;
 	private String type;
 	private String description;
-	private Date created_at;	
+	private Date created_at;
 	private Date updated_at;
 
 	public String getType() {

@@ -2,11 +2,18 @@ package mz.inolabdev.model;
 
 import java.util.Date;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Table(name = "contact_points")
 public class ContactPoint extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
 	private int value;
 	private String type;
+	@ManyToOne
+	@JoinColumn(name = "employee")
 	private Employee employee;
 	private Date created_at;
 	private Date updated_at;

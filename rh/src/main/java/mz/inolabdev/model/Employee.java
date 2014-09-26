@@ -3,6 +3,13 @@ package mz.inolabdev.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Table(name = "employees")
 public class Employee extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -18,13 +25,16 @@ public class Employee extends IdEntity {
 	private String marital_status;
 	private int number_children;
 	private JobPosition job_position;
+	@ManyToOne
+	@JoinColumn(name = "department_id")
 	private Department department;
+	@OneToMany(mappedBy = "Employee", fetch = FetchType.LAZY)
 	private List<Task> tasks;
+	@OneToMany(mappedBy = "Employee", fetch = FetchType.LAZY)
 	private List<Document> documents;
 	private List<Cellphone> cellphones;
 	private Date created_at;
 	private Date updated_at;
-	
 
 	public List<Task> getTasks() {
 		return tasks;

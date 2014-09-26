@@ -3,14 +3,21 @@ package mz.inolabdev.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Table(name = "departaments")
 public class Department extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private Employee responsible;
+	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
 	private List<Employee> employees;
+	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
 	private List<Task> tasks;
-	private Date created_at;	
+	private Date created_at;
 	private Date updated_at;
 
 	public String getName() {

@@ -1,5 +1,8 @@
 package mz.inolabdev.model;
 
+import javax.persistence.Table;
+
+@Table(name = "role")
 public class Role extends IdEntity {
 
 	private static final long serialVersionUID = 1L;

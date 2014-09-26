@@ -2,7 +2,8 @@ package mz.inolabdev.model;
 
 import java.util.Date;
 
-
+import javax.persistence.Table;
+@Table(name="education_levels")
 public class EducationLevel extends IdEntity {
 
 	private static final long serialVersionUID = -2376892484957010589L;
