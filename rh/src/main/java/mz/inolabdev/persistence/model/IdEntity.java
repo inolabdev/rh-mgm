@@ -3,12 +3,12 @@ package mz.inolabdev.persistence.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-
+@MappedSuperclass
 public class IdEntity implements Serializable {
 
 	private static final long serialVersionUID = -6468535868748071777L;
@@ -16,9 +16,9 @@ public class IdEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
-	
-	protected Date hapenned;
+
 	protected Date created_at;
+
 	protected Date updated_at;
 
 	public Long getId() {
@@ -27,14 +27,6 @@ public class IdEntity implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
-	public Date getHapenned() {
-		return hapenned;
-	}
-
-	public void setHapenned(Date hapenned) {
-		this.hapenned = hapenned;
 	}
 
 	public Date getCreated_at() {

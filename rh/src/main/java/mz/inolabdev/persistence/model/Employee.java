@@ -1,12 +1,8 @@
 package mz.inolabdev.persistence.model;
 
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name = "employees")
@@ -28,8 +24,7 @@ public class Employee extends IdEntity {
 	@ManyToOne
 	@JoinColumn(name = "department_id")
 	private Department department;
-	private Date created_at;
-	private Date updated_at;
+	
 
 	public String getName() {
 		return name;
@@ -117,22 +112,6 @@ public class Employee extends IdEntity {
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
-	}
-
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
 	}
 
 	public String getMarital_status() {

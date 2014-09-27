@@ -15,8 +15,6 @@ public class User extends IdEntity {
 	private String password_confirmation;
 	private Profile profile;
 	private String description;
-	private Date created_at;
-	private Date updated_at;
 	private int sign_in_count;
 	private Date current_sign_in_at;
 	private Date last_sign_in_at;
@@ -43,22 +41,6 @@ public class User extends IdEntity {
 
 	public void setLast_sign_in_at(Date last_sign_in_at) {
 		this.last_sign_in_at = last_sign_in_at;
-	}
-
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
 	}
 
 	public String getName() {
