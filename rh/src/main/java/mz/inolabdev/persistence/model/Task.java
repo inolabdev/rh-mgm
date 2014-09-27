@@ -1,4 +1,4 @@
-package mz.inolabdev.model;
+package mz.inolabdev.persistence.model;
 
 import javax.persistence.Table;
 

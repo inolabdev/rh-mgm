@@ -1,12 +1,8 @@
-package mz.inolabdev.model;
+package mz.inolabdev.persistence.model;
 
 import java.util.Date;
-import java.util.List;
-
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Table(name = "employees")
@@ -28,21 +24,7 @@ public class Employee extends IdEntity {
 	@ManyToOne
 	@JoinColumn(name = "department_id")
 	private Department department;
-	@OneToMany(mappedBy = "Employee", fetch = FetchType.LAZY)
-	private List<Task> tasks;
-	@OneToMany(mappedBy = "Employee", fetch = FetchType.LAZY)
-	private List<Document> documents;
-	private List<Cellphone> cellphones;
-	private Date created_at;
-	private Date updated_at;
-
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
-	}
+	
 
 	public String getName() {
 		return name;
@@ -116,14 +98,6 @@ public class Employee extends IdEntity {
 		this.academic_level = academic_level;
 	}
 
-	public List<Document> getDocuments() {
-		return documents;
-	}
-
-	public void setDocuments(List<Document> documents) {
-		this.documents = documents;
-	}
-
 	public JobPosition getJob_position() {
 		return job_position;
 	}
@@ -132,36 +106,12 @@ public class Employee extends IdEntity {
 		this.job_position = job_position;
 	}
 
-	public List<Cellphone> getCellphones() {
-		return cellphones;
-	}
-
-	public void setCellphones(List<Cellphone> cellphones) {
-		this.cellphones = cellphones;
-	}
-
 	public Date getBirthday() {
 		return birthday;
 	}
 
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
-	}
-
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
 	}
 
 	public String getMarital_status() {
