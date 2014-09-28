@@ -23,16 +23,6 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public void delete(Long id) {
-		eventDao.delete(id);
-	}
-
-	@Override
-	public Event update(Event event) {
-		return eventDao.update(event);
-	}
-
-	@Override
 	public Event find(Long id) {
 		return eventDao.find(id);
 	}

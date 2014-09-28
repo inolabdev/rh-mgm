@@ -8,10 +8,6 @@ public interface EventService {
 	
 	public Event create(Event event);
 	
-	public void delete(Long id);
-	
-	public Event update(Event event);
-	
 	public Event find(Long id);
 	
 	public List<Event> getAll();
