@@ -12,8 +12,8 @@
        </div>
      </x:div>
      <x:ul class="sidebar-menu">
-       <x:li class="active">
-         <x:a href="index.html">
+       <x:li sclass="@load(vm.activeHome)">
+         <x:a class="cursor" onClick="@command('home')">
            <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
          </x:a>
        </x:li>
@@ -81,17 +81,10 @@
            <x:small class="badge pull-right bg-yellow">12</x:small>
          </x:a>
        </x:li>
-       <x:li class="treeview">
-         <x:a href="#">
-           <x:i class="fa fa-folder"></x:i> <x:span>Modelo 8</x:span>
-           <x:i class="fa fa-angle-left pull-right"></x:i>
+       <x:li sclass="@load(vm.activeMore)">
+         <x:a class="cursor" onClick="@command('sideBarMore')">
+           <x:i class="fa fa-dashboard"></x:i> <x:span>${c:l('sidebar.more')}</x:span>
          </x:a>
-         <x:ul class="treeview-menu">
-           <x:li>
-             <x:a href="pages/examples/invoice.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Modelo 9</x:a>
-           </x:li>
-         </x:ul>
        </x:li>
      </x:ul>
    </x:section>
