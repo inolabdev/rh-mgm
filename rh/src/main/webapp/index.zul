@@ -9,6 +9,7 @@
 <?link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')}"?>
@@ -92,7 +93,7 @@
           </x:section>
           <!-- Main content -->
           <x:section class="content">
-          	<include src="@load(vm.page)"  id="mainInclude" />
+          	<include src="@bind(vm.page)" self="@define(content)" id="mainInclude" />
           </x:section>
         </x:aside>
       </x:div>
