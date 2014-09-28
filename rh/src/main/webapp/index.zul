@@ -15,7 +15,7 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 
   <window apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
-  	viewModel="@id('vm')@init('mz.inolabdev.rh.PagesFlowsViewModel')">
+  	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PagesFlowsViewModel')">
     <x:div class="skin-blue body">
       <x:header class="header">
        <a href="#" class="logo">${c:l('appName')}</a>
