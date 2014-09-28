@@ -7,10 +7,13 @@ import mz.inolabdev.rh.entity.Event;
 import mz.inolabdev.rh.services.EventService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@Service("eventService")
+@Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Transactional(readOnly = false)
 public class EventServiceImpl implements EventService {
 
