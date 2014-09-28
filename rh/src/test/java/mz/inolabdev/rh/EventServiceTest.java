@@ -34,17 +34,6 @@ public class EventServiceTest extends GenericTestUnit {
 	}
 
 	@Test
-	public void deleteTest() {
-		Event Event = createNewEvent();
-
-		Event eventSaved = eventService.create(Event);
-		eventService.delete(eventSaved.getId());
-		Event eventDeleted = eventService.find(eventSaved.getId());
-
-		Assert.assertNull(eventDeleted);
-	}
-
-	@Test
 	public void findTest() {
 		Event event = createNewEvent();
 
