@@ -11,6 +11,8 @@
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
 
+<?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
+
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
@@ -110,9 +112,12 @@
       <x:script src="js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></x:script>
       <x:script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></x:script>
       <x:script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></x:script>
+      <x:script src="js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></x:script>
+      <x:script src="js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></x:script>
       <x:script src="js/AdminLTE/app.js" type="text/javascript"></x:script>
       <x:script src="js/AdminLTE/dashboard.js" type="text/javascript"></x:script>
       <x:script src="js/AdminLTE/demo.js" type="text/javascript"></x:script>
     </x:div>
+    
   </window>
 </zk>

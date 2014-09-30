@@ -33,4 +33,10 @@ public class JobPositionViewModel {
 	public void jobPositionList() {
 		mainInclude.setSrc("views/jobPosition/index.zul");
 	}
+	
+	@Command
+	@NotifyChange("mainInclude")
+	public void jobPositionNew() {
+		mainInclude.setSrc("views/jobPosition/create.zul");
+	}
 }
