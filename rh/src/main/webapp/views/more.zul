@@ -44,7 +44,7 @@
         </div>
         <div zclass="box-body">
         	<x:center>
-	        	<x:h3>150</x:h3>
+	        	<x:h3>${vm.jobs.size()}</x:h3>
 	        	<x:p>${c:l('model.jobPositions')}</x:p>
 	        	<x:a class="btn btn-default btn-block" onClick="@command('jobPositionList')">
 	        		<x:code>${c:l('view')}</x:code>

@@ -25,4 +25,10 @@ public class JobPosition extends IdEntity {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "JobPosition [type=" + type + ", description=" + description
+				+ "]";
+	}
+
 }
