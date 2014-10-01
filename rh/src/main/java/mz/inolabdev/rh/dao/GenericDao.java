@@ -2,10 +2,11 @@ package mz.inolabdev.rh.dao;
 
 
 
-import java.io.Serializable;
 import java.util.List;
 
-public interface GenericDao<T extends Serializable> {
+import mz.inolabdev.rh.entity.IdEntity;
+
+public interface GenericDao<T extends IdEntity> {
 	
 	public long count();
 

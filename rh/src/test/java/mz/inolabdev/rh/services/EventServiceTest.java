@@ -1,8 +1,9 @@
-package mz.inolabdev.rh;
+package mz.inolabdev.rh.services;
 
 import java.util.Calendar;
 import java.util.List;
 
+import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Event;
 import mz.inolabdev.rh.services.EventService;
 
