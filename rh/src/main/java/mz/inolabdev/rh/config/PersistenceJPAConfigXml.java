@@ -7,7 +7,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 // @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "mz.inolabdev.rh.entity" })
+@ComponentScan(basePackages = { "mz.inolabdev.rh.dao",
+		"mz.inolabdev.rh.dao.impl", "mz.inolabdev.rh.services",
+		"mz.inolabdev.rh.services.impl" })
 @ImportResource({ "classpath:jpaConfig.xml" })
 public class PersistenceJPAConfigXml {
 

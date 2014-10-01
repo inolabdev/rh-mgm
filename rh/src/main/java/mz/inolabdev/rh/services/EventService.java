@@ -6,12 +6,11 @@ import mz.inolabdev.rh.entity.Event;
 
 public interface EventService {
 	
-	public Event create(Event event);
-	
-	public Event find(Long id);
-	
-	public List<Event> getAll();
-	
-	public Long count();
+	public Event create(Event e);
 
+	public List<Event> getAll();
+
+	public Event find(Long id);
+
+	public long count();
 }
