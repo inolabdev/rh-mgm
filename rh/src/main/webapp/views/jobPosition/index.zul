@@ -1,5 +1,58 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
-<x:h2>Job Position List</x:h2>
-
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+ 
+ <div zclass="col-md-10">
+	<div zclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+	
+	<x:table id="cargos" class="table table-bordered table-striped">
+		<x:thead>
+			<x:tr>
+				<x:th>Data 1</x:th>
+				<x:th>Data 2</x:th>
+			</x:tr>
+		</x:thead>
+		<x:tbody>
+			<x:tr>
+				<x:td>Data x</x:td>
+				<x:td>Data y</x:td>
+			</x:tr>
+		</x:tbody>
+	</x:table>
+	</div>
+	
+	<script type="text/javascript">
+		function initDataTable(){
+		  $("#cargos").dataTable();
+		}
+	</script>
+</div>
+ <div zclass="col-md-2">
+	<div class="box box-solid">
+		<x:center>
+		    <div class="box-header">
+		        <x:h3 class="box-title" style="padding-left: 20%">
+		        	<x:code>Operações</x:code>
+		        </x:h3>
+		    </div>
+		    <div class="box-body">
+		    	<x:table>
+		    	<x:tr><x:td>
+					<x:a class="btn btn-app" style="width: 100%" onClick="@command('jobPositionNew')">
+				        <x:i class="fa fa-file-text-o"></x:i>
+				        Novo Cargo
+				    </x:a>
+			    </x:td></x:tr>
+			    <x:tr><x:td>
+					<x:a class="btn btn-app" style="width: 100%">
+				        <x:i class="fa fa-list"></x:i>
+				        Lista de Cargos
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </div>
+	    </x:center>
+	</div>
+ </div>
+</window>
 </zk>
