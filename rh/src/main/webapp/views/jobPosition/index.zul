@@ -2,20 +2,38 @@
 <window apply="org.zkoss.bind.BindComposer"
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
  
- <div zclass="col-md-10">
+ <div zclass="col-md-10" id="jobPositionList">
 	<div zclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
 	
 	<x:table id="cargos" class="table table-bordered table-striped">
 		<x:thead>
 			<x:tr>
-				<x:th>Data 1</x:th>
-				<x:th>Data 2</x:th>
+				<x:th>#</x:th>
+				<x:th>Tipo</x:th>
+				<x:th>Descrição</x:th>
+				<x:th>Data de Criação</x:th>
+				<x:th>Data de Actualização</x:th>
+				<x:th></x:th>
 			</x:tr>
 		</x:thead>
 		<x:tbody>
-			<x:tr>
-				<x:td>Data x</x:td>
-				<x:td>Data y</x:td>
+			<x:tr forEach="${vm.jobs}">
+				<x:td>${each.id}</x:td>
+				<x:td>${each.type}</x:td>
+				<x:td>${each.description}</x:td>
+				<x:td>${each.created_at}</x:td>
+				<x:td>${each.updated_at}</x:td>
+				<x:td>
+					<a class="btn btn-info btn-sm">
+                      <x:i class="fa fa-play"></x:i>
+                      ver
+                   	</a>
+                   	<separator orient="vertical" width="7px"></separator>
+					<a class="btn btn-warning btn-sm">
+                      <x:i class="fa fa-edit"></x:i>
+                      editar
+                   	</a>
+				</x:td>
 			</x:tr>
 		</x:tbody>
 	</x:table>
@@ -27,24 +45,25 @@
 		}
 	</script>
 </div>
+<div zclass="col-md-10" id="jobPositionNew" visible="false">
+	<include src="views/jobPosition/create.zul"></include>
+</div>
  <div zclass="col-md-2">
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:h3 class="box-title" style="padding-left: 20%">
-		        	<x:code>Operações</x:code>
-		        </x:h3>
+		        <x:span class="menuOperations" >Cargos</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>
 		    	<x:tr><x:td>
-					<x:a class="btn btn-app" style="width: 100%" onClick="@command('jobPositionNew')">
+					<x:a class="btn btn-app btn-large" onClick="@command('jobPositionNew')">
 				        <x:i class="fa fa-file-text-o"></x:i>
 				        Novo Cargo
 				    </x:a>
 			    </x:td></x:tr>
 			    <x:tr><x:td>
-					<x:a class="btn btn-app" style="width: 100%">
+					<x:a class="btn btn-app" style="width: 100%" onClick="@command('jobPositionList')">
 				        <x:i class="fa fa-list"></x:i>
 				        Lista de Cargos
 				    </x:a>
