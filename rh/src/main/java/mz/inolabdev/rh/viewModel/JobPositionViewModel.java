@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mz.inolabdev.rh.entity.JobPosition;
+import mz.inolabdev.rh.services.JobPositionService;
 
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.ContextParam;
@@ -15,9 +16,9 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Include;
-import org.zkoss.zul.Messagebox;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class JobPositionViewModel {
@@ -34,6 +35,9 @@ public class JobPositionViewModel {
 	private JobPosition job;
 
 	List<JobPosition> jobs;
+	
+	@WireVariable
+	private JobPositionService jobPositionService;
 
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
@@ -74,11 +78,9 @@ public class JobPositionViewModel {
 	@NotifyChange("jobs")
 	public void saveJob() {
 
-		// Usar o service para gravar na base de dados
-		// Depois, redicionar para index dos cargos
-		// Ir buscar novamente a lista dos cargos para actualizar
+		jobPositionService.create(job);
 
-		Messagebox.show(job.getDescription() + " - " + job.getType());
+		jobPositionList();
 	}
 
 	private List<JobPosition> reload() {
@@ -86,22 +88,7 @@ public class JobPositionViewModel {
 		if (jobs == null)
 			jobs = new ArrayList<JobPosition>();
 
-		jobs.clear();
-		// No futuro ir buscar na base de dados e não instanciar como é feito
-		// asseguir
-		jobs = new ArrayList<JobPosition>();
-
-		// Temporário(para testes)
-		JobPosition j = new JobPosition();
-		j.setType("nana");
-		j.setDescription("nunu");
-
-		JobPosition j2 = new JobPosition();
-		j2.setType("nono");
-		j2.setDescription("nini");
-
-		jobs.add(j);
-		jobs.add(j2);
+		jobs = jobPositionService.getAll();
 
 		return jobs;
 	}

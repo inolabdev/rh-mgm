@@ -2,19 +2,21 @@ package mz.inolabdev.rh.services.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import mz.inolabdev.rh.dao.GenericDao;
 import mz.inolabdev.rh.entity.IdEntity;
 import mz.inolabdev.rh.services.GenericService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+@Transactional
 abstract class GenericServiceImpl<T extends IdEntity> implements
 		GenericService<T> {
 
 	@Autowired
 	private GenericDao<T> specificDao;
-
+	
 	@Override
 	public T create(T t) {
 		return specificDao.create(t);
