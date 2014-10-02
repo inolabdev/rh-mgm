@@ -1,7 +1,9 @@
 package mz.inolabdev.rh.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "job_positions")
 public class JobPosition extends IdEntity {
 
