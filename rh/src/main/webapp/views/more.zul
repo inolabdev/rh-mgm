@@ -1,0 +1,56 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentViewModel')">
+    <div zclass="box box-solid box-primary">
+        <div zclass="box-header">
+        	<x:center>
+            	<x:h3 class="box-title">${c:l('model.departament')}</x:h3>
+            </x:center>
+        </div>
+        <div zclass="box-body">
+        	<x:center>
+	        	<x:h3>150</x:h3>
+	        	<x:p>${c:l('model.departaments')}</x:p>
+	        	<x:a class="btn btn-default btn-block" onClick="@command('departamentList')">
+	        		<x:code>${c:l('view')}</x:code>
+	        	</x:a>
+        	</x:center>
+        </div>
+    </div>
+</div>
+<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
+    <div zclass="box box-solid box-primary">
+        <div zclass="box-header">
+            <x:h3 class="box-title">${c:l('model.documentType')}</x:h3>
+        </div>
+        <div zclass="box-body">
+        	<x:center>
+	        	<x:h3>150</x:h3>
+	        	<x:p>${c:l('model.documentTypes')}</x:p>
+	        	<x:a class="btn btn-default btn-block" onClick="@command('documentTypeList')">
+	        		<x:code>${c:l('view')}</x:code>
+	        	</x:a>
+        	</x:center>
+        </div>
+    </div>
+</div>
+<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+    <div zclass="box box-solid box-primary">
+        <div zclass="box-header">
+            <x:h3 class="box-title">${c:l('model.jobPosition')}</x:h3>
+        </div>
+        <div zclass="box-body">
+        	<x:center>
+	        	<x:h3>${vm.jobs.size()}</x:h3>
+	        	<x:p>${c:l('model.jobPositions')}</x:p>
+	        	<x:a class="btn btn-default btn-block" onClick="@command('jobPositionList')">
+	        		<x:code>${c:l('view')}</x:code>
+	        	</x:a>
+        	</x:center>
+        </div>
+    </div>
+</div>
+</zk>

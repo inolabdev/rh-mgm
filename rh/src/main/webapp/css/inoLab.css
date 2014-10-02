@@ -1,0 +1,27 @@
+.cursor {
+	cursor: pointer;
+}
+
+.operations {
+	float: right;
+}
+
+.menuOperations {
+	font-size: 30px;
+	font-weight: 500;
+	height: 50px;
+	display: block;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	background-color: #367fa9;
+	color: #f9f9f9;
+}
+
+.btn-large{
+	width: 100%;
+}
+
+.txtArea {
+    resize: none;
+}

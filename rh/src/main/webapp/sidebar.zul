@@ -12,86 +12,114 @@
        </div>
      </x:div>
      <x:ul class="sidebar-menu">
-       <x:li class="active">
-         <x:a href="index.html">
+       <x:li sclass="@load(vm.activeHome)">
+         <x:a class="cursor" onClick="@command('home')">
            <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
          </x:a>
        </x:li>
-       <x:li>
-         <x:a href="pages/widgets.html">
-           <x:i class="fa fa-th"></x:i> <x:span>Modelo 1</x:span> 
-           <x:small class="badge pull-right bg-green">3</x:small>
+       <x:li sclass="@load(vm.activeMore)">
+         <x:a class="cursor" onClick="@command('sideBarMore')">
+           <x:i class="fa fa-group"></x:i> <x:span> Recrutamento</x:span>
          </x:a>
        </x:li>
        <x:li class="treeview">
          <x:a href="#">
-           <x:i class="fa fa-bar-chart-o"></x:i>
-           <x:span>Modelo 2</x:span>
+           <x:i class="fa fa-rss"></x:i>
+           <x:span>Desempenho</x:span>
            <x:i class="fa fa-angle-left pull-right"></x:i>
          </x:a>
          <x:ul class="treeview-menu">
            <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
+             <x:i class="fa fa-angle-double-right"></x:i> Objectivos Fundamentais</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Revisão Semestral</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Jornal de incidentes críticos</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Avalização dos objectivos</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Avaliação de competências</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Desenvolvimento e feedback</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Avaliação de 360 graus</x:a>
            </x:li>
          </x:ul>
        </x:li>
        <x:li class="treeview">
          <x:a href="#">
-           <x:i class="fa fa-laptop"></x:i>
-           <x:span>Modelo 3</x:span>
+           <x:i class="fa fa-plane"></x:i>
+           <x:span>Gestão de Ausências</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Solicitar Licença</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Cancelar Licença</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Status das Licenças</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Calendário Industrial</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Gestão de licenças da equipa</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Detalhes da licença da equipa</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Licança Colectiva</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-trophy"></x:i>
+           <x:span>Treinamento</x:span>
            <x:i class="fa fa-angle-left pull-right"></x:i>
          </x:a>
          <x:ul class="treeview-menu">
            <x:li><x:a href="pages/UI/general.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
+             <x:i class="fa fa-angle-double-right"></x:i> Registo de Formação</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Calendário de Formação</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Directório de Formação</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Avaliação do Programa</x:a>
+           </x:li>
+           <x:li><x:a href="pages/charts/morris.html">
+             <x:i class="fa fa-angle-double-right"></x:i> Avaliação de Formação</x:a>
            </x:li>
          </x:ul>
        </x:li>
-       <x:li class="treeview">
-         <x:a href="#">
-           <x:i class="fa fa-edit"></x:i> <x:span>Modelo 4</x:span>
-           <x:i class="fa fa-angle-left pull-right"></x:i>
-         </x:a>
-         <x:ul class="treeview-menu">
-           <x:li><x:a href="pages/forms/general.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
-           </x:li>
-         </x:ul>
-       </x:li>
-       <x:li class="treeview">
-         <x:a href="#">
-           <x:i class="fa fa-table"></x:i> <x:span>Modelo 5</x:span>
-           <x:i class="fa fa-angle-left pull-right"></x:i>
-         </x:a>
-         <x:ul class="treeview-menu">
-           <x:li><x:a href="pages/tables/simple.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Operacao</x:a>
-           </x:li>
-         </x:ul>
-       </x:li>
-       <x:li>
-         <x:a href="pages/calendar.html">
-           <x:i class="fa fa-calendar"></x:i> <x:span>Modelo 6</x:span>
-           <x:small class="badge pull-right bg-red">3</x:small>
+       <x:li sclass="@load(vm.activeMore)">
+         <x:a class="cursor" onClick="@command('sideBarMore')">
+           <x:i class="fa fa-money"></x:i> <x:span>Recibos de Salários</x:span>
          </x:a>
        </x:li>
-       <x:li>
-         <x:a href="pages/mailbox.html">
-           <x:i class="fa fa-envelope"></x:i> <x:span>Modelo 7</x:span>
-           <x:small class="badge pull-right bg-yellow">12</x:small>
+       <x:li sclass="@load(vm.activeMore)">
+         <x:a class="cursor" onClick="@command('sideBarMore')">
+           <x:i class="fa fa-check-circle-o"></x:i> <x:span>Aprovações</x:span>
          </x:a>
        </x:li>
-       <x:li class="treeview">
-         <x:a href="#">
-           <x:i class="fa fa-folder"></x:i> <x:span>Modelo 8</x:span>
-           <x:i class="fa fa-angle-left pull-right"></x:i>
+       <x:li sclass="@load(vm.activeMore)">
+         <x:a class="cursor" onClick="@command('sideBarMore')">
+           <x:i class="fa  fa-sort-down"></x:i> <x:span>${c:l('sidebar.more')}</x:span>
          </x:a>
-         <x:ul class="treeview-menu">
-           <x:li>
-             <x:a href="pages/examples/invoice.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Modelo 9</x:a>
-           </x:li>
-         </x:ul>
        </x:li>
      </x:ul>
    </x:section>
