@@ -21,8 +21,8 @@
 				<x:td>${each.id}</x:td>
 				<x:td>${each.type}</x:td>
 				<x:td>${each.description}</x:td>
-				<x:td>${each.created_at}</x:td>
-				<x:td>${each.updated_at}</x:td>
+				<x:td>${each.created}</x:td>
+				<x:td>${each.updated}</x:td>
 				<x:td>
 					<a class="btn btn-info btn-sm">
                       <x:i class="fa fa-play"></x:i>

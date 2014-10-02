@@ -1,5 +1,6 @@
 package mz.inolabdev.rh.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -34,6 +35,7 @@ abstract class GenericServiceImpl<T extends IdEntity> implements
 
 	@Override
 	public T update(T t) {
+		t.setUpdated(new Date());
 		return specificDao.update(t);
 	}
 
