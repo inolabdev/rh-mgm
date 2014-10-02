@@ -1,9 +1,6 @@
 package mz.inolabdev.rh.services;
 
 import static org.junit.Assert.assertNotNull;
-
-import java.util.Calendar;
-
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.JobPosition;
 
@@ -18,7 +15,6 @@ public class JobPositionServiceTest extends GenericTestUnit {
 	private JobPosition createNewJob() {
 
 		JobPosition job = new JobPosition();
-		job.setCreated_at(Calendar.getInstance().getTime());
 		job.setType("Testator");
 		job.setDescription("InoLab");
 

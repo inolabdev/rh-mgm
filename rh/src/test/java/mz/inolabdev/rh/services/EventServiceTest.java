@@ -1,11 +1,9 @@
 package mz.inolabdev.rh.services;
 
-import java.util.Calendar;
 import java.util.List;
 
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Event;
-import mz.inolabdev.rh.services.EventService;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +17,6 @@ public class EventServiceTest extends GenericTestUnit {
 	private Event createNewEvent() {
 		Event event = new Event();
 		event.setType("First Type Event");
-		event.setCreated_at(Calendar.getInstance().getTime());
 		return event;
 	}
 
