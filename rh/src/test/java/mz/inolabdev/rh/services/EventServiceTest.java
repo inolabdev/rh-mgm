@@ -5,7 +5,7 @@ import java.util.List;
 
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Event;
-import mz.inolabdev.rh.services.EventService;
+import mz.inolabdev.rh.entity.EventType;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,11 +15,31 @@ public class EventServiceTest extends GenericTestUnit {
 
 	@Autowired
 	private EventService eventService;
+	
+	@Autowired
+	private EventTypeService eventTypeService;
+
+	private EventType CreateNewEventType() {
+		EventType eventType = new EventType();
+		eventType.setName("Registar colaboradores");
+		eventType.setDescription("Processo de Registo de Colaboradores");
+		eventType.setCreatedAt(Calendar.getInstance().getTime());
+		return eventType;
+	}
+
+	private EventType createEventTypeTest() {
+		EventType eventType = CreateNewEventType();
+		eventTypeService.create(eventType);
+
+		return eventType;
+	}
 
 	private Event createNewEvent() {
+
 		Event event = new Event();
-		event.setType("First Type Event");
-		event.setCreated_at(Calendar.getInstance().getTime());
+		event.setCreatedAt(Calendar.getInstance().getTime());
+		event.setEventType(createEventTypeTest());
+
 		return event;
 	}
 
@@ -27,7 +47,6 @@ public class EventServiceTest extends GenericTestUnit {
 	public void createTest() {
 
 		Event event = createNewEvent();
-
 		Event eventSaved = eventService.create(event);
 
 		Assert.assertNotNull(eventSaved);
@@ -40,7 +59,6 @@ public class EventServiceTest extends GenericTestUnit {
 
 		Event eventSaved = eventService.create(event);
 		Event eventDeleted = eventService.find(eventSaved.getId());
-
 		Assert.assertNotNull(eventDeleted);
 	}
 
