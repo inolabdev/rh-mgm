@@ -2,46 +2,45 @@ package mz.inolabdev.rh.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name = "user")
+@Entity
+@Table(name = "users")
 public class User extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
+
+	@Column(name = "name")
 	private String name;
-	private String last_name;
+
+	@Column(name = "last_name")
+	private String lastName;
+
+	@Column(name = "email")
 	private String email;
+
+	@Column(name = "password")
 	private String password;
-	private String password_confirmation;
+
+	@Column(name = "password_confirmation")
+	private String passwordConfirmation;
+
+	@Column(name = "profile")
 	private Profile profile;
+
+	@Column(name = "description")
 	private String description;
-	private int sign_in_count;
-	private Date current_sign_in_at;
-	private Date last_sign_in_at;
 
-	public int getSign_in_count() {
-		return sign_in_count;
-	}
+	@Column(name = "sign_in_Count")
+	private int signInCount;
 
-	public void setSign_in_count(int sign_in_count) {
-		this.sign_in_count = sign_in_count;
-	}
+	@Column(name = "current_sign_in_at")
+	private Date currentSignInAt;
 
-	public Date getCurrent_sign_in_at() {
-		return current_sign_in_at;
-	}
-
-	public void setCurrent_sign_in_at(Date current_sign_in_at) {
-		this.current_sign_in_at = current_sign_in_at;
-	}
-
-	public Date getLast_sign_in_at() {
-		return last_sign_in_at;
-	}
-
-	public void setLast_sign_in_at(Date last_sign_in_at) {
-		this.last_sign_in_at = last_sign_in_at;
-	}
+	@Column(name = "last_sign_in_at")
+	private Date lastSignInAt;
 
 	public String getName() {
 		return name;
@@ -51,12 +50,44 @@ public class User extends IdEntity {
 		this.name = name;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
+	}
+
+	public int getSignInCount() {
+		return signInCount;
+	}
+
+	public void setSignInCount(int signInCount) {
+		this.signInCount = signInCount;
+	}
+
+	public Date getCurrentSignInAt() {
+		return currentSignInAt;
+	}
+
+	public void setCurrentSignInAt(Date currentSignInAt) {
+		this.currentSignInAt = currentSignInAt;
+	}
+
+	public Date getLastSignInAt() {
+		return lastSignInAt;
+	}
+
+	public void setLastSignInAt(Date lastSignInAt) {
+		this.lastSignInAt = lastSignInAt;
 	}
 
 	public String getEmail() {
@@ -89,14 +120,6 @@ public class User extends IdEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getPassword_confirmation() {
-		return password_confirmation;
-	}
-
-	public void setPassword_confirmation(String password_confirmation) {
-		this.password_confirmation = password_confirmation;
 	}
 
 }
