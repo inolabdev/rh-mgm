@@ -1,9 +1,11 @@
 package mz.inolabdev.rh.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name="task")
-public class Task  extends IdEntity{
+@Entity
+@Table(name = "tasks")
+public class Task extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
 
