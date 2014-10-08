@@ -7,9 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @MappedSuperclass
-public class IdEntity implements Serializable {
+public class IdEntity implements Serializable, Cloneable {
 
 	private static final long serialVersionUID = -6468535868748071777L;
 
@@ -17,9 +19,11 @@ public class IdEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
-	protected Date created_at;
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date createdAt;
 
-	protected Date updated_at;
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date updatedAt;
 
 	public Long getId() {
 		return id;
@@ -29,20 +33,20 @@ public class IdEntity implements Serializable {
 		this.id = id;
 	}
 
-	public Date getCreated_at() {
-		return created_at;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public Date getUpdated_at() {
-		return updated_at;
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 }
