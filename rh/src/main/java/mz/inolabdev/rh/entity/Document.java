@@ -1,20 +1,29 @@
 package mz.inolabdev.rh.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "documents")
 public class Document extends IdEntity {
 
 	private static final long serialVersionUID = -4654818069177689714L;
-	private String name;
-	@ManyToOne
-	@JoinColumn(name = "documentType")
-	private DocumentType documentType;
-	private String category;
-	private String status;
 
+	@Column(name = "name")
+	private String name;
+
+	@ManyToOne
+	@JoinColumn(name = "documentType_id")
+	private DocumentType documentType;
+
+	@Column(name = "category")
+	private String category;
+
+	@Column(name = "status")
+	private String status;
 
 	public String getStatus() {
 		return status;
