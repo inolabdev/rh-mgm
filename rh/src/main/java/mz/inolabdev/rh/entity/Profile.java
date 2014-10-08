@@ -1,22 +1,17 @@
 package mz.inolabdev.rh.entity;
 
-import java.util.List;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
-@Table(name="profiles")
-public class Profile extends IdEntity{
+
+@Entity
+@Table(name = "profiles")
+public class Profile extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
-	private String type;
-	private List<Role> roles;
-	
-	public List<Role> getRoles() {
-		return roles;
-	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+	@Column(name = "type")
+	private String type;
 
 	public String getType() {
 		return type;

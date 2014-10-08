@@ -1,23 +1,18 @@
 package mz.inolabdev.rh.entity;
 
-import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Log implements Serializable, Cloneable {
+@Table(name="logs")
+public class Log extends IdEntity {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	Integer id;
-
+	
 	@Column(nullable = false)
 	String message;
 
@@ -30,14 +25,6 @@ public class Log implements Serializable, Cloneable {
 	public Log(String message) {
 		this.message = message;
 		this.date = new Date();
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getMessage() {

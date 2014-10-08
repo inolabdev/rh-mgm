@@ -1,13 +1,20 @@
 package mz.inolabdev.rh.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "departaments")
 public class Department extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Column(name="name")
 	private String name;
-	private Employee responsible;
+	
+	@Column(name="description")
+	private String description;
 
 	public String getName() {
 		return name;
@@ -17,12 +24,12 @@ public class Department extends IdEntity {
 		this.name = name;
 	}
 
-	public Employee getResponsible() {
-		return responsible;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setResponsible(Employee responsible) {
-		this.responsible = responsible;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

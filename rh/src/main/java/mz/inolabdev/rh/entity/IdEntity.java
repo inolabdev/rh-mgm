@@ -3,10 +3,15 @@ package mz.inolabdev.rh.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @MappedSuperclass
 public class IdEntity implements Serializable {
@@ -17,32 +22,38 @@ public class IdEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
-	protected Date created_at;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created", nullable = false)
+	private Date created;
 
-	protected Date updated_at;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated", nullable = false)
+	private Date updated;
+
+	@PrePersist
+	protected void onCreate() {
+		updated = created = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		updated = new Date();
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdated(Date updated) {
+		this.updated = updated;
 	}
 
 }

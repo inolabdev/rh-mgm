@@ -1,22 +1,23 @@
 package mz.inolabdev.rh.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Table(name = "role")
+@Entity
+@Table(name = "roles")
 public class Role extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
-	private String role_name;
+
+	@Column(name = "role_name")
+	private String roleName;
+
+	@Column(name = "profile")
 	private Profile profile;
+
+	@Column(name = "description")
 	private String description;
-
-	public String getRole() {
-		return role_name;
-	}
-
-	public void setRole(String role) {
-		this.role_name = role;
-	}
 
 	public Profile getProfile() {
 		return profile;
@@ -32,6 +33,14 @@ public class Role extends IdEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 
 }
