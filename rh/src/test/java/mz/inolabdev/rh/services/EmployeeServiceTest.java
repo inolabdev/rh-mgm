@@ -36,7 +36,6 @@ public class EmployeeServiceTest extends GenericTestUnit {
 		Department department = new Department();
 		department.setName("Movertako");
 		department.setDescription("Equipe de Support");
-		department.setCreatedAt(Calendar.getInstance().getTime());
 		departamentService.create(department);
 		return department;
 
