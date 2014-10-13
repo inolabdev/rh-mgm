@@ -70,7 +70,7 @@
                       <x:a href="#" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
                     </div>
                     <div class="pull-right">
-                      <x:a href="#" class="btn btn-default btn-flat">${c:l('out')}</x:a>
+                      <x:a href="j_spring_security_logout" class="btn btn-default btn-flat">${c:l('out')}</x:a>
                     </div>
                   </x:li>
                 </x:ul>

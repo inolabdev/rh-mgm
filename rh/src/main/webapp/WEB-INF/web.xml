@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"> 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<description>INOLAB RH</description>
 	<display-name>Recursos Humanos</display-name>
 
 	<!-- Spring configuration -->
 	<!-- Initialize spring context -->
-	
+
 	<context-param>
-        <param-name>contextClass</param-name>
-        <param-value>
+		<param-name>contextClass</param-name>
+		<param-value>
          org.springframework.web.context.support.AnnotationConfigWebApplicationContext
       </param-value>
-    </context-param>
-	
+	</context-param>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>mz.inolabdev.rh.config</param-value>
 	</context-param>
-	
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!-- Enable webapp Scopes-->
-	 <listener>
-    	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	<!-- Enable webapp Scopes -->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-	
+
 	<!-- Spring Security -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/j_spring_security_logout</url-pattern>
+	</filter-mapping>
 
 	<!-- ZK -->
 	<listener>
@@ -72,7 +76,7 @@
 		<servlet-name>auEngine</servlet-name>
 		<url-pattern>/zkau/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- [Optional] Session timeout -->
 	<session-config>
 		<session-timeout>60</session-timeout>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:beans="http://www.springframework.org/schema/beans"
-  xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
       http://www.springframework.org/schema/security 
       http://www.springframework.org/schema/security/spring-security-3.2.xsd
       http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
- 
-   <!-- Enable the @Secured annotation to secure service layer methods -->
+
+	<!-- Enable the @Secured annotation to secure service layer methods -->
 	<global-method-security secured-annotations="enabled" />
 
 	<http auto-config="true">
@@ -26,12 +25,15 @@
 		<intercept-url pattern="/login.zul" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/*.zul" access="IS_AUTHENTICATED_REMEMBERED" />
 		<intercept-url pattern="/views/*" access="IS_AUTHENTICATED_REMEMBERED" />
-		<remember-me data-source-ref="dataSource" user-service-ref="userService"/>
+		<remember-me data-source-ref="dataSource"
+			user-service-ref="userService" />
+
+		<logout logout-url="/j_spring_security_logout"
+			invalidate-session="true" logout-success-url="/login.zul?loggedout=true" />
 
 	</http>
-   <authentication-manager>
-      <authentication-provider user-service-ref="userService">
-         <password-encoder hash="md5" />
-      </authentication-provider>
-   </authentication-manager>
+	<authentication-manager>
+		<authentication-provider user-service-ref="userService">
+		</authentication-provider>
+	</authentication-manager>
 </beans:beans>
