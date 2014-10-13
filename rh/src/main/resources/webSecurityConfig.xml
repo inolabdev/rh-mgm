@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="
-		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="
+      http://www.springframework.org/schema/security 
+      http://www.springframework.org/schema/security/spring-security-3.2.xsd
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+ 
+   <!-- Enable the @Secured annotation to secure service layer methods -->
+	<global-method-security secured-annotations="enabled" />
 
-	<http access-denied-page="/access-denied.html" use-expressions="true">
-		<intercept-url pattern="/access-denied*" access="hasAnyRole('ROLE_LOCATION_WRITE','ROLE_POLYGON_WRITE')" />
-		<intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/organization/**" access="hasAnyRole('ROLE_ORGANIZATION')" />
-		<intercept-url pattern="/location/edit*" access="hasAnyRole('ROLE_LOCATION_WRITE')" />
-		<intercept-url pattern="/location/view*" access="permitAll" />
+	<http auto-config="true">
 
-		<intercept-url pattern="/login*" access="isAnonymous()" />
-		<intercept-url pattern="/register*" access="isAnonymous()" />
-		<intercept-url pattern="/login-denied/**" access="isAnonymous()" />
+		<!-- ====================================================== -->
+		<!-- If we have our own LoginPage. So we must -->
+		<!-- tell Spring the name and the place. -->
+		<!-- In our case we take the same page -->
+		<!-- for a error message by a failure. -->
+		<!-- Further the page after a successfully login. -->
+		<!-- ====================================================== -->
+		<form-login login-page="/login.zul"
+			authentication-failure-url="/login.zul?login_error=1"
+			default-target-url="/index.zul" />
+		<intercept-url pattern="/login.zul" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/*.zul" access="IS_AUTHENTICATED_REMEMBERED" />
+		<intercept-url pattern="/views/*" access="IS_AUTHENTICATED_REMEMBERED" />
+		<remember-me data-source-ref="dataSource" user-service-ref="userService"/>
 
-		<intercept-url pattern="/**" access="permitAll" />
-
-		<form-login login-page='/login.html' default-target-url="/" always-use-default-target="false" authentication-failure-url="/login.html?error=true" />
-
-		<logout />
-
-		<anonymous />
-
-		<session-management invalid-session-url="/">
-			<concurrency-control max-sessions="1" />
-		</session-management>
 	</http>
-
-	<authentication-manager alias="authenticationManager" erase-credentials="false">
-		<authentication-provider ref="restAuthenticationProvider" />
-	</authentication-manager>
-
+   <authentication-manager>
+      <authentication-provider user-service-ref="userService">
+         <password-encoder hash="md5" />
+      </authentication-provider>
+   </authentication-manager>
 </beans:beans>
