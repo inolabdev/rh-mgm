@@ -1,4 +1,4 @@
-package mz.inolabdev.rh.config;
+package mz.inolabdev.rh;
 
 import java.util.Properties;
 
@@ -23,16 +23,16 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-mysql-test.properties" })
 @ComponentScan(basePackages = { "mz.inolabdev.rh.dao",
 		"mz.inolabdev.rh.dao.impl", "mz.inolabdev.rh.services",
 		"mz.inolabdev.rh.services.impl" })
-public class PersistenceJPAConfig {
+public class PersistenceJPAConfigTest {
 
 	@Autowired
 	private Environment env;
 
-	public PersistenceJPAConfig() {
+	public PersistenceJPAConfigTest() {
 		super();
 	}
 
