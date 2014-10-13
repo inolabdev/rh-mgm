@@ -41,7 +41,7 @@ a:focus {
   clear: both;
 }
 /* Header */
-body > .header {
+.body > .header {
   position: absolute;
   top: 0;
   left: 0;
