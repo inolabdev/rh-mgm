@@ -39,3 +39,9 @@
 .btnLog{
 	font-size: 20px;
 }
+
+.btn-full{
+	width: 100%;
+	text-align: justify;
+	float: left;
+}
