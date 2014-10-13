@@ -7,6 +7,7 @@ import java.util.Calendar;
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Department;
 import mz.inolabdev.rh.entity.Employee;
+import mz.inolabdev.rh.entity.IndividualType;
 import mz.inolabdev.rh.entity.JobPosition;
 
 import org.junit.Test;
@@ -22,6 +23,14 @@ public class EmployeeServiceTest extends GenericTestUnit {
 	private JobPositionService jobPositionService;
 	@Autowired
 	private DepartamentService departamentService;
+
+	private IndividualType createNewIndividualType() {
+		IndividualType type = new IndividualType();
+		type.setName("Gestor de Clientes");
+		type.setDescription("Gerir Clientes");
+		individualTypeService.create(type);
+		return type;
+	}
 
 	private JobPosition createNewJobPositionTest() {
 		JobPosition jobPosition = new JobPosition();
@@ -51,6 +60,7 @@ public class EmployeeServiceTest extends GenericTestUnit {
 		employee.setNationality("Moçambicana");
 		employee.setJob_position(createNewJobPositionTest());
 		employee.setDepartment(createNewDepartament());
+		employee.setIndividualType(createNewIndividualType());
 
 		return employee;
 	}
