@@ -1,5 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
-@import url(//fonts.googleapis.com/css?family=Kaushan+Script);
+
 /*! 
  *   AdminLTE v1.2
  *   Author: AlmsaeedStudio.com
@@ -13,10 +12,12 @@
 
 .body {
   overflow-x: hidden!important;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: times new roman !important;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f9f9f9;
+  font-family: 14px;
+  text-indent: 2px;
 }
 a {
   color: #3c8dbc;
@@ -128,7 +129,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: times new roman !important;
 }
 /* Page Header */
 .page-header {
@@ -528,7 +529,7 @@ Gradient Background colors
   text-align: center;
   padding: 0 10px;
   width: 220px;
-  font-family: 'Kaushan Script', cursive;
+  font-family: times new roman !important;
   font-weight: 500;
   height: 50px;
   display: block;
@@ -1550,6 +1551,7 @@ Gradient Background colors
   color: #fff;
   background: #3c8dbc;
   background-color: #3c8dbc;
+  font-family: times new roman !important;
 }
 .box.box-solid.box-primary > .box-header a {
   color: #444;
