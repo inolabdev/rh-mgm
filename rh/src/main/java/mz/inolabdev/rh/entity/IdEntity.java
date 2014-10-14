@@ -13,8 +13,6 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.google.common.base.Objects;
-
 @MappedSuperclass
 public class IdEntity implements Serializable {
 
@@ -57,29 +55,5 @@ public class IdEntity implements Serializable {
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-	
-	@Override
-    public String toString() {
-        return String.format("%s(id=%d)", this.getClass().getSimpleName(), this.getId());
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null)
-            return false;
-
-        if (o instanceof IdEntity) {
-            final IdEntity other = (IdEntity) o;
-            return Objects.equal(getId(), other.getId());
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
 
 }
