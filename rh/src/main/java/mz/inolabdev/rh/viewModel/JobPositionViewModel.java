@@ -21,7 +21,7 @@ import org.zkoss.zul.Div;
 import org.zkoss.zul.Include;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
-public class JobPositionViewModel {
+public class JobPositionViewModel extends AbstractViewModel {
 
 	@Wire("#mainInclude")
 	private Include mainInclude;
@@ -35,7 +35,7 @@ public class JobPositionViewModel {
 	private JobPosition job;
 
 	List<JobPosition> jobs;
-	
+
 	@WireVariable
 	private JobPositionService jobPositionService;
 
@@ -67,9 +67,9 @@ public class JobPositionViewModel {
 
 	@Command
 	public void jobPositionNew() {
-		
+
 		job = new JobPosition();
-		
+
 		jobPositionList.setVisible(false);
 		jobPositionNew.setVisible(true);
 	}
@@ -80,6 +80,7 @@ public class JobPositionViewModel {
 
 		jobPositionService.create(job);
 
+		log("Registou novo cargo: " + job.getType());
 		jobPositionList();
 	}
 

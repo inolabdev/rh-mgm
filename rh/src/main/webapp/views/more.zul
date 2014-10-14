@@ -10,7 +10,7 @@
         </div>
         <div zclass="box-body">
         	<x:center>
-	        	<x:h3>150</x:h3>
+	        	<x:h3>${vm.deps.size()}</x:h3>
 	        	<x:p>${c:l('model.departaments')}</x:p>
 	        	<x:a class="btn btn-default btn-block" onClick="@command('departamentList')">
 	        		<x:code>${c:l('view')}</x:code>
