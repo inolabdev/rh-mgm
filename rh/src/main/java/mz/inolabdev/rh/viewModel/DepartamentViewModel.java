@@ -5,6 +5,7 @@ import java.util.List;
 
 import mz.inolabdev.rh.entity.Department;
 import mz.inolabdev.rh.services.DepartamentService;
+import mz.inolabdev.rh.services.LogService;
 
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.ContextParam;
@@ -21,34 +22,40 @@ import org.zkoss.zul.Div;
 import org.zkoss.zul.Include;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
-public class DepartamentViewModel {
-	
+public class DepartamentViewModel extends AbstractViewModel {
+
 	@Wire("#mainInclude")
 	private Include mainInclude;
-	
+
 	@Wire("#depList")
 	private Div depList;
 
 	@Wire("#depNew")
 	private Div depNew;
-	
+
 	@WireVariable
 	private DepartamentService departamentService;
 	
+	@WireVariable
+	private LogService logService;
+
 	private List<Department> deps;
-	
+
 	private Department dep;
-	
+
 	@AfterCompose
-    public void afterCompose(@ContextParam(ContextType.VIEW) Component view){
-        Selectors.wireComponents(view, this, false);
-    }
+	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
+		Selectors.wireComponents(view, this, false);
+	}
 
 	@Init
 	public void init() {
-		
+
 		setDep(new Department());
 		reload();
+
+		setCURRENT_PAGE_TITLE("Departmanento");
+		setCURRENT_PAGE_ACTION("Inicio");
 	}
 
 	@Command
@@ -56,7 +63,7 @@ public class DepartamentViewModel {
 	public void departamentList() {
 		mainInclude.setSrc("views/departament/index.zul");
 	}
-	
+
 	@Command
 	@NotifyChange("deps")
 	public void depList() {
@@ -72,13 +79,23 @@ public class DepartamentViewModel {
 
 	@Command
 	public void depNew() {
-		
+
 		dep = new Department();
-		
+
 		depList.setVisible(false);
 		depNew.setVisible(true);
 	}
-	
+
+	@Command
+	@NotifyChange("deps")
+	public void saveDep() {
+
+		departamentService.create(dep);
+
+		log("Registou novo departamento: " + dep.getName());
+		depList();
+	}
+
 	private List<Department> reload() {
 
 		if (deps == null)
