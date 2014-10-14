@@ -18,6 +18,7 @@ public class PagesFlowsViewModel extends AbstractViewModel{
 
 	private String activeHome;
 	private String activeMore;
+	private String activeRecruitment;
 	
 	@WireVariable
 	private LogService logService;
@@ -49,10 +50,20 @@ public class PagesFlowsViewModel extends AbstractViewModel{
 		setActiveMore("active");
 		setPage("/views/more.zul");
 	}
-
+	
+	@Command
+	@NotifyChange({ "page", "activeRecruitment" })
+	public void sideBarRecruitment() {
+		resetMenu();
+		setActiveRecruitment(activeRecruitment);
+		setPage("/views/recruitment/candidate/recruitment.zul");
+		
+	}
+	
 	private void resetMenu() {
 		setActiveHome("");
 		setActiveMore("");
+		setActiveRecruitment("");
 	}
 
 	public String getPage() {
@@ -85,6 +96,14 @@ public class PagesFlowsViewModel extends AbstractViewModel{
 
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
+	}
+
+	public String getActiveRecruitment() {
+		return activeRecruitment;
+	}
+
+	public void setActiveRecruitment(String activeRecruitment) {
+		this.activeRecruitment = activeRecruitment;
 	}
 
 }
