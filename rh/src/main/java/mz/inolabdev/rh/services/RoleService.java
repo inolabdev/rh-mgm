@@ -3,20 +3,17 @@ package mz.inolabdev.rh.services;
 import java.util.List;
 
 import mz.inolabdev.rh.entity.Role;
-import mz.inolabdev.rh.exception.DuplicateRoleException;
-import mz.inolabdev.rh.exception.RoleNotFoundException;
 
 public interface RoleService {
+    public Role create(Role role);  
 
-	public void addRole(Role role) throws DuplicateRoleException;
+	public List<Role> getAll();
 
-	public Role getRole(Long id) throws RoleNotFoundException;
+	public Role find(Long id);
 
-	public Role getRole(String rolename) throws RoleNotFoundException;
+	public Role update(Role role);
 
-	public void updateRole(Role role) throws RoleNotFoundException;
+	public long count();
 
-	public void deleteRole(Long id) throws RoleNotFoundException;
-
-	public List<Role> getRoles();
+	public void delete(Object id);
 }

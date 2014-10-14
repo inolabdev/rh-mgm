@@ -10,7 +10,6 @@
 <?link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
-<?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
 
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
 
@@ -18,9 +17,9 @@
 <?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 
-  <div apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
+  <window apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
   	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PagesFlowsViewModel')">
-    <x:div class="skin-blue body fixed">
+    <x:div class="skin-blue body">
       <x:header class="header">
        <a href="#" class="logo">${c:l('appName')}</a>
         <x:nav class="navbar navbar-static-top" role="navigation">
@@ -29,15 +28,15 @@
               <x:li class="dropdown notifications-menu">
                 <x:a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <x:i class="fa fa-warning"></x:i>
-                  <x:span class="label label-warning">${vm.logs.size()}</x:span>
+                  <x:span class="label label-warning">3</x:span>
                 </x:a>
                 <x:ul class="dropdown-menu">
-                  <x:li class="header">Tens ${vm.logs.size()} notificacoes</x:li>
+                  <x:li class="header">Tens 3 notificacoes</x:li>
                   <x:li>
                     <x:ul class="menu">
                       <x:li>
-                        <x:a href="#" forEach="${vm.logs}">
-                          <x:i class="ion ion-ios7-people info"></x:i> ${each.message}
+                        <x:a href="#">
+                          <x:i class="ion ion-ios7-people info"></x:i> Registou 5 colaboradores hoje
                         </x:a>
                       </x:li>
                     </x:ul>
@@ -71,7 +70,7 @@
                       <x:a href="#" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
                     </div>
                     <div class="pull-right">
-                      <x:a href="j_spring_security_logout" class="btn btn-default btn-flat">${c:l('out')}</x:a>
+                      <x:a href="#" class="btn btn-default btn-flat">${c:l('out')}</x:a>
                     </div>
                   </x:li>
                 </x:ul>
@@ -86,8 +85,8 @@
         <x:aside class="right-side">
           <x:section class="content-header">
             <x:h1>
-              ${vm.CURRENT_PAGE_TITLE}
-              <x:small>${vm.CURRENT_PAGE_ACTION}</x:small>
+              Painel Inicial
+              <x:small>Painel de Controle</x:small>
             </x:h1>
             <x:ol class="breadcrumb">
               <x:li><x:a href="#"><x:i class="fa fa-dashboard"></x:i> Pagina Inicial</x:a></x:li>
@@ -120,5 +119,5 @@
       <x:script src="js/AdminLTE/demo.js" type="text/javascript"></x:script>
     </x:div>
     
-  </div>
+  </window>
 </zk>
