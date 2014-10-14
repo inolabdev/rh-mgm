@@ -1,125 +1,169 @@
 package mz.inolabdev.rh.entity;
 
-import java.util.Date;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "users")
-public class User extends IdEntity {
+import org.hibernate.validator.constraints.NotEmpty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-	private static final long serialVersionUID = 1L;
+import com.google.common.base.Objects;
 
-	@Column(name = "name")
-	private String name;
+@Entity  
+@Table(name="users")
+public class User extends IdEntity implements UserDetails {
+    /*
+        CREATE TABLE `USERS` (
+            `ID`       int(6) NOT NULL AUTO_INCREMENT,  
+            `USERNAME` VARCHAR(50) NOT NULL UNIQUE,
+            `PASSWORD` VARCHAR(50) NOT NULL,
+            `ENABLED`  BOOLEAN NOT NULL,
+            PRIMARY KEY (`ID`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+    */
 
-	@Column(name = "last_name")
-	private String lastName;
+    private static final long serialVersionUID = 6311364761937265306L;
+    static Logger logger = LoggerFactory.getLogger(User.class);
+    
+    @NotNull(message = "{error.user.username.null}")
+    @NotEmpty(message = "{error.user.username.empty}")
+    @Size(max = 50, message = "{error.user.username.max}")
+    @Column(name = "username", length = 50)
+    private String username;
 
-	@Column(name = "email")
-	private String email;
+    @NotNull(message = "{error.user.password.null}")
+    @NotEmpty(message = "{error.user.password.empty}")
+    @Size(max = 50, message = "{error.user.password.max}")
+    @Column(name = "password", length = 50)
+    private String password;
+    
+    @Column(name = "enabled")
+    private boolean enabled;
+    
+    @OneToMany(fetch = FetchType.EAGER)  
+    @JoinTable(name = "user_roles",  
+        joinColumns        = {@JoinColumn(name = "user_id", referencedColumnName = "id")},  
+        inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}  
+    )  
+    private Set<Role> roles;
+    
+    public String getUsername() {
+        return username;
+    }
 
-	@Column(name = "password")
-	private String password;
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	@Column(name = "password_confirmation")
-	private String passwordConfirmation;
+    public String getPassword() {
+        return password;
+    }
 
-	@Column(name = "profile")
-	private Profile profile;
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	@Column(name = "description")
-	private String description;
+    public boolean getEnabled() {
+        return enabled;
+    }
 
-	@Column(name = "sign_in_Count")
-	private int signInCount;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
-	@Column(name = "current_sign_in_at")
-	private Date currentSignInAt;
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
-	@Column(name = "last_sign_in_at")
-	private Date lastSignInAt;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
-	public String getName() {
-		return name;
-	}
+    @Override
+    public String toString() {
+        return String.format("%s(id=%d, username=%s, password=%s, enabled=%b)", 
+                this.getClass().getSimpleName(), 
+                this.getId(), 
+                this.getUsername(), 
+                this.getPassword(), 
+                this.getEnabled());
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null)
+            return false;
 
-	public String getLastName() {
-		return lastName;
-	}
+        if (o instanceof User) {
+            final User other = (User) o;
+            return Objects.equal(getId(), other.getId())
+                    && Objects.equal(getUsername(), other.getUsername())
+                    && Objects.equal(getPassword(), other.getPassword())
+                    && Objects.equal(getEnabled(), other.getEnabled());
+        }
+        return false;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId(), getUsername(), getPassword(), getEnabled());
+    }
 
-	public String getPasswordConfirmation() {
-		return passwordConfirmation;
-	}
+    @Transient
+    public Set<Permission> getPermissions() {
+        Set<Permission> perms = new HashSet<Permission>();
+        for (Role role : roles) { 
+            perms.addAll(role.getPermissions()); 
+        }
+        return perms;
+    }
 
-	public void setPasswordConfirmation(String passwordConfirmation) {
-		this.passwordConfirmation = passwordConfirmation;
-	}
+    @Override
+    @Transient
+    public Collection<GrantedAuthority> getAuthorities() {
+        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        authorities.addAll(getRoles());
+        authorities.addAll(getPermissions());
+        return authorities;
+    }
 
-	public int getSignInCount() {
-		return signInCount;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        //return true = account is valid / not expired
+        return true; 
+    }
 
-	public void setSignInCount(int signInCount) {
-		this.signInCount = signInCount;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        //return true = account is not locked
+        return true;
+    }
 
-	public Date getCurrentSignInAt() {
-		return currentSignInAt;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        //return true = password is valid / not expired
+        return true;
+    }
 
-	public void setCurrentSignInAt(Date currentSignInAt) {
-		this.currentSignInAt = currentSignInAt;
-	}
-
-	public Date getLastSignInAt() {
-		return lastSignInAt;
-	}
-
-	public void setLastSignInAt(Date lastSignInAt) {
-		this.lastSignInAt = lastSignInAt;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+    @Override
+    public boolean isEnabled() {
+        return this.getEnabled();
+    }
+    
 }

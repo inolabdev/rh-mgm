@@ -16,7 +16,7 @@ abstract class GenericServiceImpl<T extends IdEntity> implements
 		GenericService<T> {
 
 	@Autowired
-	private GenericDao<T> specificDao;
+	protected GenericDao<T> specificDao;
 	
 	@Override
 	public T create(T t) {

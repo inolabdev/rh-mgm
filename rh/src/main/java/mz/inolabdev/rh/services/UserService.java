@@ -2,18 +2,22 @@ package mz.inolabdev.rh.services;
 
 import java.util.List;
 
+
 import mz.inolabdev.rh.entity.User;
+import mz.inolabdev.rh.exception.DuplicateUserException;
+import mz.inolabdev.rh.exception.UserNotFoundException;
 
 public interface UserService {
-	public User create(User user);
 
-	public List<User> getAll();
+	public void addUser(User user) throws DuplicateUserException;
 
-	public User find(Long id);
+	public User getUser(Long userId) throws UserNotFoundException;
 
-	public User update(User user);
+	public User getUser(String username) throws UserNotFoundException;
 
-	public long count();
+	public void updateUser(User user) throws UserNotFoundException;
 
-	public void delete(Object id);
+	public void deleteUser(Long userId) throws UserNotFoundException;
+
+	public List<User> getUsers();
 }

@@ -118,7 +118,7 @@
        </x:li>
        <x:li sclass="@load(vm.activeMore)">
          <x:a class="cursor" onClick="@command('sideBarMore')">
-           <x:i class="fa  fa-sort-down"></x:i> <x:span>${c:l('sidebar.more')}</x:span>
+           <x:i class="fa fa-sort"></x:i> <x:span>${c:l('sidebar.more')}</x:span>
          </x:a>
        </x:li>
      </x:ul>
