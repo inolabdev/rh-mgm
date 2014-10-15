@@ -1,0 +1,82 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateViewModel')">
+ 
+ <div zclass="col-md-10" id="candidateList">
+	<div zclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+	
+	<x:table id="candidate" class="table table-bordered table-striped">
+		<x:thead>
+			<x:tr>
+				<x:th>#</x:th>
+				<x:th>Candidate</x:th>
+				<x:th>Vacancy</x:th>
+				<x:th>Email</x:th>
+				<x:th>CellPhone</x:th>
+				<x:th>Date of Application</x:th>
+				<x:th>Status</x:th>
+				<x:th>Resume</x:th>
+				<x:th></x:th>
+			</x:tr>
+		</x:thead>
+		<x:tbody>
+			<x:tr forEach="${vm.candidates}">
+				<x:td>${each.fullName()}</x:td>
+				<x:td>${each.getVacancies()}</x:td>
+				<x:td>${each.getEmails()}</x:td>
+				<x:td>${each.getCellphones()}</x:td>
+				<x:td>${each.getDateOfApplication()}</x:td>
+				<x:td>${each.getStatus()}</x:td>
+				<x:td>${each.getDocuments()}</x:td>
+				<x:td>
+					<a class="btn btn-info btn-sm">
+                      <x:i class="fa fa-play"></x:i>
+                      ver
+                   	</a>
+                   	<separator orient="vertical" width="7px"></separator>
+					<a class="btn btn-warning btn-sm">
+                      <x:i class="fa fa-edit"></x:i>
+                      editar
+                   	</a>
+				</x:td>
+			</x:tr>
+		</x:tbody>
+	</x:table>
+	</div>
+	
+	<script type="text/javascript">
+		function initDataTable(){
+		  $("#candidate").dataTable();
+		}
+	</script>
+</div>
+<div zclass="col-md-10" id="newCandidate" visible="false">
+	<include src="views/recruitment/candidate/create.zul"></include>
+</div>
+ <div zclass="col-md-2">
+	<div class="box box-solid">
+		<x:center>
+		    <div class="box-header">
+		        <x:span class="menuOperations" >Candidatos</x:span>
+		    </div>
+		    <div class="box-body">
+		    	<x:table>
+		    	<x:tr><x:td>
+					<x:a class="btn btn-app btn-large" onClick="@command('newCandidate')">
+				        <x:i class="fa fa-file-text-o"></x:i>
+				        Novo Candidato
+				    </x:a>
+			    </x:td></x:tr>
+			    <x:tr><x:td>
+					<x:a class="btn btn-app" style="width: 100%" onClick="@command('candidateList')">
+				        <x:i class="fa fa-list"></x:i>
+				        Lista de Candidatos
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </div>
+	    </x:center>
+	</div>
+ </div>
+</window>
+</zk>

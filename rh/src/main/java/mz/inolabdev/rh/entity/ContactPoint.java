@@ -15,17 +15,21 @@ public class ContactPoint extends IdEntity {
 	private String name;
 	
 	@Column(name="value")
-	private int value;
+	private String value;
 	
 	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
 
-	public int getValue() {
+	@ManyToOne
+	@JoinColumn(name = "candidate_id")
+	private Candidate candidate;
+	
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 
@@ -45,4 +49,10 @@ public class ContactPoint extends IdEntity {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return value;
+	}
+
+	
 }

@@ -1,0 +1,66 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<div zclass="box box-primary" validationMessages="@id('vmsgs')">
+		<div zclass="box-header">
+			<x:h3 class="box-title">Novo Candidato</x:h3>
+		</div>
+		<div
+			form="@id('fx')  @init(vm.candidateForm)   @load(vm.candidate) @save(vm.candidate, before='saveCandidate')">
+			<div zclass="box-body">
+				<div class="form-group">
+					<x:label>Name *</x:label>
+					<textbox zclass="form-control" placeholder="name"
+						value="@bind(fx.name)"
+						constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				</div>
+				<div class="form-group">
+					<x:label>Last Name *</x:label>
+					<textbox zclass="form-control"
+						placeholder="middle name" value="@bind(fx.lastName)"
+						constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				</div>
+				<div class="form-group">
+					<x:label>MiddleName</x:label>
+					<textbox zclass="form-control"
+						placeholder="middle name" value="@bind(fx.middleName)"
+						constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				</div>
+			</div>
+			<div class="form-group">
+				<x:label>Email:</x:label>
+				<chosenbox sclass="mailinput" hflex="1"
+					model="@load(vm.emails)"
+					emptyMessage="type or select emails (existing or new ones)"
+					creatable="true" createMessage="Create new email '{0}'"
+					onSearch="@command('newEmail', email=event.value)" />
+			</div>
+
+			<separator orient="vertical" width="8px"></separator>
+			<div zclass="form-group">
+				<button label="Select File" sclass="btn" upload="true"
+					onUpload="@command('onUploadFile')">
+				</button>
+				<x:label value="@load(vm.documents)" />
+			</div>
+			<div class="form-group">
+				<x:label for="exampleInputFile">Selecione CV</x:label>
+				<x:input id="exportfile" type="file" size="50" upload="true"
+				  zk:onChange="@command('onUploadFile')"/> 
+			</div>
+			<separator width="8px"></separator>
+
+			<div class="form-group">
+				<x:label>Comment</x:label>
+				<textbox zclass="form-control txtArea" rows="5"
+					width="100%" value="" />
+			</div>
+
+			<div zclass="box-footer">
+				<x:button type="submit" class="btn btn-primary"
+					onClick="@command('saveCandidate')">
+					Gravar
+					<x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+				</x:button>
+			</div>
+		</div>
+	</div>
+</zk>
