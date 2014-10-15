@@ -56,7 +56,7 @@ public class PagesFlowsViewModel extends AbstractViewModel{
 	public void sideBarRecruitment() {
 		resetMenu();
 		setActiveRecruitment(activeRecruitment);
-		setPage("/views/recruitment/candidate/recruitment.zul");
+		setPage("/views/recruitment/recruitment.zul");
 		
 	}
 	

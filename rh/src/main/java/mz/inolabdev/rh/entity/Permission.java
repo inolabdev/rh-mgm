@@ -62,9 +62,7 @@ public class Permission extends IdEntity implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return String.format("%s(id=%d, permissionname='%s')", 
-                this.getClass().getSimpleName(), 
-                this.getId(), this.getPermissionname());
+        return this.permissionname;
     }
 
     @Override
