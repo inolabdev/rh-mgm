@@ -50,6 +50,12 @@ public class Individual extends IdEntity {
 	@JoinColumn(name = "type_id")
 	private IndividualType individualType;
 
+	public String fullName() {
+
+		return name + " " + middleName + " " + lastName;
+	}
+
+	// getter and setters
 	public IndividualType getIndividualType() {
 		return individualType;
 	}
