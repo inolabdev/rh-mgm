@@ -71,16 +71,16 @@
     </div>
 </div>
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PermitionViewModel')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
             <x:h3 class="box-title">${c:l('model.permition')}</x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
-	        	<x:h3>${vm.jobs.size()}</x:h3>
+	        	<x:h3>${vm.perms.size()}</x:h3>
 	        	<x:p>${c:l('model.permitions')}</x:p>
-	        	<x:a class="btn btn-default btn-block" onClick="@command('jobPositionList')">
+	        	<x:a class="btn btn-default btn-block" onClick="@command('permissionList')">
 	        		<x:code>${c:l('view')}</x:code>
 	        	</x:a>
         	</x:center>
@@ -88,16 +88,16 @@
     </div>
 </div>
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AdminUserViewModel')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
             <x:h3 class="box-title">${c:l('model.admin_user')}</x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
-	        	<x:h3>${vm.jobs.size()}</x:h3>
+	        	<x:h3>${vm.adminUsers.size()}</x:h3>
 	        	<x:p>${c:l('model.admin_users')}</x:p>
-	        	<x:a class="btn btn-default btn-block" onClick="@command('jobPositionList')">
+	        	<x:a class="btn btn-default btn-block" onClick="@command('userList')">
 	        		<x:code>${c:l('view')}</x:code>
 	        	</x:a>
         	</x:center>

@@ -12,11 +12,13 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Include;
 
@@ -81,6 +83,9 @@ public class JobPositionViewModel extends AbstractViewModel {
 		jobPositionService.create(job);
 
 		log("Registou novo cargo: " + job.getType());
+		
+		Clients.showNotification(Labels.getLabel("saved.job"));
+		
 		jobPositionList();
 	}
 
