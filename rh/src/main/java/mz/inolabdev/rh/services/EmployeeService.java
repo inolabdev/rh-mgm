@@ -17,4 +17,6 @@ public interface EmployeeService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public List<Employee> allWhereUserIdIsNull();
 }
