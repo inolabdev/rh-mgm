@@ -17,5 +17,9 @@ public interface PermissionService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Permission first();
+    
+    public Permission last();
 
 }

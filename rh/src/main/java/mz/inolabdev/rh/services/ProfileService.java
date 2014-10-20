@@ -16,4 +16,8 @@ public interface ProfileService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Profile first();
+    
+    public Profile last();
 }

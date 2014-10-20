@@ -19,4 +19,8 @@ public interface EmployeeService {
 	public void delete(Object id);
 	
 	public List<Employee> allWhereUserIdIsNull();
+	
+	public Employee first();
+    
+    public Employee last();
 }

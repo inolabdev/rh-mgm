@@ -13,4 +13,8 @@ public interface EventService {
 	public Event find(Long id);
 
 	public long count();
+	
+	public Event first();
+    
+    public Event last();
 }

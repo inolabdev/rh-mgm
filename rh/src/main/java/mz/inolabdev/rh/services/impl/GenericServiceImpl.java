@@ -45,6 +45,16 @@ abstract class GenericServiceImpl<T extends IdEntity> implements
 	}
 
 	@Override
+	public T first() {
+		return specificDao.first();
+	}
+	
+	@Override
+	public T last() {
+		return specificDao.last();
+	}
+	
+	@Override
 	public void delete(Object id) {
 		specificDao.delete(id);
 	}

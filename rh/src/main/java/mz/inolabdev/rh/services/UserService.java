@@ -19,4 +19,8 @@ public interface UserService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public User first();
+    
+    public User last();
 }

@@ -19,4 +19,8 @@ public interface RoleService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Role first();
+    
+    public Role last();
 }
