@@ -10,7 +10,7 @@
 		<x:thead>
 			<x:tr>
 				<x:th>#</x:th>
-				<x:th>Role Name</x:th>
+				<x:th>Papel</x:th>
 				<x:th>Data de Criação</x:th>
 				<x:th>Data de Actualização</x:th>
 				<x:th></x:th>
@@ -50,20 +50,20 @@
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:span class="menuOperations" >Roles</x:span>
+		        <x:span class="menuOperations" >Papeis</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>
 		    	<x:tr><x:td>
 					<x:a class="btn btn-app" onClick="@command('roleNew')">
 				        <x:i class="fa fa-file-text-o"></x:i>
-				        Nova
+				        Novo
 				    </x:a>
 			    </x:td></x:tr>
 			    <x:tr><x:td>
 					<x:a class="btn btn-app" onClick="@command('roleList')">
 				        <x:i class="fa fa-list"></x:i>
-				        Todas
+				        Todos
 				    </x:a>
 			    </x:td></x:tr>
 			    </x:table>
