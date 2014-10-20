@@ -6,7 +6,7 @@
          <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
        </div>
        <div class="pull-left info">
-         <x:p>Olá, Milson</x:p>
+         <x:p>Olá, ${auth.getName()}</x:p>
          <x:a href="#"><x:i class="fa fa-circle text-success">
          </x:i> Activo</x:a>
        </div>

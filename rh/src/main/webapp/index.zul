@@ -9,15 +9,20 @@
 <?link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
-<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
+<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
 
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
+	<zscript>
+      import org.springframework.security.core.Authentication;
+	  import org.springframework.security.core.context.SecurityContextHolder;
+	
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+     </zscript>
   <div apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
   	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PagesFlowsViewModel')">
     <x:div class="skin-blue body fixed">
@@ -48,7 +53,7 @@
               <x:li class="dropdown user user-menu">
                 <x:a href="#" sclass="dropdown-toggle" data-toggle="dropdown">
                   <x:i class="glyphicon glyphicon-user"></x:i>
-                  <x:span>Jorge White <x:i class="caret"></x:i></x:span>
+                  <x:span>${auth.getName()}<x:i class="caret"></x:i></x:span>
                 </x:a>
                 <x:ul sclass="dropdown-menu ">
                   <x:li sclass="user-header bg-light-blue">
@@ -56,19 +61,13 @@
                     <x:p> Jorge White - Programador <x:small>${c:l('member_since')} Nov. 2013</x:small></x:p>
                   </x:li>
                   <x:li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <x:a href="#">Seguidores</x:a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <x:a href="#">Vendas</x:a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <x:a href="#">Amigos</x:a>
+                    <div class="col-xs-12 text-center">
+                      <x:a href="#" onClick="@command('changePassword')">Alterar Senha</x:a>
                     </div>
                   </x:li>
                   <x:li class="user-footer">
                     <div class="pull-left">
-                      <x:a href="#" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
+                      <x:a href="#" onClick="@command('userProfile')" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
                     </div>
                     <div class="pull-right">
                       <x:a href="j_spring_security_logout" class="btn btn-default btn-flat">${c:l('out')}</x:a>
