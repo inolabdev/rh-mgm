@@ -1,25 +1,25 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PermitionViewModel')">
  
- <div zclass="col-md-10" id="roleList">
+ <div zclass="col-md-10" id="permissionList">
  	<div zclass="box box-primary">
 	<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
 	
-	<x:table id="roles" class="table table-bordered table-striped">
+	<x:table id="permissoes" class="table table-bordered table-striped">
 		<x:thead>
 			<x:tr>
 				<x:th>#</x:th>
-				<x:th>Papel</x:th>
+				<x:th>Permissão</x:th>
 				<x:th>Data de Criação</x:th>
 				<x:th>Data de Actualização</x:th>
 				<x:th></x:th>
 			</x:tr>
 		</x:thead>
 		<x:tbody>
-			<x:tr forEach="${vm.roles}">
+			<x:tr forEach="${vm.perms}">
 				<x:td>${each.id}</x:td>
-				<x:td>${each.rolename}</x:td>
+				<x:td>${each.permissionname}</x:td>
 				<x:td>${each.created}</x:td>
 				<x:td>${each.updated}</x:td>
 				<x:td>
@@ -39,31 +39,31 @@
 	
 	<script type="text/javascript">
 		function initDataTable(){
-		  $("#roles").dataTable();
+		  $("#permissoes").dataTable();
 		}
 	</script>
 </div>
-<div zclass="col-md-10" id="roleNew" visible="false">
-	<include src="views/role/create.zul"></include>
+<div zclass="col-md-10" id="permissionNew" visible="false">
+	<include src="views/permission/create.zul"></include>
 </div>
  <div zclass="col-md-2">
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:span class="menuOperations" >Papeis</x:span>
+		        <x:span class="menuOperations" >Permissões</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>
 		    	<x:tr><x:td>
-					<x:a class="btn btn-app" onClick="@command('roleNew')">
+					<x:a class="btn btn-app" onClick="@command('permissionNew')">
 				        <x:i class="fa fa-file-text-o"></x:i>
-				        Novo
+				        Nova
 				    </x:a>
 			    </x:td></x:tr>
 			    <x:tr><x:td>
-					<x:a class="btn btn-app" onClick="@command('roleList')">
+					<x:a class="btn btn-app" onClick="@command('permissionList')">
 				        <x:i class="fa fa-list"></x:i>
-				        Todos
+				        Todas
 				    </x:a>
 			    </x:td></x:tr>
 			    </x:table>

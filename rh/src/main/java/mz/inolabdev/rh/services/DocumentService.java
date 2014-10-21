@@ -17,4 +17,8 @@ public interface DocumentService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Document first();
+    
+    public Document last();
 }

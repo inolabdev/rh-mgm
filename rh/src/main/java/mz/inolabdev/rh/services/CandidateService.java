@@ -17,4 +17,8 @@ public interface CandidateService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Candidate first();
+    
+    public Candidate last();
 }

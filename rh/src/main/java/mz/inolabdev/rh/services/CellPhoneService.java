@@ -16,4 +16,8 @@ public interface CellPhoneService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Cellphone first();
+    
+    public Cellphone last();
 }

@@ -17,4 +17,8 @@ public interface EducationLavelService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public EducationLevel first();
+    
+    public EducationLevel last();
 }

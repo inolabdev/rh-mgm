@@ -4,6 +4,7 @@
 <?link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')} - Login"?>
@@ -16,19 +17,19 @@
             <x:form id="f" name="f" action="j_spring_security_check" method="POST">
                 <div zclass="body bg-gray">
                 	<div sclass="alert alert-danger alert-dismissable" if="${not empty param.login_error}">
-	                	<span>
+	                	<x:label>
 	                	 <![CDATA[${c:l('spring_security_exception.message')}]]>
-	                	</span>
+	                	</x:label>
 	                </div>
                     <div zclass="form-group">
-                    	<x:b><label value="Usuário:"></label></x:b>
-                        <textbox name="j_username" id="username" sclass="form-control" placeholder="Usuário" />
+                    	<x:label value="">Usuário:</x:label>
+                        <textbox name="j_username" id="username" zclass="form-control" placeholder="Usuário" />
                     </div>
                     <div zclass="form-group">
-                    	<x:b><label value="Senha:"></label></x:b>
+                    	<x:label>Senha:</x:label>
                         <textbox name="j_password" id="password" type="password" sclass="form-control" placeholder="Password" />
                     </div>
-                    <x:input type="checkbox" name="_spring_security_remember_me" /> Remember Me
+                    <x:input type="checkbox" name="_spring_security_remember_me" /><x:labe>Lembre-me</x:labe>
                 </div>
                 <div zclass="footer">                                                               
                     <button id="btn_login" zclass="btn bg-olive btn-block btnLog" type="submit" label="Login" ></button>
