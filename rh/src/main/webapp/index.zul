@@ -11,6 +11,7 @@
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
 <?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/listbox.css" rel="stylesheet" type="text/css" ?>
 
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
 
@@ -80,25 +81,20 @@
         </x:nav>
       </x:header>
 
-      <x:div class="wrapper row-offcanvas row-offcanvas-left">
+      <div sclass="wrapper row-offcanvas row-offcanvas-left">
 		<include src = "sidebar.zul"/>
         <x:aside class="right-side">
-          <x:section class="content-header">
-            <x:h1>
-              ${vm.CURRENT_PAGE_TITLE}
-              <x:small>${vm.CURRENT_PAGE_ACTION}</x:small>
-            </x:h1>
-            <x:ol class="breadcrumb">
-              <x:li><x:a href="#"><x:i class="fa fa-dashboard"></x:i> Pagina Inicial</x:a></x:li>
-              <x:li class="active">Painel Inicial</x:li>
-            </x:ol>
-          </x:section>
-          <!-- Main content -->
+        	<div sclass="content-header" apply="org.zkoss.bind.BindComposer"
+        		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbstractViewModel')" >
+	          <x:section class="content-header">
+	            <x:ol class="breadcrumb" id="breadcrumb"/>
+	          </x:section>
+	        </div>
           <x:section class="content">
           	<include src="@bind(vm.page)" self="@define(content)" id="mainInclude" />
           </x:section>
         </x:aside>
-      </x:div>
+      </div>
       <x:script src="js/jquery.min.js"></x:script>
       <x:script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></x:script>
       <x:script src="js/bootstrap.min.js" type="text/javascript"></x:script>
