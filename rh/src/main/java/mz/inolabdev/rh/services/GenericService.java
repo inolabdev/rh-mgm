@@ -15,4 +15,8 @@ public interface GenericService<T> {
     public long count();
     
     public void delete(Object id);
+    
+    public T first();
+    
+    public T last();
 }

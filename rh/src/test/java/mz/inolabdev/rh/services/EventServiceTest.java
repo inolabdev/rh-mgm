@@ -78,5 +78,39 @@ public class EventServiceTest extends GenericTestUnit {
 		Assert.assertNotNull(all);
 		Assert.assertTrue(all.size() > 0);
 	}
+	
+	@Test
+	public void firstTest() {
+		
+		Event event_01 = createNewEvent();
+		event_01.setName("First Event");
+		
+		Event event_02 = createNewEvent();
+		event_02.setName("Seconf Event");
+		
+		eventService.create(event_01);
+		eventService.create(event_02);
+		
+		Event first = eventService.first();
+
+		Assert.assertEquals(event_01.getId(), first.getId());
+	}
+	
+	@Test
+	public void lastTest() {
+		
+		Event event_01 = createNewEvent();
+		event_01.setName("First Event");
+		
+		Event event_02 = createNewEvent();
+		event_02.setName("Seconf Event");
+		
+		eventService.create(event_01);
+		eventService.create(event_02);
+		
+		Event last = eventService.last();
+
+		Assert.assertEquals(event_01.getId(), last.getId());
+	}
 
 }

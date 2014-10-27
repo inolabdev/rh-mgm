@@ -16,14 +16,15 @@ import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Include;
-import org.zkoss.zul.Messagebox;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class RoleViewModel extends AbstractViewModel {
@@ -62,12 +63,12 @@ public class RoleViewModel extends AbstractViewModel {
 	public void init() {
 
 		role = new Role();
-		
+
 		stored = new ArrayList<Permission>();
 		chosen = new ArrayList<Permission>();
 		storedPermissions = new HashSet<Permission>();
 		chosenPermissions = new HashSet<Permission>();
-		
+
 		stored = permissionService.getAll();
 
 		reload();
@@ -94,11 +95,24 @@ public class RoleViewModel extends AbstractViewModel {
 		roleList.setVisible(false);
 		roleNew.setVisible(true);
 	}
-	
+
 	@Command
 	public void saveRole() {
 
-		Messagebox.show(chosen.toString());
+		if (chosenPermissions.size() <= 0) {
+			Clients.showNotification(Labels.getLabel("role.cannot.be.saved"),
+					"error", null, "top_right", 3000);
+		} else {
+
+			role.setPermissions(chosenPermissions);
+			roleService.create(role);
+
+			log("Registou novo papel: " + role.getRolename());
+
+			Clients.showNotification(Labels.getLabel("saved.role"));
+
+			roleList();
+		}
 	}
 
 	@Command

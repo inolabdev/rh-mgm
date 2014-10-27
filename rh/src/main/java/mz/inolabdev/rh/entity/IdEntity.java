@@ -21,7 +21,7 @@ public class IdEntity implements Serializable {
 	private static final long serialVersionUID = -6468535868748071777L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)

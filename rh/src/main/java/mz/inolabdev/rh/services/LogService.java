@@ -17,4 +17,8 @@ public interface LogService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Log first();
+    
+    public Log last();
 }
