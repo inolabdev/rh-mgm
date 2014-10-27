@@ -12,6 +12,7 @@
 <?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
 <?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/listbox.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/chosenBox.css" rel="stylesheet" type="text/css" ?>
 
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
 
