@@ -3,12 +3,14 @@ package mz.inolabdev.rh.services;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Calendar;
+import java.util.List;
 
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Department;
 import mz.inolabdev.rh.entity.Employee;
 import mz.inolabdev.rh.entity.JobPosition;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -64,6 +66,15 @@ public class EmployeeServiceTest extends GenericTestUnit {
 
 		assertNotNull(employeeSaved);
 		assertNotNull(employeeSaved.getId());
+	}
+
+	@Test
+	public void getAllTest() {
+		this.createTest();
+		List<Employee> all = employeeService.getAll();
+
+		Assert.assertNotNull(all);
+		Assert.assertTrue(all.size() > 0);
 	}
 
 }
