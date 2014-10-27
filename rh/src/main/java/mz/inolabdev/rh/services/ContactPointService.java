@@ -19,4 +19,8 @@ public interface ContactPointService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public ContactPoint first();
+    
+    public ContactPoint last();
 }

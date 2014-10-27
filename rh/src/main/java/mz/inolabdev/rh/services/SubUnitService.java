@@ -17,5 +17,9 @@ public interface SubUnitService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public SubUnit first();
+    
+    public SubUnit last();
 
 }

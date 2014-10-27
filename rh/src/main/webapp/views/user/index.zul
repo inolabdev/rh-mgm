@@ -1,5 +1,83 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
-<x:h2>Admin Users List</x:h2>
-
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AdminUserViewModel')">
+ 
+ <div zclass="col-md-10" id="userList">
+ 	<div zclass="box box-primary">
+	<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+	
+	<x:table id="usuarios" class="table table-bordered table-striped">
+		<x:thead>
+			<x:tr>
+				<x:th>#</x:th>
+				<x:th>Usuário</x:th>
+				<x:th>Roles</x:th>
+				<x:th>Data de Criação</x:th>
+				<x:th>Data de Actualização</x:th>
+				<x:th></x:th>
+			</x:tr>
+		</x:thead>
+		<x:tbody>
+			<x:tr forEach="${vm.adminUsers}">
+				<x:td>${each.id}</x:td>
+				<x:td>${each.username}</x:td>
+				<x:td>
+					<x:ul>
+						<x:li forEach="${each.roles}">
+							${each.rolename}
+						</x:li>
+					</x:ul>
+				</x:td>
+				<x:td>${each.created}</x:td>
+				<x:td>${each.updated}</x:td>
+				<x:td>
+					<a class="btn btn-success btn-sm">
+                      <x:i class="fa fa-eye"></x:i>
+                   	</a>
+                   	<separator orient="vertical" width="7px"></separator>
+					<a class="btn btn-warning btn-sm">
+                      <x:i class="fa fa-edit"></x:i>
+                   	</a>
+				</x:td>
+			</x:tr>
+		</x:tbody>
+	</x:table>
+	</div>
+	</div>
+	
+	<script type="text/javascript">
+		function initDataTable(){
+		  $("#usuarios").dataTable();
+		}
+	</script>
+</div>
+<div zclass="col-md-10" id="userNew" visible="false">
+	<include src="views/user/create.zul"></include>
+</div>
+ <div zclass="col-md-2">
+	<div class="box box-solid">
+		<x:center>
+		    <div class="box-header">
+		        <x:span class="menuOperations" >Usuários</x:span>
+		    </div>
+		    <div class="box-body">
+		    	<x:table>
+		    	<x:tr><x:td>
+					<x:a class="btn btn-app" onClick="@command('userNew')">
+				        <x:i class="fa fa-file-text-o"></x:i>
+				        Novo
+				    </x:a>
+			    </x:td></x:tr>
+			    <x:tr><x:td>
+					<x:a class="btn btn-app" onClick="@command('userList')">
+				        <x:i class="fa fa-list"></x:i>
+				        Todos
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </div>
+	    </x:center>
+	</div>
+ </div>
+</window>
 </zk>

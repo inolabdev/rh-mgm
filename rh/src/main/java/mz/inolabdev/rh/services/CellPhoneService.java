@@ -19,4 +19,8 @@ public interface CellPhoneService {
 	public void delete(Object id);
 
 	public Cellphone findByValue(String value);
+	
+	public Cellphone first();
+    
+    public Cellphone last();
 }

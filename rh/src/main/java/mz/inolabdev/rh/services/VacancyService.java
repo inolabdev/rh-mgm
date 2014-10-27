@@ -17,4 +17,8 @@ public interface VacancyService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Vacancy first();
+    
+    public Vacancy last();
 }
