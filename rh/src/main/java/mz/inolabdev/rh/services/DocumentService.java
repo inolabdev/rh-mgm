@@ -2,9 +2,10 @@ package mz.inolabdev.rh.services;
 
 import java.util.List;
 
-import com.lowagie.text.Document;
+import mz.inolabdev.rh.entity.Document;
 
 public interface DocumentService {
+
 	public Document create(Document document);
 
 	public List<Document> getAll();

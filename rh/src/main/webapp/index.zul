@@ -25,19 +25,19 @@
        <a href="#" class="logo">${c:l('appName')}</a>
         <x:nav class="navbar navbar-static-top" role="navigation">
           <x:div class="navbar-right">
-            <x:ul class="nav navbar-nav">
-              <x:li class="dropdown notifications-menu">
+            <x:ul sclass="nav navbar-nav">
+              <x:li sclass="dropdown notifications-menu">
                 <x:a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <x:i class="fa fa-warning"></x:i>
-                  <x:span class="label label-warning">${vm.logs.size()}</x:span>
+                  <x:i sclass="fa fa-warning"></x:i>
+                  <x:span sclass="label label-warning">${vm.logs.size()}</x:span>
                 </x:a>
-                <x:ul class="dropdown-menu">
+                <x:ul sclass="dropdown-menu">
                   <x:li class="header">Tens ${vm.logs.size()} notificacoes</x:li>
                   <x:li>
-                    <x:ul class="menu">
+                    <x:ul sclass="menu">
                       <x:li>
                         <x:a href="#" forEach="${vm.logs}">
-                          <x:i class="ion ion-ios7-people info"></x:i> ${each.message}
+                          <x:i sclass="ion ion-ios7-people info"></x:i> ${each.message}
                         </x:a>
                       </x:li>
                     </x:ul>
@@ -46,12 +46,12 @@
                 </x:ul>
               </x:li>
               <x:li class="dropdown user user-menu">
-                <x:a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <x:a href="#" sclass="dropdown-toggle" data-toggle="dropdown">
                   <x:i class="glyphicon glyphicon-user"></x:i>
                   <x:span>Jorge White <x:i class="caret"></x:i></x:span>
                 </x:a>
-                <x:ul class="dropdown-menu">
-                  <x:li class="user-header bg-light-blue">
+                <x:ul sclass="dropdown-menu ">
+                  <x:li sclass="user-header bg-light-blue">
                     <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
                     <x:p> Jorge White - Programador <x:small>${c:l('member_since')} Nov. 2013</x:small></x:p>
                   </x:li>

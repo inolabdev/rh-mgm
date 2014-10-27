@@ -5,6 +5,7 @@ import java.util.List;
 import mz.inolabdev.rh.entity.ContactPoint;
 
 public interface ContactPointService {
+	
 	public ContactPoint create(ContactPoint contactPoint);
 
 	public List<ContactPoint> getAll();

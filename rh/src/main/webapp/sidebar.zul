@@ -6,7 +6,7 @@
          <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
        </div>
        <div class="pull-left info">
-         <x:p>Ola, White</x:p>
+         <x:p>Olá, Milson</x:p>
          <x:a href="#"><x:i class="fa fa-circle text-success">
          </x:i> Activo</x:a>
        </div>
@@ -17,8 +17,8 @@
            <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
          </x:a>
        </x:li>
-       <x:li sclass="@load(vm.activeMore)">
-         <x:a class="cursor" onClick="@command('sideBarMore')">
+       <x:li sclass="@load(vm.activeRecruitment)">
+         <x:a class="cursor" onClick="@command('sideBarRecruitment')">
            <x:i class="fa fa-group"></x:i> <x:span> Recrutamento</x:span>
          </x:a>
        </x:li>
