@@ -28,7 +28,7 @@ public final class EqualsUtil {
 	  }
 	  
 	  static public boolean areEqual(String aThis, String aThat){
-		    return aThis.equals(aThat);
+		    return aThis == aThat;
 	  }
 	  /**
 	  * Possibly-null object field.
