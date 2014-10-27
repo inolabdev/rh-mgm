@@ -1,12 +1,17 @@
 package mz.inolabdev.rh.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "individuals")
@@ -49,6 +54,20 @@ public class Individual extends IdEntity {
 	@OneToOne
 	@JoinColumn(name = "type_id")
 	private IndividualType individualType;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
+	@Where(clause = "FROM_CLASS='cp_email'")
+	private Set<Email> emails;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
+	private Set<Document> documents;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
+	@Where(clause = "FROM_CLASS='cp_cell_phone'")
+	private Set<Cellphone> cellPhones;
 
 	public String fullName() {
 
@@ -150,5 +169,29 @@ public class Individual extends IdEntity {
 
 	public void setAcademicLevel(String academicLevel) {
 		this.academicLevel = academicLevel;
+	}
+
+	public Set<Email> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(Set<Email> emails) {
+		this.emails = emails;
+	}
+
+	public Set<Document> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(Set<Document> documents) {
+		this.documents = documents;
+	}
+
+	public Set<Cellphone> getCellPhones() {
+		return cellPhones;
+	}
+
+	public void setCellPhones(Set<Cellphone> cellPhones) {
+		this.cellPhones = cellPhones;
 	}
 }
