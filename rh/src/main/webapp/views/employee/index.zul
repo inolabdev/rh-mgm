@@ -1,0 +1,92 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('mz.inolabdev.rh.viewModel.EmployeeViewModel')">
+
+		<div zclass="col-md-10" id="empList">
+			<div zclass="box box-primary">
+				<div sclass="box-body table-responsive"
+					onCreate='Clients.evalJavaScript("initDataTable()")'>
+
+					<x:table id="employees"
+						class="table table-bordered table-striped">
+						<x:thead>
+							<x:tr>
+								<x:th>#</x:th>
+								<x:th>Nome Completo</x:th>
+								<x:th>Aniversario</x:th>
+								<x:th>Sexo</x:th>
+								<x:th>Cargo</x:th>
+								<x:th>Departamento</x:th>
+								<x:th></x:th>
+							</x:tr>
+						</x:thead>
+						<x:tbody>
+							<x:tr forEach="${vm.emps}">
+								<x:td>${each.id}</x:td>
+								<x:td>${each.fullName()}</x:td>
+								<x:td>${each.dateFormat()}</x:td>
+								<x:td>${each.gender}</x:td>
+								<x:td>${each.jobPosition.type}</x:td>
+								<x:td>${each.department.name}</x:td>
+								<x:td>
+								
+									<a class="btn btn-success btn-sm">
+										<x:i class="fa fa-eye"></x:i>
+									</a>
+									<separator orient="vertical"
+										width="7px">
+									</separator>
+									<a class="btn btn-warning btn-sm">
+										<x:i class="fa fa-edit"></x:i>
+									</a>
+								</x:td>
+							</x:tr>
+						</x:tbody>
+					</x:table>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				function initDataTable(){ $("#employees").dataTable(); }
+			</script>
+		</div>
+		<div zclass="col-md-10" id="empNew" visible="false">
+			<include src="views/employee/create.zul"></include>
+		</div>
+		<div zclass="col-md-2">
+			<div class="box box-solid">
+				<x:center>
+					<div class="box-header">
+						<x:span class="menuOperations">
+							Funcionarios
+						</x:span>
+					</div>
+					<div class="box-body">
+						<x:table>
+							<x:tr>
+								<x:td>
+									<x:a class="btn btn-app"
+										onClick="@command('empNew')">
+										<x:i
+											class="fa fa-file-text-o">
+										</x:i>
+										Novo
+									</x:a>
+								</x:td>
+							</x:tr>
+							<x:tr>
+								<x:td>
+									<x:a class="btn btn-app"
+										onClick="@command('empList')">
+										<x:i class="fa fa-list"></x:i>
+										Todos
+									</x:a>
+								</x:td>
+							</x:tr>
+						</x:table>
+					</div>
+				</x:center>
+			</div>
+		</div>
+	</window>
+</zk>
