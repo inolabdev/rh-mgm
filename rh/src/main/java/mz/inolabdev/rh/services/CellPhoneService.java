@@ -5,6 +5,7 @@ import java.util.List;
 import mz.inolabdev.rh.entity.Cellphone;
 
 public interface CellPhoneService {
+	
 	public Cellphone create(Cellphone cellphone);
 
 	public List<Cellphone> getAll();
@@ -16,4 +17,6 @@ public interface CellPhoneService {
 	public long count();
 
 	public void delete(Object id);
+
+	public Cellphone findByValue(String value);
 }
