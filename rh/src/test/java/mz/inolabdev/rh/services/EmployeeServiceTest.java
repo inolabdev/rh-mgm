@@ -3,9 +3,11 @@ package mz.inolabdev.rh.services;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.List;
 
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Department;
@@ -15,6 +17,7 @@ import mz.inolabdev.rh.entity.Permission;
 import mz.inolabdev.rh.entity.Role;
 import mz.inolabdev.rh.entity.User;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -164,6 +167,15 @@ public class EmployeeServiceTest extends GenericTestUnit {
 
 		assertEquals(1, haveUserIdNull.size());
 		assertTrue(haveUserIdNull.contains(employee_01));
+	}
+
+	@Test
+	public void getAllTest() {
+		this.createTest();
+		List<Employee> all = employeeService.getAll();
+
+		Assert.assertNotNull(all);
+		Assert.assertTrue(all.size() > 0);
 	}
 
 }
