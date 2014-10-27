@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
 
+import mz.inolabdev.rh.util.DateFormat;
+
 @Entity
 @Table(name = "individuals")
 public class Individual extends IdEntity {
@@ -30,8 +32,9 @@ public class Individual extends IdEntity {
 	@Column(name = "birthday")
 	private Date birthday;
 
-	@Column(name = "identity_document_type")
-	private String identityDocumentType;
+	@OneToOne
+	@JoinColumn(name = "Individual_id")
+	private IdentityDocumentType type;
 
 	@Column(name = "id_number")
 	private String idNumber;
@@ -52,7 +55,7 @@ public class Individual extends IdEntity {
 	private int numberChildren;
 
 	@OneToOne
-	@JoinColumn(name = "type_id")
+	@JoinColumn(name = "individual_type_id")
 	private IndividualType individualType;
 
 	@OneToMany(fetch = FetchType.EAGER)
@@ -72,6 +75,11 @@ public class Individual extends IdEntity {
 	public String fullName() {
 
 		return name + " " + middleName + " " + lastName;
+	}
+	
+	public String dateFormat(){
+		
+		return DateFormat.formated(this.birthday);
 	}
 
 	// getter and setters
@@ -131,14 +139,6 @@ public class Individual extends IdEntity {
 		this.birthday = birthday;
 	}
 
-	public String getIdentityDocumentType() {
-		return identityDocumentType;
-	}
-
-	public void setIdentityDocumentType(String identityDocumentType) {
-		this.identityDocumentType = identityDocumentType;
-	}
-
 	public String getIdNumber() {
 		return idNumber;
 	}
@@ -194,4 +194,13 @@ public class Individual extends IdEntity {
 	public void setCellPhones(Set<Cellphone> cellPhones) {
 		this.cellPhones = cellPhones;
 	}
+
+	public IdentityDocumentType getType() {
+		return type;
+	}
+
+	public void setType(IdentityDocumentType type) {
+		this.type = type;
+	}
+
 }
