@@ -41,6 +41,8 @@ public class JobPositionViewModel extends AbstractViewModel {
 	@WireVariable
 	private JobPositionService jobPositionService;
 
+	private List<String> links;
+
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
 		Selectors.wireComponents(view, this, false);
@@ -63,8 +65,14 @@ public class JobPositionViewModel extends AbstractViewModel {
 		if (jobPositionList != null & jobPositionNew != null) {
 			jobPositionList.setVisible(true);
 			jobPositionNew.setVisible(false);
-		} else
+		} else {
 			mainInclude.setSrc("views/jobPosition/index.zul");
+		}
+		
+		links = new ArrayList<String>();
+		links.add("Cargos");
+		links.add("Inicio");
+		drawnBreadcrumb("fa fa-sort", "Mais", links);
 	}
 
 	@Command
@@ -74,6 +82,11 @@ public class JobPositionViewModel extends AbstractViewModel {
 
 		jobPositionList.setVisible(false);
 		jobPositionNew.setVisible(true);
+		
+		links = new ArrayList<String>();
+		links.add("Cargos");
+		links.add("Novo");
+		drawnBreadcrumb("fa fa-sort", "Mais", links);
 	}
 
 	@Command
@@ -83,9 +96,9 @@ public class JobPositionViewModel extends AbstractViewModel {
 		jobPositionService.create(job);
 
 		log("Registou novo cargo: " + job.getType());
-		
+
 		Clients.showNotification(Labels.getLabel("saved.job"));
-		
+
 		jobPositionList();
 	}
 

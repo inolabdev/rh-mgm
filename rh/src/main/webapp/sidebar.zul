@@ -17,6 +17,21 @@
            <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
          </x:a>
        </x:li>
+       <x:li class="treeview">
+         <x:a href="#">
+           <x:i class="fa fa-desktop"></x:i>
+           <x:span>Horas</x:span>
+           <x:i class="fa fa-angle-left pull-right"></x:i>
+         </x:a>
+         <x:ul class="treeview-menu">
+           <x:li><x:a href="#" onClick="@command('timesheet')">
+             <x:i class="fa fa-angle-double-right"></x:i> Timesheets</x:a>
+           </x:li>
+           <x:li><x:a href="#" onClick="@command('projects')">
+             <x:i class="fa fa-angle-double-right"></x:i> Projectos</x:a>
+           </x:li>
+         </x:ul>
+       </x:li>
        <x:li sclass="@load(vm.activeRecruitment)">
          <x:a class="cursor" onClick="@command('sideBarRecruitment')">
            <x:i class="fa fa-group"></x:i> <x:span> Recrutamento</x:span>
