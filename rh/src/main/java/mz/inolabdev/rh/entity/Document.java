@@ -1,15 +1,18 @@
 package mz.inolabdev.rh.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "documents")
+@DiscriminatorValue(value="file_document")
 public class Document extends File {
 
+	
 	private static final long serialVersionUID = -4654818069177689714L;
 	
 	@Column(name = "category")
@@ -18,10 +21,6 @@ public class Document extends File {
 	@Column(name = "status")
 	private String status;
 	
-	@ManyToOne
-	@JoinColumn(name = "candidate_id")
-	private Candidate candidate;
-
 	//private String published_to; we'll set this in future!
 	
 	//getters and Setters

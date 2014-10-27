@@ -7,10 +7,12 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import mz.inolabdev.rh.util.Consts;
 
 @Entity
 @Table(name = "candidates")
@@ -18,28 +20,25 @@ public class Candidate extends Individual {
 
 	private static final long serialVersionUID = 2338487021821515023L;
 
-	@OneToMany(mappedBy = "candidate")
-	private Set<Document> documents;
-
 	@Temporal(value = TemporalType.DATE)
 	private Date dateOfApplication;
 
-	@OneToMany(mappedBy = "candidate")
-	private Set<ContactPoint> emails;
-
-	@OneToMany(mappedBy = "candidate")
-	private Set<ContactPoint> cellphones;
-
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "candidates")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "candidates")
 	private Set<Vacancy> vacancies = new HashSet<Vacancy>(0);
 
 	private String status;
 
+	public Candidate() {
+
+		this.setEmails(new HashSet<Email>());
+	}
+
 	@Override
 	public int hashCode() {
-		int hash = 1;
+		int hash = Consts.ONE;
 		// hash = hash * 31 + status.hashCode();
-		hash = hash * 31 + (getId() == null ? 0 : getId().hashCode());
+		hash = hash * Consts.THIRTY_ONE
+				+ (getId() == null ? Consts.ONE : getId().hashCode());
 		return hash;
 	}
 
@@ -54,9 +53,31 @@ public class Candidate extends Individual {
 
 		Candidate othercandidate = (Candidate) other;
 
-		// Two candidates with the same IdNumber are the same candidate;
-		return getName().equals(othercandidate.getName()) ;  // EqualsUtil.areEqual(status, othercandidate.status) &&
-		//EqualsUtil.areEqual(getName(), othercandidate.getName());
+		if (this.getName() == null && this.getBirthday() == null
+				&& this.getLastName() == null && this.getCellPhones() == null)
+
+			if (othercandidate.getName() != null
+					&& othercandidate.getBirthday() != null
+					&& othercandidate.getLastName() != null
+					&& othercandidate.getCellPhones() != null)
+				return false;
+			else if (!EqualsUtil.areEqual(this.getName(),
+					othercandidate.getName())
+					&& !EqualsUtil.areEqual(this.getCellPhones(),
+							othercandidate.getCellPhones())
+					&& !EqualsUtil.areEqual(this.getBirthday(),
+							othercandidate.getBirthday())
+					&& !EqualsUtil.areEqual(this.getLastName(),
+							othercandidate.getLastName())) {
+				return false;
+			}
+		return true;
+	}
+
+	@Transient
+	public void addEmail(Email email) {
+
+		this.getEmails().add(email);
 	}
 
 	// getters and setters
@@ -76,35 +97,11 @@ public class Candidate extends Individual {
 		this.vacancies = vacancies;
 	}
 
-	public Set<ContactPoint> getEmails() {
-		return emails;
-	}
-
-	public void setEmails(Set<ContactPoint> emails) {
-		this.emails = emails;
-	}
-
-	public Set<ContactPoint> getCellphones() {
-		return cellphones;
-	}
-
-	public void setCellphones(Set<ContactPoint> cellphones) {
-		this.cellphones = cellphones;
-	}
-
 	public String getStatus() {
 		return status;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public Set<Document> getDocuments() {
-		return documents;
-	}
-
-	public void setDocuments(Set<Document> documents) {
-		this.documents = documents;
 	}
 }
