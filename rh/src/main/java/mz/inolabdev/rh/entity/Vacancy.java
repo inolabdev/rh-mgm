@@ -18,7 +18,8 @@ public class Vacancy extends IdEntity {
 	private static final long serialVersionUID = -8233857444433947377L;
 
 	private String name;
-
+	private String description;
+	
 	private String status;
 
 	@OneToOne
@@ -110,6 +111,14 @@ public class Vacancy extends IdEntity {
 
 	public void setSubUnit(SubUnit subUnit) {
 		this.subUnit = subUnit;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
