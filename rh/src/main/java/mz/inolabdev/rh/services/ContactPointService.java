@@ -11,6 +11,8 @@ public interface ContactPointService {
 	public List<ContactPoint> getAll();
 
 	public ContactPoint find(Long id);
+	
+	public ContactPoint findByValue(String value);
 
 	public ContactPoint update(ContactPoint contactPoint);
 
