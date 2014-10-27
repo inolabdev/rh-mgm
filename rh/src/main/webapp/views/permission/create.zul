@@ -1,0 +1,23 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+	<div zclass="box box-primary" validationMessages="@id('vmsgs')">
+	    <div zclass="box-header">
+	        <x:h3 class="box-title">Nova Pemissão</x:h3>
+	    </div>
+	    <div form="@id('fx') @load(vm.perm) @save(vm.perm, before='savePerm')">
+	        <div zclass="box-body">
+				<div class="form-group">
+				    <x:label>Permissão *</x:label>
+				    <textbox zclass="form-control" placeholder="Pemissão" value="@bind(fx.permissionname)" 
+				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				</div>
+	        </div>
+	        <div zclass="box-footer">
+	            <x:button type="submit" class="btn btn-primary" onClick="@command('savePerm', action=0)">
+	            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+	            </x:button>
+	        </div>
+	    </div>
+	</div>
+
+</zk>

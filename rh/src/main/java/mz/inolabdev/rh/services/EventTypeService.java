@@ -17,4 +17,8 @@ public interface EventTypeService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public EventType first();
+    
+    public EventType last();
 }

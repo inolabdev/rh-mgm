@@ -1,12 +1,19 @@
 package mz.inolabdev.rh.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Where;
+
+import mz.inolabdev.rh.util.DateFormat;
 
 @Entity
 @Table(name = "individuals")
@@ -25,8 +32,9 @@ public class Individual extends IdEntity {
 	@Column(name = "birthday")
 	private Date birthday;
 
-	@Column(name = "identity_document_type")
-	private String identityDocumentType;
+	@OneToOne
+	@JoinColumn(name = "Individual_id")
+	private IdentityDocumentType type;
 
 	@Column(name = "id_number")
 	private String idNumber;
@@ -47,9 +55,34 @@ public class Individual extends IdEntity {
 	private int numberChildren;
 
 	@OneToOne
-	@JoinColumn(name = "type_id")
+	@JoinColumn(name = "individual_type_id")
 	private IndividualType individualType;
 
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
+	@Where(clause = "FROM_CLASS='cp_email'")
+	private Set<Email> emails;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
+	private Set<Document> documents;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
+	@Where(clause = "FROM_CLASS='cp_cell_phone'")
+	private Set<Cellphone> cellPhones;
+
+	public String fullName() {
+
+		return name + " " + middleName + " " + lastName;
+	}
+	
+	public String dateFormat(){
+		
+		return DateFormat.formated(this.birthday);
+	}
+
+	// getter and setters
 	public IndividualType getIndividualType() {
 		return individualType;
 	}
@@ -106,14 +139,6 @@ public class Individual extends IdEntity {
 		this.birthday = birthday;
 	}
 
-	public String getIdentityDocumentType() {
-		return identityDocumentType;
-	}
-
-	public void setIdentityDocumentType(String identityDocumentType) {
-		this.identityDocumentType = identityDocumentType;
-	}
-
 	public String getIdNumber() {
 		return idNumber;
 	}
@@ -145,4 +170,37 @@ public class Individual extends IdEntity {
 	public void setAcademicLevel(String academicLevel) {
 		this.academicLevel = academicLevel;
 	}
+
+	public Set<Email> getEmails() {
+		return emails;
+	}
+
+	public void setEmails(Set<Email> emails) {
+		this.emails = emails;
+	}
+
+	public Set<Document> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(Set<Document> documents) {
+		this.documents = documents;
+	}
+
+	public Set<Cellphone> getCellPhones() {
+		return cellPhones;
+	}
+
+	public void setCellPhones(Set<Cellphone> cellPhones) {
+		this.cellPhones = cellPhones;
+	}
+
+	public IdentityDocumentType getType() {
+		return type;
+	}
+
+	public void setType(IdentityDocumentType type) {
+		this.type = type;
+	}
+
 }

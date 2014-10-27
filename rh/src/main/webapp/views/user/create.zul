@@ -1,0 +1,93 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+	<div zclass="box box-primary" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AdminUserViewModel')">
+	    <div zclass="box-header">
+	        <x:h3 class="box-title">Novo Usuário</x:h3>
+	    </div>
+	    <div form="@id('fx') @load(vm.adminUser) @save(vm.adminUser, before='saveUser')">
+	        <div zclass="box-body">
+				<div class="form-group">
+				    <x:label>Usuário *</x:label>
+				    <textbox zclass="form-control" placeholder="Usuário" value="@bind(fx.username)" 
+				        onBlur="@command('checkIfAvalaible', usuario=self.value)" id="txbUser"
+				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				    <label id="lblUser" sclass="label label-warning"/>
+				</div>
+				<div class="form-group">
+				    <x:label>Senha (max: 8 caracteres)*</x:label>
+				    <textbox zclass="form-control" type="password" placeholder="Senha" id="senha" value="@bind(fx.password)" 
+				    	onChange="checkPassLenght(self.getValue())" instant="true"
+				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" maxlength="8" />
+				    <label id="lblSenha" sclass="label label-warning"/>
+				</div>
+				<div class="form-group">
+				    <x:label>Confirmar Senha *</x:label>
+				    <textbox zclass="form-control" type="password" placeholder="Confirmação da Senha" instant="true" onChange="checkConfirm(senha.getValue(), self.getValue())" 
+				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" maxlength="8" id="pass" />
+				    <label id="lblConf" sclass="label label-warning"/>
+				</div>
+				<div class="form-group">
+				    <x:label>Funcionário *</x:label>
+				    <listbox mold="select" model="@bind(vm.employeeList)" zclass="form-control" 
+				    	selectedItem="@bind(fx.userProfile)" emptyMessage="Selecione um funcionário">
+				    	<listitem label="${each.name}" ></listitem>
+				    </listbox>
+				</div>
+				<div class="form-group">
+				    <x:label>Papéis</x:label>
+					<hlayout width="100%">
+						<vlayout>
+							<span sclass="label label-info" >Papéis Disponíveis</span>
+							<listbox model="@bind(vm.stored)" selectedItems="@bind(vm.storedRoles)" multiple="true" width="300px" height="200px"/>
+						</vlayout>
+						<vbox vflex="1" pack="middle">
+							<button label="&gt;" zclass="btn btn-info" onClick="@command('deselectRole')"/>
+							<button label="&lt;" zclass="btn btn-info" onClick="@command('selectRole')"/>
+						</vbox>
+						<vlayout>
+							<span sclass="label label-info">Papéis Selecionados</span>
+							<listbox model="@bind(vm.chosen)" selectedItems="@bind(vm.chosenRoles)" multiple="true" width="300px" height="200px"/>
+						</vlayout>
+					</hlayout>
+				</div>
+	        </div>
+	        <div zclass="box-footer" id="divSave">
+	            <x:button type="submit" class="btn btn-primary" id="btnSave" onClick="@command('saveUser', action=0)">
+	            	Submeter <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+	            </x:button>
+	        </div>
+	        <zscript>
+				public void checkConfirm(String senha, String value)
+				{
+					if(!senha.equals(value)){
+						lblConf.setValue("A senha de confirmação deve ser a mesma com a senha introduzida");
+						divSave.setVisible(false);
+						lblConf.setSclass("label label-warning");
+					}
+					else{
+						lblConf.setValue("Certo!");
+						divSave.setVisible(true);
+						lblConf.setSclass("label label-success");
+					}
+				}
+				public void checkPassLenght(String senha)
+				{
+					if(senha.length() != pass.getMaxlength()){
+						lblSenha.setValue("Senha inválida");
+						divSave.setVisible(false);
+						lblSenha.setSclass("label label-danger");
+						pass.setDisabled(true);
+					}
+					else{
+						lblSenha.setValue("Certo!");
+						divSave.setVisible(true);
+						lblSenha.setSclass("label label-success");
+						pass.setDisabled(false);
+					}
+				}
+			</zscript>
+	    </div>
+	</div>
+
+</zk>

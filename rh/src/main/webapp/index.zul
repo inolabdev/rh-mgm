@@ -9,15 +9,22 @@
 <?link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
-<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
+<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/listbox.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/chosenBox.css" rel="stylesheet" type="text/css" ?>
 
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
+	<zscript>
+      import org.springframework.security.core.Authentication;
+	  import org.springframework.security.core.context.SecurityContextHolder;
+	
+      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+     </zscript>
   <div apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
   	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PagesFlowsViewModel')">
     <x:div class="skin-blue body fixed">
@@ -25,19 +32,19 @@
        <a href="#" class="logo">${c:l('appName')}</a>
         <x:nav class="navbar navbar-static-top" role="navigation">
           <x:div class="navbar-right">
-            <x:ul class="nav navbar-nav">
-              <x:li class="dropdown notifications-menu">
+            <x:ul sclass="nav navbar-nav">
+              <x:li sclass="dropdown notifications-menu">
                 <x:a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <x:i class="fa fa-warning"></x:i>
-                  <x:span class="label label-warning">${vm.logs.size()}</x:span>
+                  <x:i sclass="fa fa-warning"></x:i>
+                  <x:span sclass="label label-warning">${vm.logs.size()}</x:span>
                 </x:a>
-                <x:ul class="dropdown-menu">
+                <x:ul sclass="dropdown-menu">
                   <x:li class="header">Tens ${vm.logs.size()} notificacoes</x:li>
                   <x:li>
-                    <x:ul class="menu">
+                    <x:ul sclass="menu">
                       <x:li>
                         <x:a href="#" forEach="${vm.logs}">
-                          <x:i class="ion ion-ios7-people info"></x:i> ${each.message}
+                          <x:i sclass="ion ion-ios7-people info"></x:i> ${each.message}
                         </x:a>
                       </x:li>
                     </x:ul>
@@ -46,29 +53,23 @@
                 </x:ul>
               </x:li>
               <x:li class="dropdown user user-menu">
-                <x:a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <x:a href="#" sclass="dropdown-toggle" data-toggle="dropdown">
                   <x:i class="glyphicon glyphicon-user"></x:i>
-                  <x:span>Jorge White <x:i class="caret"></x:i></x:span>
+                  <x:span>${auth.getName()}<x:i class="caret"></x:i></x:span>
                 </x:a>
-                <x:ul class="dropdown-menu">
-                  <x:li class="user-header bg-light-blue">
+                <x:ul sclass="dropdown-menu ">
+                  <x:li sclass="user-header bg-light-blue">
                     <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
                     <x:p> Jorge White - Programador <x:small>${c:l('member_since')} Nov. 2013</x:small></x:p>
                   </x:li>
                   <x:li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <x:a href="#">Seguidores</x:a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <x:a href="#">Vendas</x:a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <x:a href="#">Amigos</x:a>
+                    <div class="col-xs-12 text-center">
+                      <x:a href="#" onClick="@command('changePassword')">Alterar Senha</x:a>
                     </div>
                   </x:li>
                   <x:li class="user-footer">
                     <div class="pull-left">
-                      <x:a href="#" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
+                      <x:a href="#" onClick="@command('userProfile')" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
                     </div>
                     <div class="pull-right">
                       <x:a href="j_spring_security_logout" class="btn btn-default btn-flat">${c:l('out')}</x:a>
@@ -81,25 +82,20 @@
         </x:nav>
       </x:header>
 
-      <x:div class="wrapper row-offcanvas row-offcanvas-left">
+      <div sclass="wrapper row-offcanvas row-offcanvas-left">
 		<include src = "sidebar.zul"/>
         <x:aside class="right-side">
-          <x:section class="content-header">
-            <x:h1>
-              ${vm.CURRENT_PAGE_TITLE}
-              <x:small>${vm.CURRENT_PAGE_ACTION}</x:small>
-            </x:h1>
-            <x:ol class="breadcrumb">
-              <x:li><x:a href="#"><x:i class="fa fa-dashboard"></x:i> Pagina Inicial</x:a></x:li>
-              <x:li class="active">Painel Inicial</x:li>
-            </x:ol>
-          </x:section>
-          <!-- Main content -->
+        	<div sclass="content-header" apply="org.zkoss.bind.BindComposer"
+        		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbstractViewModel')" >
+	          <x:section class="content-header">
+	            <x:ol class="breadcrumb" id="breadcrumb"/>
+	          </x:section>
+	        </div>
           <x:section class="content">
           	<include src="@bind(vm.page)" self="@define(content)" id="mainInclude" />
           </x:section>
         </x:aside>
-      </x:div>
+      </div>
       <x:script src="js/jquery.min.js"></x:script>
       <x:script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></x:script>
       <x:script src="js/bootstrap.min.js" type="text/javascript"></x:script>

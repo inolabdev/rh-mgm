@@ -16,4 +16,8 @@ public interface TaskService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Task first();
+    
+    public Task last();
 }

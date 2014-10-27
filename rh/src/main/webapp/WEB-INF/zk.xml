@@ -28,5 +28,14 @@
 		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type>
 		<location>/WEB-INF/errors/handleAccessDenied.zul</location>
 	</error-page>
+	
+	<library-property>
+	    <name>org.zkoss.theme.preferred</name>
+	    <value>atlantic</value>
+	</library-property>
+	
+	<desktop-config>
+	    <disable-theme-uri>~./zul/css/zk.wcs</disable-theme-uri>
+	</desktop-config>
 
 </zk>

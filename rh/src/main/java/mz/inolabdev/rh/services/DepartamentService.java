@@ -16,4 +16,8 @@ public interface DepartamentService {
 	public long count();
 
 	public void delete(Object id);
+	
+	public Department first();
+    
+    public Department last();
 }

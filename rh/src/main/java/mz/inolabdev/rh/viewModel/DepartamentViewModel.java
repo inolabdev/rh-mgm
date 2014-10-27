@@ -54,8 +54,6 @@ public class DepartamentViewModel extends AbstractViewModel {
 		setDep(new Department());
 		reload();
 
-		setCURRENT_PAGE_TITLE("Departmanento");
-		setCURRENT_PAGE_ACTION("Inicio");
 	}
 
 	@Command

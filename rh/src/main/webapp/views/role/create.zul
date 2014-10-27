@@ -1,0 +1,43 @@
+<!-- Define Component Class -->
+<?component name="dual-listbox" extends="div" class="mz.inolabdev.rh.util.DualListbox"?>
+
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+	<div zclass="box box-primary" validationMessages="@id('vmsgs')">
+	    <div zclass="box-header">
+	        <x:h3 class="box-title">Novo Papel</x:h3>
+	    </div>
+	    <div form="@id('fx') @load(vm.role) @save(vm.role, before='saveRole')">
+	        <div zclass="box-body">
+				<div class="form-group">
+				    <x:label>Nome *</x:label>
+				    <textbox zclass="form-control" placeholder="Papel" value="@bind(fx.rolename)" 
+				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				</div>
+				<div class="form-group">
+				    <x:label>Permissões</x:label>
+					<hlayout width="100%">
+						<vlayout>
+							<span sclass="label label-info" >Permissões Disponíveis</span>
+							<listbox model="@bind(vm.stored)" selectedItems="@bind(vm.storedPermissions)" multiple="true" width="300px" height="200px"/>
+						</vlayout>
+						<vbox vflex="1" pack="middle">
+							<button label="&gt;" zclass="btn btn-info" onClick="@command('deselectPermition')"/>
+							<button label="&lt;" zclass="btn btn-info" onClick="@command('selectPermission')"/>
+						</vbox>
+						<vlayout>
+							<span sclass="label label-info">Permissões Selecionadas</span>
+							<listbox model="@bind(vm.chosen)" selectedItems="@bind(vm.chosenPermissions)" multiple="true" width="300px" height="200px"/>
+						</vlayout>
+					</hlayout>
+				</div>
+	        </div>
+	        <div zclass="box-footer">
+	            <x:button type="submit" class="btn btn-primary" onClick="@command('saveRole', action=0)">
+	            	Submeter <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+	            </x:button>
+	        </div>
+	    </div>
+	</div>
+
+</zk>
