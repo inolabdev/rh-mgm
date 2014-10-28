@@ -1,0 +1,11 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<div sclass="content-header " apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbstractViewModel')">
+	     <x:section class="content-header">
+	       <x:ol class="breadcrumb" id="breadcrumb">
+	         <x:li><x:a href="#"><x:i class="fa fa-dashboard"></x:i> ${vm.CURRENT_PAGE_TITLE}</x:a></x:li>
+	         <x:li class="active">${vm.CURRENT_PAGE_ACTION }</x:li>
+	       </x:ol>
+	     </x:section>
+	</div>
+</zk>
