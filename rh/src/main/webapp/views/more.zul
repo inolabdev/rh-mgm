@@ -1,7 +1,7 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
         	<x:center>
@@ -37,7 +37,7 @@
     </div>
 </div>
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
             <x:h3 class="box-title">${c:l('model.jobPosition')}</x:h3>
@@ -54,7 +54,7 @@
     </div>
 </div>
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
             <x:h3 class="box-title">${c:l('model.role')}</x:h3>
@@ -104,29 +104,6 @@
         </div>
     </div>
 </div>
-=======
-	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentViewModel')">
-		<div zclass="box box-solid box-primary">
-			<div zclass="box-header">
-				<x:center>
-					<x:h3 class="box-title">
-						${c:l('model.departament')}
-					</x:h3>
-				</x:center>
-			</div>
-			<div zclass="box-body">
-				<x:center>
-					<x:h3>${vm.deps.size()}</x:h3>
-					<x:p>${c:l('model.departaments')}</x:p>
-					<x:a class="btn btn-default btn-block"
-						onClick="@command('departamentList')">
-						<x:code>${c:l('view')}</x:code>
-					</x:a>
-				</x:center>
-			</div>
-		</div>
-	</div>
 	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
 		<div zclass="box box-solid box-primary">
@@ -147,26 +124,7 @@
 			</div>
 		</div>
 	</div>
-	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
-		<div zclass="box box-solid box-primary">
-			<div zclass="box-header">
-				<x:h3 class="box-title">
-					${c:l('model.jobPosition')}
-				</x:h3>
-			</div>
-			<div zclass="box-body">
-				<x:center>
-					<x:h3>${vm.jobs.size()}</x:h3>
-					<x:p>${c:l('model.jobPositions')}</x:p>
-					<x:a class="btn btn-default btn-block"
-						onClick="@command('jobPositionList')">
-						<x:code>${c:l('view')}</x:code>
-					</x:a>
-				</x:center>
-			</div>
-		</div>
-	</div>
+
 	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleViewModel')">
 		<div zclass="box box-solid box-primary">
@@ -185,24 +143,7 @@
 			</div>
 		</div>
 	</div>
-	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
-		<div zclass="box box-solid box-primary">
-			<div zclass="box-header">
-				<x:h3 class="box-title">${c:l('model.permition')}</x:h3>
-			</div>
-			<div zclass="box-body">
-				<x:center>
-					<x:h3>${vm.jobs.size()}</x:h3>
-					<x:p>${c:l('model.permitions')}</x:p>
-					<x:a class="btn btn-default btn-block"
-						onClick="@command('jobPositionList')">
-						<x:code>${c:l('view')}</x:code>
-					</x:a>
-				</x:center>
-			</div>
-		</div>
-	</div>
+
 	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
 		<div zclass="box box-solid box-primary">
