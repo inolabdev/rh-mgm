@@ -1,74 +1,64 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentVM')">
  
- <div zclass="col-md-10" id="depList">
-   <div zclass="box box-primary">
-	<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
-	
-	<x:table id="departaments" class="table table-bordered table-striped">
-		<x:thead>
-			<x:tr>
-				<x:th>#</x:th>
-				<x:th>Nome</x:th>
-				<x:th>Data de Criação</x:th>
-				<x:th>Data de Actualização</x:th>
-				<x:th></x:th>
-			</x:tr>
-		</x:thead>
-		<x:tbody>
-			<x:tr forEach="${vm.deps}">
-				<x:td>${each.id}</x:td>
-				<x:td>${each.name}</x:td>
-				<x:td>${each.created}</x:td>
-				<x:td>${each.updated}</x:td>
-				<x:td>
-					<a class="btn btn-success btn-sm">
-                      <x:i class="fa fa-eye"></x:i>
-                   	</a>
-                   	<separator orient="vertical" width="7px"></separator>
-					<a class="btn btn-warning btn-sm">
-                      <x:i class="fa fa-edit"></x:i>
-                   	</a>
-				</x:td>
-			</x:tr>
-		</x:tbody>
-	</x:table>
+	 <div zclass="col-md-10">
+	   <div zclass="box box-primary">
+		<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+			<x:table id="departaments" class="table table-bordered table-striped">
+				<x:thead>
+					<x:tr>
+						<x:th>#</x:th>
+						<x:th>Nome</x:th>
+						<x:th>Data de Criação</x:th>
+						<x:th>Data de Actualização</x:th>
+						<x:th></x:th>
+					</x:tr>
+				</x:thead>
+				<x:tbody>
+					<x:tr forEach="${vm.deps}">
+						<x:td>${each.id}</x:td>
+						<x:td>${each.name}</x:td>
+						<x:td>${each.created}</x:td>
+						<x:td>${each.updated}</x:td>
+						<x:td>
+							<a class="btn btn-success btn-sm">
+		                      <x:i class="fa fa-eye"></x:i>
+		                   	</a>
+		                   	<separator orient="vertical" width="7px"></separator>
+							<a class="btn btn-warning btn-sm">
+		                      <x:i class="fa fa-edit"></x:i>
+		                   	</a>
+						</x:td>
+					</x:tr>
+				</x:tbody>
+			</x:table>
+		</div>
 	</div>
-</div>
-	<script type="text/javascript">
-		function initDataTable(){
-		  $("#departaments").dataTable();
-		}
-	</script>
-</div>
-<div zclass="col-md-10" id="depNew" visible="false">
-	<include src="views/departament/create.zul"></include>
-</div>
-<div sclass="col-md-2">
-  <div sclass="box box-solid menuAlign">
-	<x:center>
-	    <x:div class="box-header">
-	        <x:span sclass="menuOperations" >Departamentos</x:span>
-	    </x:div>
-	    <x:div sclass="box-body">
-	    	<x:table>
-	    	<x:tr><x:td>
-				<x:a class="btn btn-app" onClick="@command('depNew')">
-			        <x:i class="fa fa-file-text-o"></x:i>
-			        Novo
-			    </x:a>
-		    </x:td></x:tr>
-		    <x:tr><x:td>
-				<x:a class="btn btn-app" onClick="@command('depList')">
-			        <x:i class="fa fa-list"></x:i>
-			        Todos
-			    </x:a>
-		    </x:td></x:tr>
-		    </x:table>
-	    </x:div>
-    </x:center>
-  </div>
-</div>
+	</div>
+	<div sclass="col-md-2">
+	  <div sclass="box box-solid menuAlign">
+		<x:center>
+		    <x:div class="box-header">
+		        <x:span sclass="menuOperations" >Departamentos</x:span>
+		    </x:div>
+		    <x:div sclass="box-body">
+		    	<x:table>
+			    <x:tr><x:td>
+					<x:a class="btn btn-app" onClick="@command('departamentNew')">
+				        <x:i class="fa fa-clipboard"></x:i>
+				        Novo
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </x:div>
+	    </x:center>
+	  </div>
+	</div>
+<script type="text/javascript">
+	function initDataTable(){
+	  $("#departaments").dataTable();
+	}
+</script>
 </window>
 </zk>
