@@ -1,27 +1,49 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
-	<div zclass="box box-primary" validationMessages="@id('vmsgs')">
-	    <div zclass="box-header">
-	        <x:h3 class="box-title">Novo Cargo</x:h3>
-	    </div>
-	    <div form="@id('fx') @load(vm.job) @save(vm.job, before='saveJob')">
-	        <div zclass="box-body">
-				<div class="form-group">
-				    <x:label>Tipo *</x:label>
-				    <textbox zclass="form-control" placeholder="Cargo" value="@bind(fx.type)" 
-				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
-				</div>
-				<div class="form-group">
-				    <x:label>Descrição</x:label>
-				    <textbox zclass="form-control txtArea" rows="5" width="100%" value="@bind(fx.description)" />
-				</div>
-	        </div>
-	        <div zclass="box-footer">
-	            <x:button type="submit" class="btn btn-primary" onClick="@command('saveJob', action=0)">
-	            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
-	            </x:button>
-	        </div>
-	    </div>
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionVM')">
+	<div zclass="col-md-10">
+		<div zclass="box box-primary" validationMessages="@id('vmsgs')">
+		    <div zclass="box-header">
+		        <x:h3 class="box-title">Novo Cargo</x:h3>
+		    </div>
+		    <div form="@id('fx') @load(vm.job) @save(vm.job, before='saveJob')">
+		        <div zclass="box-body">
+					<div class="form-group">
+					    <x:label>Tipo *</x:label>
+					    <textbox zclass="form-control" placeholder="Cargo" value="@bind(fx.type)" 
+					    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+					</div>
+					<div class="form-group">
+					    <x:label>Descrição</x:label>
+					    <textbox zclass="form-control txtArea" rows="5" width="100%" value="@bind(fx.description)" />
+					</div>
+		        </div>
+		        <div zclass="box-footer">
+		            <x:button type="submit" class="btn btn-primary" onClick="@command('saveJob', action=0)">
+		            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+		            </x:button>
+		        </div>
+		    </div>
+		</div>
 	</div>
-
+	<div sclass="col-md-2">
+	  <div sclass="box box-solid menuAlign">
+		<x:center>
+		    <x:div class="box-header">
+		        <x:span sclass="menuOperations" >Cargos</x:span>
+		    </x:div>
+		    <x:div sclass="box-body">
+		    	<x:table>
+			    <x:tr><x:td>
+					<x:a class="btn btn-app" onClick="@command('jobPositionList')">
+				        <x:i class="fa fa-list"></x:i>
+				        Listar
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </x:div>
+	    </x:center>
+	  </div>
+	</div>
+</window>
 </zk>
