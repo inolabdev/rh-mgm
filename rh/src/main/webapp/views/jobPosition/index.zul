@@ -23,12 +23,12 @@
 				<x:td>${each.created}</x:td>
 				<x:td>${each.updated}</x:td>
 				<x:td>
-					<a class="btn btn-success btn-sm">
-                      <x:i class="fa fa-eye"></x:i>
+					<a class="btn bg-olive btn-sm">
+                      <x:i class="fa btn-flat fa-eye"></x:i>
                    	</a>
                    	<separator orient="vertical" width="7px"></separator>
-					<a class="btn btn-warning btn-sm">
-                      <x:i class="fa fa-edit"></x:i>
+					<a class="btn bg-orange btn-sm">
+                      <x:i class="fa btn-flat fa-edit"></x:i>
                    	</a>
 				</x:td>
 			</x:tr>

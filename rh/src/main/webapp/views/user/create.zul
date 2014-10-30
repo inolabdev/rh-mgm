@@ -53,8 +53,8 @@
 				</div>
 	        </div>
 	        <div zclass="box-footer" id="divSave">
-	            <x:button type="submit" class="btn btn-primary" id="btnSave" onClick="@command('saveUser', action=0)">
-	            	Submeter <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+	            <x:button type="submit" class="btn btn-flat btn-primary" id="btnSave" onClick="@command('saveUser', action=0)">
+	            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
 	            </x:button>
 	        </div>
 	        <zscript>

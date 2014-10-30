@@ -21,8 +21,8 @@
 								<listbox model="@bind(vm.stored)" selectedItems="@bind(vm.storedPermissions)" multiple="true" width="300px" height="200px"/>
 							</vlayout>
 							<vbox vflex="1" pack="middle">
-								<button label="&gt;" zclass="btn btn-info" onClick="@command('deselectPermition')"/>
-								<button label="&lt;" zclass="btn btn-info" onClick="@command('selectPermission')"/>
+								<button label="&gt;" zclass="btn btn-info btn-flat" onClick="@command('deselectPermition')"/>
+								<button label="&lt;" zclass="btn btn-info btn-flat" onClick="@command('selectPermission')"/>
 							</vbox>
 							<vlayout>
 								<span sclass="label label-info">Permissões Selecionadas</span>
@@ -32,7 +32,7 @@
 					</div>
 		        </div>
 		        <div zclass="box-footer">
-		            <x:button type="submit" class="btn btn-primary" onClick="@command('saveRole', action=0)">
+		            <x:button type="submit" class="btn btn-primary btn-flat" onClick="@command('saveRole', action=0)">
 		            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
 		            </x:button>
 		        </div>

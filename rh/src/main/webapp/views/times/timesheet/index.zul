@@ -1,28 +1,14 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk" >
   <div sclass="mailbox row" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.TimeSheetViewModel')">
+ 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.TimeSheetVM')">
     <div sclass="col-xs-12">
         <div sclass="box box-solid">
             <div sclass="box-body">
+            	<div sclass="col-md-12 col-sm-4">
+            		fhgjkl
+            	</div>
                 <div sclass="row">
-                    <div sclass="col-md-3 col-sm-4">
-                        <div sclass="box-header">
-                            <x:i class="fa fa-desktop" />
-                            <x:h3 class="box-title">Timesheets</x:h3>
-                        </div>
-                        <x:a class="btn btn-block btn-primary" onClick="@command('currentTimesheet')">
-                        	<x:i class="fa fa-smile-o" /> Timesheet Actual
-                        </x:a>
-                        <div style="margin-top: 15px;">
-                            <x:ul class="nav nav-pills nav-stacked">
-                                <x:li class="header">Operações</x:li>
-                                <x:li class="active"><x:a href="#"><x:i class="fa fa-eye-slash" /> Pendentes (14)</x:a></x:li>
-                                <x:li><x:a href="#"><x:i class="fa fa-check-circle-o" /> Aprovados (14)</x:a></x:li>
-                                <x:li><x:a href="#"><x:i class="fa fa-times-circle-o" /> Reprovados (14)</x:a></x:li>
-                            </x:ul>
-                        </div>
-                    </div>
-                    <div sclass="col-md-9 col-sm-4">
+                    <div sclass="col-md-12 col-sm-4">
 	                    <div sclass="table-responsive" height="300px">
 	                      <listbox sclass="table table-mailbox">
 	                      	<listhead>
@@ -32,15 +18,18 @@
 	                      	</listhead>
 	                      	<listitem>
 	                      		<listcell>
-	                      			<listbox mold="select" sclass="form-control inoLabFont">
-	                      				<listitem label="Project 1"></listitem>
-	                      				<listitem label="Project 1"></listitem>
+	                      			<listbox mold="select" sclass="form-control inoLabFont" id="lbxProjects" 
+	                      				onSelect="@command('findProjectActibities', project = self.selectedItem.value)">
+	                      				<template name="model">
+											<listitem label="${each.name}" />
+										</template>
 	                      			</listbox>
 	                      		</listcell>
 	                      		<listcell>
-	                      			<listbox mold="select" sclass="form-control inoLabFont">
-	                      				<listitem label="Activity 1"></listitem>
-	                      				<listitem label="Activity 1"></listitem>
+	                      			<listbox mold="select" sclass="form-control inoLabFont" id="lbxActivities">
+	                      				<template name="model">
+											<listitem label="${each.name}" />
+										</template>
 	                      			</listbox>
 	                      		</listcell>
 	                      		<listcell><intbox sclass="form-control inoLabFont" maxlength="1"></intbox></listcell>
@@ -66,16 +55,13 @@
 	                      <separator height="15px" orient="vertical"></separator>
 	                      <div sclass="box-footer clearfix">
 	                           <div sclass="pull-right">
-	                           	  <x:button class="btn btn-success btn-sm">Gravar</x:button><separator orient="vertical"/>
-	                              <x:button class="btn btn-success btn-sm">Nova Linha</x:button><separator orient="vertical"/>
+	                           	  <x:button class="btn bg-navy margin btn-sm">Gravar</x:button>
+	                              <x:button class="btn bg-navy margin btn-sm">Nova Linha</x:button>
 	                              <x:button class="btn btn-danger btn-sm">Apagar Linhas</x:button><separator orient="vertical"/>
 	                              <x:button class="btn btn-sm">Limpar</x:button><separator orient="vertical"/>
 	                           </div>
 	                       </div>
 	                    </div>
-                    	<div sclass="timeline-item">
-                          <x:h3 class="timeline-header no-border">Estado: <x:a href="#"><x:block>Pendente</x:block></x:a></x:h3>
-                        </div>
                     </div>
                  </div>
             </div>

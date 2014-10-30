@@ -62,16 +62,14 @@
 								</x:ul>
 							</x:td>
 							<x:td>
-								<a class="btn btn-info btn-sm">
+								<a class="btn btn-flat bg-olive btn-sm">
 									<x:i class="fa fa-play"></x:i>
-									ver
 								</a>
 								<separator orient="vertical"
 									width="7px">
 								</separator>
-								<a class="btn btn-warning btn-sm">
+								<a class="btn btn-flat bg-orange btn-sm">
 									<x:i class="fa fa-edit"></x:i>
-									editar
 								</a>
 							</x:td>
 						</x:tr>

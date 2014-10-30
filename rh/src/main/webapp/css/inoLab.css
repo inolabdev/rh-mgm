@@ -65,3 +65,11 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     background-image:none;
 }
+
+.bg-inoLab {
+	background-color: #ddd !important;
+	color: #222 !important;
+	display:block;
+	width: 100%;
+	text-align:center;
+}

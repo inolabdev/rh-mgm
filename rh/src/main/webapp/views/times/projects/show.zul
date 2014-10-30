@@ -37,9 +37,9 @@
 				    </div>
 				    <div sclass="box-footer clearfix" id="menuActivity">
                         <div sclass="pull-right">
-                          <button zclass="btn btn-success btn-sm" label="Nova" onClick="forms()"/>
+                          <button zclass="btn btn-flat btn-success btn-sm" label="Nova" onClick="forms()"/>
                           <separator orient="vertical"/>
-                          <button zclass="btn btn-danger btn-sm" label="Apagar" 
+                          <button zclass="btn btn-flat btn-danger btn-sm" label="Apagar" 
                           	onClick="@command('deleteActivity', activity = lbx.selectedItem.value, list = lbx, project = mdl)">                  	
                           	<custom-attributes mdl="${arg.project}" />
                           </button>
