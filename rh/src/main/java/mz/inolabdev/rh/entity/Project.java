@@ -1,6 +1,7 @@
 package mz.inolabdev.rh.entity;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,14 +24,14 @@ public class Project extends IdEntity {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "customers_projects", joinColumns = { @JoinColumn(name = "project_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "customer_id", nullable = false, updatable = false) })
-	private List<Employee> customers;
+	private Set<Employee> customers = new HashSet<Employee>();
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "admin_projects", joinColumns = { @JoinColumn(name = "project_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "admin_id", nullable = false, updatable = false) })
-	private List<Employee> admins;
+	private Set<Employee> admins = new HashSet<Employee>();
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
-	private List<Activity> activities;
+	private Set<Activity> activities = new HashSet<Activity>();
 
 	private String description;
 
@@ -50,27 +51,27 @@ public class Project extends IdEntity {
 		this.description = description;
 	}
 
-	public List<Employee> getCustomers() {
+	public Set<Employee> getCustomers() {
 		return customers;
 	}
 
-	public void setCustomers(List<Employee> customers) {
+	public void setCustomers(Set<Employee> customers) {
 		this.customers = customers;
 	}
 
-	public List<Employee> getAdmins() {
+	public Set<Employee> getAdmins() {
 		return admins;
 	}
 
-	public void setAdmins(List<Employee> admins) {
+	public void setAdmins(Set<Employee> admins) {
 		this.admins = admins;
 	}
 
-	public List<Activity> getActivities() {
+	public Set<Activity> getActivities() {
 		return activities;
 	}
 
-	public void setActivities(List<Activity> activities) {
+	public void setActivities(Set<Activity> activities) {
 		this.activities = activities;
 	}
 
