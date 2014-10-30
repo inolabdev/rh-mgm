@@ -69,5 +69,10 @@ public class Employee extends Individual {
 	public void setUserLogin(User userLogin) {
 		this.userLogin = userLogin;
 	}
+	
+	@Override
+	public String toString() {
+		return fullName();
+	}
 
 }
