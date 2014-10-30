@@ -1,7 +1,7 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVm')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
         	<x:center>
