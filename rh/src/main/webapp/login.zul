@@ -32,7 +32,7 @@
                     <x:input type="checkbox" name="_spring_security_remember_me" /><x:labe>Lembre-me</x:labe>
                 </div>
                 <div zclass="footer">                                                               
-                    <button id="btn_login" zclass="btn bg-olive btn-block btnLog" type="submit" label="Login" ></button>
+                    <button id="btn_login" zclass="btn bg-olive btn-block btnLog btn-flat" type="submit" label="Login" ></button>
                 </div>
             </x:form>
         </x:div>
