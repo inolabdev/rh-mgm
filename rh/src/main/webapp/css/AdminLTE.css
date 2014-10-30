@@ -16,7 +16,7 @@
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f9f9f9;
-  font-family: 14px;
+  font-size: 15px;
   text-indent: 2px;
 }
 a {
@@ -511,7 +511,7 @@ Gradient Background colors
   position: absolute;
   top: 7px;
   right: 2px;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: normal;
   width: 15px;
   height: 15px;
@@ -556,7 +556,7 @@ Gradient Background colors
   background: transparent;
   margin-top: 0px;
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: 14px;
   padding: 7px 5px;
   position: absolute;
   top: 15px;
@@ -704,7 +704,7 @@ Gradient Background colors
   text-decoration: none;
   padding-right: 5px;
   margin-top: 3px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: normal;
 }
 .user-panel > .info > a > .fa,
@@ -840,7 +840,7 @@ Gradient Background colors
   border-top-right-radius: 0px;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
   background-color: #f4f4f4;
   padding: 7px 10px;
   border-bottom: 1px solid #eeeeee;
@@ -877,7 +877,7 @@ Gradient Background colors
   text-decoration: none;
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a {
-  font-size: 12px;
+  font-size: 14px;
   color: #444444;
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a > .glyphicon,
@@ -936,12 +936,12 @@ Gradient Background colors
 }
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > h4 > small {
   color: #999999;
-  font-size: 10px;
+  font-size: 14px;
   float: right;
 }
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a > p {
   margin: 0 0 0 45px;
-  font-size: 12px;
+  font-size: 14px;
   color: #888888;
 }
 .navbar-nav > .messages-menu > .dropdown-menu > li .menu > li > a:before,
@@ -1011,7 +1011,7 @@ Gradient Background colors
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-header > p > small {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
 }
 .navbar-nav > .user-menu > .dropdown-menu > li.user-body {
   padding: 15px;
@@ -1983,7 +1983,7 @@ Component: timeline
   color: #666;
   border: 1px solid #ddd;
   background-color: #fafafa;
-  font-size: 12px;
+  font-size: 14px;
 }
 .btn.btn-app > .fa,
 .btn.btn-app > .glyphicon,

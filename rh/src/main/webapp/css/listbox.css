@@ -4,6 +4,7 @@
 	background: -webkit-linear-gradient(top, #3c8dbc 0%, #3c8dbc 100%);
 	background: linear-gradient(to bottom, #3c8dbc 0%, #3c8dbc 100%);
 	position: relative;
+	font-family: times new roman !important;
 }
 
 .z-listheader {
@@ -17,6 +18,7 @@
 	position: relative;
 	overflow: hidden;
 	white-space: nowrap;
+	font-family: times new roman !important;
 }
 
 .z-listheader-content {
@@ -24,12 +26,14 @@
 	padding: 4px 5px 3px;
 	position: relative;
 	border-color: #3c8dbc;
+	font-family: times new roman !important;
 }
 
 .z-listheader-content {
 	font-weight: bold;
 	padding: 4px 5px 3px;
 	position: relative;
+	font-family: times new roman !important;
 }
 
 .z-listheader-content {
@@ -37,9 +41,10 @@
 	padding: 4px 5px 3px;
 	position: relative;
 	border-color: #3c8dbc;
+	font-family: times new roman !important;
 }
 
-.z-listheader-content, .z-listcell-content, .z-listgroup-content,
+.z-listheader-content, .z-listgroup-content,
 	.z-listgroupfoot-content, .z-listfooter-content {
 	font-weight: normal;
 	color: #fff;
@@ -64,22 +69,42 @@
 	border-color: #ddd;
 }
 
+.z-listitem{
+	font-family: times new roman !important;
+	font-size: 16px;
+}
+
 .z-listitem.z-listitem-selected:hover .z-listcell-content {
 	color: white;
-	background: white;
+	background: #3c8dbc;
+	font-family: times new roman !important;
+	font-size: 16px;
 }
 
 .z-listitem:hover>.z-listcell>.z-listcell-content {
 	color: white;
+	font-family: times new roman !important;
+	font-size: 16px;
 }
 
 .z-listitem .z-listitem-selected {
 	color: #fff;
 	background: none repeat scroll 0 0 #fff;
+	font-family: times new roman !important;
+	font-size: 16px;
 }
 
 .z-listitem:hover>.z-listcell>.z-listcell-content {
-	color: #fff;
+	color: black;
+	font-family: times new roman !important;
+	font-size: 16px;
+}
+
+.z-listitem.z-listitem-selected>.z-listcell>.z-listcell-content {
+	color: black;
+	background: #ddd;
+	font-family: times new roman !important;
+	font-size: 16px;
 }
 
 .z-listitem.z-listitem-selected:hover>.z-listcell {
@@ -89,6 +114,16 @@
 	background: -webkit-linear-gradient(top, #3c8dbc 0%, #3c8dbc 100%);
 	background: linear-gradient(to bottom, #3c8dbc 0%, #3c8dbc 100%);
 	position: relative;
+}
+
+.z-listitem.z-listitem:hover>.z-listcell {
+	font-size: 20px;
+	line-height: 50px;
+	font-family: times new roman !important;
+	background: -webkit-linear-gradient(top, #ddd 0%, #ddd 100%);
+	background: linear-gradient(to bottom, #ddd 0%, #ddd 100%);
+	position: relative;
+	color: black !important;
 }
 
 .z-listhead {
