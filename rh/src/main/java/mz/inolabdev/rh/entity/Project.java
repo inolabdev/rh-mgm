@@ -74,5 +74,11 @@ public class Project extends IdEntity {
 	public void setActivities(Set<Activity> activities) {
 		this.activities = activities;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name;
+	}
 
 }

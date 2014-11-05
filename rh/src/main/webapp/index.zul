@@ -116,8 +116,6 @@
       <x:script src="js/AdminLTE/app.js" type="text/javascript"></x:script>
       <x:script src="js/AdminLTE/dashboard.js" type="text/javascript"></x:script>
       <x:script src="js/AdminLTE/demo.js" type="text/javascript"></x:script>
-      
-      
     </x:div>
   </div>
 </zk>
