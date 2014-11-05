@@ -55,10 +55,10 @@
 	                      <separator height="15px" orient="vertical"></separator>
 	                      <div sclass="box-footer clearfix">
 	                           <div sclass="pull-right">
-	                           	  <x:button class="btn bg-navy margin btn-sm">Gravar</x:button>
-	                              <x:button class="btn bg-navy margin btn-sm">Nova Linha</x:button>
-	                              <x:button class="btn btn-danger btn-sm">Apagar Linhas</x:button><separator orient="vertical"/>
-	                              <x:button class="btn btn-sm">Limpar</x:button><separator orient="vertical"/>
+	                           	  <x:button class="btn bg-navy btn-flat margin btn-sm">Gravar</x:button>
+	                              <x:button class="btn bg-navy btn-flat margin btn-sm">Nova Linha</x:button>
+	                              <x:button class="btn btn-danger btn-flat btn-sm">Apagar Linhas</x:button><separator orient="vertical"/>
+	                              <x:button class="btn btn-sm btn-flat">Limpar</x:button><separator orient="vertical"/>
 	                           </div>
 	                       </div>
 	                    </div>
