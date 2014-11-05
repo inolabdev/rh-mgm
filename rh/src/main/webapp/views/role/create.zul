@@ -17,15 +17,15 @@
 					    <x:label>Permissões</x:label>
 						<hlayout width="100%">
 							<vlayout>
-								<span sclass="label label-info" >Permissões Disponíveis</span>
+								<x:span sclass="label bg-navy" >Permissões Disponíveis</x:span>
 								<listbox model="@bind(vm.stored)" selectedItems="@bind(vm.storedPermissions)" multiple="true" width="300px" height="200px"/>
 							</vlayout>
 							<vbox vflex="1" pack="middle">
-								<button label="&gt;" zclass="btn btn-info btn-flat" onClick="@command('deselectPermition')"/>
-								<button label="&lt;" zclass="btn btn-info btn-flat" onClick="@command('selectPermission')"/>
+								<button label="&gt;" zclass="btn bg-navy btn-flat margin" onClick="@command('deselectPermition')"/>
+								<button label="&lt;" zclass="btn bg-navy btn-flat margin" onClick="@command('selectPermission')"/>
 							</vbox>
 							<vlayout>
-								<span sclass="label label-info">Permissões Selecionadas</span>
+								<x:span sclass="label bg-navy">Permissões Selecionadas</x:span>
 								<listbox model="@bind(vm.chosen)" selectedItems="@bind(vm.chosenPermissions)" multiple="true" width="300px" height="200px"/>
 							</vlayout>
 						</hlayout>
