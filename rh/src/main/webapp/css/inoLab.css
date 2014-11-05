@@ -64,3 +64,9 @@
 	font-family: times new roman;
 	font-size: 14px;
 }
+
+.btn-inoLab{
+	color: #ffffff;
+	background-color: #3c8dbc;
+	border-color: rgba(0, 0, 0, 0.2);
+}
