@@ -1,6 +1,6 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AdminUserViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.UserVM')">
  
  <div zclass="col-md-10" id="userList">
  	<div zclass="box box-primary">
@@ -31,12 +31,12 @@
 				<x:td>${each.created}</x:td>
 				<x:td>${each.updated}</x:td>
 				<x:td>
-					<a class="btn btn-success btn-sm">
-                      <x:i class="fa btn-flat fa-eye"></x:i>
+					<a class="btn btn-flat btn-success btn-sm">
+                      <x:i class="fa fa-eye"></x:i>
                    	</a>
                    	<separator orient="vertical" width="7px"></separator>
-					<a class="btn btn-warning btn-sm">
-                      <x:i class="fa btn-flat fa-edit"></x:i>
+					<a class="btn btn-flat btn-warning btn-sm">
+                      <x:i class="fa fa-edit"></x:i>
                    	</a>
 				</x:td>
 			</x:tr>
@@ -44,34 +44,19 @@
 	</x:table>
 	</div>
 	</div>
-	
-	<script type="text/javascript">
-		function initDataTable(){
-		  $("#usuarios").dataTable();
-		}
-	</script>
-</div>
-<div zclass="col-md-10" id="userNew" visible="false">
-	<include src="views/user/create.zul"></include>
 </div>
  <div zclass="col-md-2">
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:span class="menuOperations" >Usuários</x:span>
+		        <x:span class="menuOperations" >Utilizadores</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>
 		    	<x:tr><x:td>
 					<x:a class="btn btn-app" onClick="@command('userNew')">
-				        <x:i class="fa fa-file-text-o"></x:i>
+				        <x:i class="fa fa-clipboard"></x:i>
 				        Novo
-				    </x:a>
-			    </x:td></x:tr>
-			    <x:tr><x:td>
-					<x:a class="btn btn-app" onClick="@command('userList')">
-				        <x:i class="fa fa-list"></x:i>
-				        Todos
 				    </x:a>
 			    </x:td></x:tr>
 			    </x:table>
@@ -79,5 +64,10 @@
 	    </x:center>
 	</div>
  </div>
+ <script type="text/javascript">
+	function initDataTable(){
+	  $("#usuarios").dataTable();
+	}
+</script>
 </window>
 </zk>
