@@ -19,7 +19,7 @@
 					</div>
 		        </div>
 		        <div zclass="box-footer">
-		            <x:button type="submit" class="btn btn-primary" onClick="@command('saveDep', action=0)">
+		            <x:button type="submit" class="btn btn-primary btn-flat" onClick="@command('saveDep', action=0)">
 		            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
 		            </x:button>
 		        </div>

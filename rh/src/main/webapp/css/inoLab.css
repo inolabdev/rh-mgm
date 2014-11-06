@@ -48,6 +48,12 @@
 }
 
 .customerinput {
+	
+}
+
+.bg-inoLab {
+	background-color: #ddd !important;
+	color: #222 !important;
 	display: block;
 	width: 100%;
 	height: 34px;
@@ -70,4 +76,23 @@
 .custom_margin {
 	margin: 10px;
 	display: inline-flex;
+	text-align: center;
+}
+
+.z-select {
+	font-family: times new roman;
+	font-size: 14px;
+}
+
+.btn-inoLab {
+	color: #ffffff;
+	background-color: #3c8dbc;
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+.z-label, .z-radio-content, .z-checkbox-content, .z-loading {
+	font-family: times new roman !important;
+	font-size: 14px;
+	font-weight: normal;
+
 }

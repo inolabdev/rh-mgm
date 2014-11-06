@@ -10,12 +10,12 @@
 				</div>
 	        </div>
 	        <div zclass="box-footer">
-	           <button zclass="btn btn-primary btn-sm" label="Gravar" 
+	           <button zclass="btn btn-flat btn-primary btn-sm" label="Gravar" 
 	           		onClick="@command('saveActivity', action=0, project=mdl, list = lbx)">
 	           	<custom-attributes mdl="${pro}" />
 	           </button>
 	           <separator orient="vertical"/>
-               <button zclass="btn btn-sm" onClick="cancel()" label="Cancelar" />
+               <button zclass="btn btn-flat btn-sm" onClick="cancel()" label="Cancelar" />
 	        </div>
 	    </div>
 	</div>

@@ -37,7 +37,7 @@
     </div>
 </div>
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header">
             <x:h3 class="box-title">${c:l('model.jobPosition')}</x:h3>

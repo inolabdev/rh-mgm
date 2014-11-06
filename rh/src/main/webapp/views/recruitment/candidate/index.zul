@@ -13,7 +13,6 @@
 								<x:th>#</x:th>
 								<x:th>Candidate</x:th>
 								<x:th>Vacancy</x:th>
-								<x:th>Email</x:th>
 								<x:th>CellPhone</x:th>
 								<x:th>Date of Application</x:th>
 								<x:th>Status</x:th>
@@ -26,14 +25,6 @@
 								<x:td>${each.id}</x:td>
 								<x:td>${each.fullName()}</x:td>
 								<x:td>${each.vacancies}</x:td>
-								<x:td>
-									<x:ul>
-										<x:li
-											forEach="${each.emails}">
-											${each.value}
-										</x:li>
-									</x:ul>
-								</x:td>
 								<x:td>
 									<x:ul>
 										<x:li

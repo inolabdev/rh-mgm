@@ -169,7 +169,7 @@
 			</div>
 		</div>
 		<div zclass="box-footer">
-			<x:button type="submit" class="btn btn-primary"
+			<x:button type="submit" class="btn btn-primary btn-flat"
 				onClick="@command('saveEmp', action=0)">
 				Gravar
 				<x:i class="glyphicon glyphicon-floppy-disk"></x:i>
