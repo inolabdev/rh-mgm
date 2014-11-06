@@ -18,18 +18,21 @@
 						<div class="form-group">
 							 <x:label>Senha *</x:label>
 						    <textbox zclass="form-control" type="password" placeholder="Senha" id="senha" value="@bind(fx.password)" 
-						    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+						    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!"
+						    	onBlur="@command('checkConfirm')" 
+						    	 />
 						    <label id="lblSenha" sclass="label label-warning"/>
 						</div>
 						<div class="form-group">
 						    <x:label>Confirmar Senha *</x:label>
-						    <textbox zclass="form-control" type="password" placeholder="Confirmação da Senha" instant="true" onChange="checkConfirm(senha.getValue(), self.getValue())" 
+						    <textbox zclass="form-control" type="password" placeholder="Confirmação da Senha" instant="true"
+						    	onChange="@command('checkConfirm')" 
 						    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" id="pass" />
 						    <label id="lblConf" sclass="label label-warning"/>
 						</div>
 						<div sclass="form-group">
 						    <x:label>Funcionário *</x:label>
-						    <listbox mold="select" model="@bind(vm.employeeList)" sclass="form-control" 
+						    <listbox mold="select" model="@bind(vm.employeeList)" sclass="form-control inoLabFont"
 						    	selectedItem="@bind(fx.userProfile)" >
 						    	<listitem label="${each.name}" ></listitem>
 						    </listbox>
@@ -57,21 +60,6 @@
 			            	Gravar <x:i class="glyphicon glyphicon-floppy-disk"></x:i>
 			            </x:button>
 			        </div>
-			        <zscript>
-						public void checkConfirm(String senha, String value)
-						{
-							if(!senha.equals(value)){
-								lblConf.setValue("A senha de confirmação deve ser a mesma com a senha introduzida");
-								divSave.setVisible(false);
-								lblConf.setSclass("label label-warning");
-							}
-							else{
-								lblConf.setValue("Certo!");
-								divSave.setVisible(true);
-								lblConf.setSclass("label label-success");
-							}
-						}
-					</zscript>
 			    </div>
 	    	</div>
 	    </div>

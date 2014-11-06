@@ -21,14 +21,19 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.resource.Labels;
+import org.zkoss.zhtml.Button;
 import org.zkoss.zhtml.Ol;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Label;
+import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Textbox;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class UserVM extends AbstractViewModel {
@@ -53,6 +58,29 @@ public class UserVM extends AbstractViewModel {
 	private List<Role> chosen;
 
 	private List<Employee> employeeList;
+
+	@Wire
+	private Textbox txbUser;
+
+	@Wire
+	private Textbox pass;
+
+	@Wire
+	private Textbox senha;
+
+	@Wire
+	private Label lblUser;
+
+	@Wire
+	private Label lblSenha;
+
+	@Wire
+	private Label lblConf;
+
+	@Wire
+	private Button btnSave;
+
+	private Set<String> erros = new HashSet<String>();
 
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view,
@@ -115,13 +143,13 @@ public class UserVM extends AbstractViewModel {
 	public void saveUser() {
 
 		if (chosenRoles.size() <= 0) {
-
 			Clients.showNotification(Labels.getLabel("role.cannot.be.saved"),
 					"error", target, "before_center", -1);
 		} else {
 
 			adminUser.setRoles(chosenRoles);
 			adminUser.setEnabled(true);
+			
 			userService.create(adminUser);
 
 			Clients.showNotification(Labels.getLabel("saved.user"), "info",
@@ -129,6 +157,78 @@ public class UserVM extends AbstractViewModel {
 
 			userList();
 		}
+	}
+
+	@Command
+	public void checkIfAvalaible() {
+
+		String user = txbUser.getValue();
+
+		if (user == null || user.trim().isEmpty()) {
+
+			lblUser.setValue("Utilizador inválido.!");
+			lblUser.setSclass("label label-danger");
+
+			addErrors("invalidName");
+		}
+
+		else {
+			User u = userService.find(user);
+
+			if (u == null) {
+				lblUser.setValue("Disponível");
+				lblUser.setSclass("label label-success");
+
+				clearErrors("invalidName");
+
+			} else {
+				lblUser.setValue("Utilizador já existente.!");
+				lblUser.setSclass("label label-danger");
+
+				addErrors("invalidName");
+			}
+
+		}
+	}
+
+	@Command
+	public void checkConfirm() {
+
+		String confirmation = pass.getValue();
+
+		String password = senha.getValue();
+
+		if (password == null || confirmation == null
+				|| password.trim().isEmpty() || confirmation.trim().isEmpty()) {
+
+			lblSenha.setValue("Senha Invalida");
+			lblSenha.setSclass("label label-danger");
+
+			addErrors("invalidPass");
+		}
+
+		else {
+
+			if (password.equals(confirmation)) {
+
+				clearErrors("invalidConf");
+				clearErrors("invalidPass");
+				
+				lblConf.setValue("Senha válida");
+				lblConf.setSclass("label label-success");
+			}
+
+			else {
+				
+				addErrors("invalidConf");
+				
+				lblConf.setValue("Confirmação deve ser igual a senha introduzida");
+				lblConf.setSclass("label label-danger");
+
+				addErrors("invalidPass");
+			}
+		}
+
 	}
 
 	@Command
@@ -151,6 +251,22 @@ public class UserVM extends AbstractViewModel {
 			chosenRoles.addAll(storedRoles);
 			storedRoles.clear();
 		}
+	}
+
+	private void clearErrors(String error) {
+
+		erros.remove(error);
+
+		if (erros.size() == 0) {
+			btnSave.setVisible(true);
+		}
+	}
+
+	private void addErrors(String error) {
+
+		erros.add(error);
+
+		btnSave.setVisible(false);
 	}
 
 	public User getAdminUser() {
