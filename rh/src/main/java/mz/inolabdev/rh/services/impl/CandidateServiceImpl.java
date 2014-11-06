@@ -2,10 +2,12 @@ package mz.inolabdev.rh.services.impl;
 
 import mz.inolabdev.rh.entity.Candidate;
 import mz.inolabdev.rh.entity.Cellphone;
+import mz.inolabdev.rh.entity.Comment;
 import mz.inolabdev.rh.entity.Document;
 import mz.inolabdev.rh.entity.Email;
 import mz.inolabdev.rh.services.CandidateService;
 import mz.inolabdev.rh.services.CellPhoneService;
+import mz.inolabdev.rh.services.CommentService;
 import mz.inolabdev.rh.services.ContactPointService;
 import mz.inolabdev.rh.services.DocumentService;
 import mz.inolabdev.rh.services.EmailService;
@@ -33,11 +35,21 @@ public class CandidateServiceImpl extends GenericServiceImpl<Candidate>
 
 	@Autowired
 	DocumentService documentService;
+
+	@Autowired
+	CommentService commentService;
+	
 	
 	@Override
 	public Candidate create(Candidate candidate) {
-
+		
 		Candidate cand = specificDao.create(candidate);
+		
+		if (commentService.find(candidate.getComment().getId()) != null)
+			commentService.update(candidate.getComment());
+		else {
+			commentService.create(candidate.getComment());
+		}
 
 		for (Email email : cand.getEmails()) {
 			email.setHolder(cand);
@@ -56,5 +68,4 @@ public class CandidateServiceImpl extends GenericServiceImpl<Candidate>
 
 		return cand;
 	}
-
 }
