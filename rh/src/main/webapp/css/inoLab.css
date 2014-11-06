@@ -33,7 +33,7 @@
 
 .loginFont {
 	font-size: 18px !important;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: times new roman !important;
 }
 
 .btnLog {
@@ -74,4 +74,35 @@
 	font-family: times new roman !important;
 	font-size: 14px;
 	font-weight: normal;
+}
+
+.right {
+	float: right;
+}
+
+.loginSpecial {
+	background: #3c8dbc !important;
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+	box-shadow: inset 0px -0px 0px rgba(0, 0, 0, 0.2) !important;
+	padding: 13px 10px !important;
+
+}
+
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox {
+	font-family: times new roman !important;
+	font-size: 15px !important;
+	font-weight: normal;
+	font-style: normal;
+	color: #000;
+	min-height: 24px;
+	border: 1px solid #cfcfcf;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	margin: 0;
+	padding: 4px 5px 3px;
+	line-height: 14px;
+	background: #fff;
 }
