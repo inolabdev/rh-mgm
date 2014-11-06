@@ -18,6 +18,7 @@
 								<x:th>Date of Application</x:th>
 								<x:th>Status</x:th>
 								<x:th>Resume</x:th>
+								<x:th></x:th>
 							</x:tr>
 						</x:thead>
 						<x:tbody>
@@ -41,8 +42,13 @@
 										</x:li>
 									</x:ul>
 								</x:td>
-								<x:td>${each.dateOfApplication}</x:td>
-								<x:td>${each.status}</x:td>
+								<x:td>${each.created}</x:td>
+								<x:td>
+									<label class="label label-default"
+										visible="false">
+										${each.status}
+									</label>
+								</x:td>
 								<x:td>
 									<x:ul>
 										<div>
@@ -61,6 +67,18 @@
 										</div>
 									</x:ul>
 								</x:td>
+								<x:td>
+								<div zclass="custom_margin">
+									<a class="btn btn-success btn-sm" onClick="@command('ShowCandidate', candId = mdlId)">
+	                      				<x:i class="fa fa-eye"></x:i>
+	                      				<custom-attributes mdlId="${each.id}" />
+	                   				</a>
+	                   					<separator orient="horizontal" width="2px"></separator>
+									<a class="btn btn-warning btn-sm">
+	                      				<x:i class="fa fa-edit"></x:i>
+	                   				</a>
+                   				</div>
+                   				</x:td>
 							</x:tr>
 						</x:tbody>
 					</x:table>
