@@ -68,7 +68,7 @@
 						<div class="form-group">
 							<x:label>Comment</x:label>
 							<textbox zclass="form-control txtArea"
-								rows="5" width="100%" value="" />
+								rows="5" width="100%" value="@bind(fx.comment)"/>
 						</div>
 						<div zclass="box-footer">
 							<x:button type="submit"
