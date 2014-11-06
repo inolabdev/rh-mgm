@@ -1,6 +1,7 @@
 package mz.inolabdev.rh.viewModel;
 
 import java.io.IOException;
+import java.util.EventListener;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -28,18 +29,25 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zhtml.Filedownload;
+import org.zkoss.zhtml.Li;
 import org.zkoss.zhtml.Ol;
+import org.zkoss.zhtml.Ul;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.A;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Popup;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
@@ -66,6 +74,9 @@ public class CandidateVm extends AbstractViewModel {
 
 	// components
 	private Div target;
+
+	@Wire("#buttonActs")
+	private Button button;
 
 	@Wire("#mainInclude")
 	private Include mainInclude;
@@ -227,6 +238,20 @@ public class CandidateVm extends AbstractViewModel {
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
 		Executions.createComponents("views/recruitment/candidate/create.zul",
+				target, map);
+	}
+
+	@Command
+	@NotifyChange({ "candidate" })
+	public void ShowCandidate(@BindingParam("candId") Long id) {
+		candidate = candidateService.find(id);
+		Clients.showNotification("is a fuck:" + candidate.getId() + "");
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		map.put("candidate", candidate);
+		target.getChildren().clear();
+		Executions.createComponents("views/recruitment/candidate/show.zul",
 				target, map);
 	}
 
