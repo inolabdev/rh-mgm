@@ -1,6 +1,8 @@
 package mz.inolabdev.rh.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -21,14 +23,14 @@ public class Employee extends Individual {
 	@OneToOne
 	@JoinColumn(name = "jobPosition_id")
 	private JobPosition jobPosition;
-	
+
 	@ManyToMany(mappedBy = "hiringManagers")
 	private Set<Vacancy> vacancies = new HashSet<Vacancy>();
-	
+
 	@ManyToOne
 	@JoinColumn(name = "department_id")
 	private Department department;
-	
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	@NotNull
@@ -36,6 +38,15 @@ public class Employee extends Individual {
 
 	public Department getDepartment() {
 		return department;
+	}
+
+	public String since() {
+
+		Locale ptBr = new Locale("pt", "BR");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("MMM, yyyy", ptBr);
+		
+		return sdf.format(getCreated());
 	}
 
 	public void setDepartment(Department department) {
@@ -69,7 +80,7 @@ public class Employee extends Individual {
 	public void setUserLogin(User userLogin) {
 		this.userLogin = userLogin;
 	}
-	
+
 	@Override
 	public String toString() {
 		return fullName();
