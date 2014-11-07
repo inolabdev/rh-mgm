@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import mz.inolabdev.rh.entity.Log;
+import mz.inolabdev.rh.entity.User;
 import mz.inolabdev.rh.services.LogService;
 import mz.inolabdev.rh.services.UserService;
 
@@ -39,6 +40,8 @@ public class MainVM extends AbstractViewModel {
 
 	private List<Log> logs;
 
+	private User user;
+
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view) {
 
@@ -51,10 +54,11 @@ public class MainVM extends AbstractViewModel {
 		map.put("target", target);
 		map.put("breadcrumb", ol);
 		Executions.createComponents("dashboard.zul", target, map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-sort", "Pagina Inicial", links);
+
 	}
 
 	@Init
@@ -62,6 +66,10 @@ public class MainVM extends AbstractViewModel {
 
 		// *** Initialize ***//
 		logs = logService.getAll();
+
+		String userName = Executions.getCurrent().getUserPrincipal().getName();
+
+		user = userService.find(userName);
 	}
 
 	@Command
@@ -71,7 +79,7 @@ public class MainVM extends AbstractViewModel {
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
 		Executions.createComponents("dashboard.zul", target, map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-sort", "Pagina Inicial", links);
@@ -85,7 +93,7 @@ public class MainVM extends AbstractViewModel {
 		target.getChildren().clear();
 		Executions.createComponents("views/times/projects/index.zul", target,
 				map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Projectos");
 		links.add("Inicio");
@@ -99,7 +107,7 @@ public class MainVM extends AbstractViewModel {
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
 		Executions.createComponents("views/more.zul", target, map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-sort", "Mais", links);
@@ -113,7 +121,7 @@ public class MainVM extends AbstractViewModel {
 		target.getChildren().clear();
 		Executions.createComponents("views/recruitment/recruitment.zul",
 				target, map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-group", "Recrutamento", links);
@@ -126,7 +134,7 @@ public class MainVM extends AbstractViewModel {
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
 		Executions.createComponents("views/user/profile.zul", target, map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Perfil");
 		drawnBreadcrumb("fa fa-user", "Utilizador", links);
@@ -140,7 +148,7 @@ public class MainVM extends AbstractViewModel {
 		target.getChildren().clear();
 		Executions.createComponents("views/user/change_password.zul", target,
 				map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Mudar a senha");
 		drawnBreadcrumb("fa fa-user", "Utilizador", links);
@@ -154,7 +162,7 @@ public class MainVM extends AbstractViewModel {
 		target.getChildren().clear();
 		Executions.createComponents("views/times/timesheet/index.zul", target,
 				map);
-		
+
 		links = new ArrayList<String>();
 		links.add("Timesheets");
 		links.add("Inicio");
@@ -163,5 +171,13 @@ public class MainVM extends AbstractViewModel {
 
 	public List<Log> getLogs() {
 		return logs;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
