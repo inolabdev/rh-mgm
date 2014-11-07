@@ -4,9 +4,12 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,17 +24,22 @@ public class Candidate extends Individual {
 	private static final long serialVersionUID = 2338487021821515023L;
 
 	@Temporal(value = TemporalType.DATE)
+	@Column(name = "date_of_application")
 	private Date dateOfApplication;
 
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "candidates")
 	private Set<Vacancy> vacancies = new HashSet<Vacancy>(0);
 
-	private String status;
+	private String status; //rejected, hired
 
 	public Candidate() {
 
 		this.setEmails(new HashSet<Email>());
 	}
+	
+	@OneToOne
+	@JoinColumn(name = "comment_id")
+	private Comment comment;
 
 	@Override
 	public int hashCode() {
@@ -103,5 +111,13 @@ public class Candidate extends Individual {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
 	}
 }
