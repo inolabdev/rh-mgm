@@ -80,6 +80,12 @@ public class UserVM extends AbstractViewModel {
 	@Wire
 	private Button btnSave;
 
+	private User user;
+
+	private String newPass;
+
+	private String confNewPass;
+
 	private Set<String> erros = new HashSet<String>();
 
 	@AfterCompose
@@ -149,7 +155,7 @@ public class UserVM extends AbstractViewModel {
 
 			adminUser.setRoles(chosenRoles);
 			adminUser.setEnabled(true);
-			
+
 			userService.create(adminUser);
 
 			Clients.showNotification(Labels.getLabel("saved.user"), "info",
@@ -213,15 +219,15 @@ public class UserVM extends AbstractViewModel {
 
 				clearErrors("invalidConf");
 				clearErrors("invalidPass");
-				
+
 				lblConf.setValue("Senha válida");
 				lblConf.setSclass("label label-success");
 			}
 
 			else {
-				
+
 				addErrors("invalidConf");
-				
+
 				lblConf.setValue("Confirmação deve ser igual a senha introduzida");
 				lblConf.setSclass("label label-danger");
 
@@ -251,6 +257,12 @@ public class UserVM extends AbstractViewModel {
 			chosenRoles.addAll(storedRoles);
 			storedRoles.clear();
 		}
+	}
+
+	@Command
+	public void updatePass() {
+
+		
 	}
 
 	private void clearErrors(String error) {
@@ -323,5 +335,29 @@ public class UserVM extends AbstractViewModel {
 
 	public void setStored(List<Role> stored) {
 		this.stored = stored;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getNewPass() {
+		return newPass;
+	}
+
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
+	}
+
+	public String getConfNewPass() {
+		return confNewPass;
+	}
+
+	public void setConfNewPass(String confNewPass) {
+		this.confNewPass = confNewPass;
 	}
 }

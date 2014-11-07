@@ -20,12 +20,6 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')}"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-	<zscript>
-      import org.springframework.security.core.Authentication;
-	  import org.springframework.security.core.context.SecurityContextHolder;
-	
-      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-     </zscript>
   <div height="100%" width="100%" apply="org.zkoss.bind.BindComposer"
   	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.MainVM')">
     <x:div class="skin-blue body fixed">
@@ -56,12 +50,17 @@
               <x:li class="dropdown user user-menu">
                 <x:a href="#" sclass="dropdown-toggle" data-toggle="dropdown">
                   <x:i class="glyphicon glyphicon-user"></x:i>
-                  <x:span>${auth.getName()}<x:i class="caret"></x:i></x:span>
+                  <x:span>${vm.user.username}<x:i class="caret"></x:i></x:span>
                 </x:a>
                 <x:ul sclass="dropdown-menu ">
                   <x:li sclass="user-header bg-light-blue">
                     <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
-                    <x:p> Jorge White - Programador <x:small>${c:l('member_since')} Nov. 2013</x:small></x:p>
+                    <x:p> ${vm.user.userProfile} - ${vm.user.userProfile.jobPosition.type}
+                    	<zscript>
+                    		
+                    	</zscript>
+                    	<x:small>${c:l('member_since')} ${vm.user.userProfile.since()}</x:small>
+                    </x:p>
                   </x:li>
                   <x:li class="user-body">
                     <div class="col-xs-12 text-center">
