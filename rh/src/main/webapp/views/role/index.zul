@@ -1,11 +1,10 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
  
  <div zclass="col-md-10" id="roleList">
  	<div zclass="box box-primary">
 	<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
-	
 	<x:table id="roles" class="table table-bordered table-striped">
 		<x:thead>
 			<x:tr>
@@ -23,11 +22,11 @@
 				<x:td>${each.created}</x:td>
 				<x:td>${each.updated}</x:td>
 				<x:td>
-					<a class="btn btn-success btn-sm">
+					<a class="btn bg-olive btn-sm btn-flat">
                       <x:i class="fa fa-eye"></x:i>
                    	</a>
                    	<separator orient="vertical" width="7px"></separator>
-					<a class="btn btn-warning btn-sm">
+					<a class="btn bg-orange btn-sm btn-flat">
                       <x:i class="fa fa-edit"></x:i>
                    	</a>
 				</x:td>
@@ -36,15 +35,6 @@
 	</x:table>
 	</div>
 	</div>
-	
-	<script type="text/javascript">
-		function initDataTable(){
-		  $("#roles").dataTable();
-		}
-	</script>
-</div>
-<div zclass="col-md-10" id="roleNew" visible="false">
-	<include src="views/role/create.zul"></include>
 </div>
  <div zclass="col-md-2">
 	<div class="box box-solid">
@@ -56,14 +46,8 @@
 		    	<x:table>
 		    	<x:tr><x:td>
 					<x:a class="btn btn-app" onClick="@command('roleNew')">
-				        <x:i class="fa fa-file-text-o"></x:i>
+				        <x:i class="fa fa-clipboard"></x:i>
 				        Novo
-				    </x:a>
-			    </x:td></x:tr>
-			    <x:tr><x:td>
-					<x:a class="btn btn-app" onClick="@command('roleList')">
-				        <x:i class="fa fa-list"></x:i>
-				        Todos
 				    </x:a>
 			    </x:td></x:tr>
 			    </x:table>
@@ -71,5 +55,10 @@
 	    </x:center>
 	</div>
  </div>
+<script type="text/javascript">
+	function initDataTable(){
+	  $("#roles").dataTable();
+	}
+</script>
 </window>
 </zk>

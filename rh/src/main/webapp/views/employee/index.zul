@@ -30,13 +30,13 @@
 								<x:td>${each.department.name}</x:td>
 								<x:td>
 								
-									<a class="btn btn-success btn-sm">
+									<a class="btn bg-olive btn-flat btn-sm">
 										<x:i class="fa fa-eye"></x:i>
 									</a>
 									<separator orient="vertical"
 										width="7px">
 									</separator>
-									<a class="btn btn-warning btn-sm">
+									<a class="btn bg-orange btn-flat btn-sm">
 										<x:i class="fa fa-edit"></x:i>
 									</a>
 								</x:td>

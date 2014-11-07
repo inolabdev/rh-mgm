@@ -12,7 +12,7 @@
        </div>
      </x:div>
      <x:ul class="sidebar-menu">
-       <x:li sclass="@load(vm.activeHome)">
+       <x:li sclass="">
          <x:a class="cursor" onClick="@command('home')">
            <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
          </x:a>
@@ -27,12 +27,13 @@
            <x:li><x:a href="#" onClick="@command('timesheet')">
              <x:i class="fa fa-angle-double-right"></x:i> Timesheets</x:a>
            </x:li>
-           <x:li><x:a href="#" onClick="@command('projects')">
+           <x:li>
+           	<x:a href="#" onClick="@command('projectList')">
              <x:i class="fa fa-angle-double-right"></x:i> Projectos</x:a>
            </x:li>
          </x:ul>
        </x:li>
-       <x:li sclass="@load(vm.activeRecruitment)">
+       <x:li sclass="">
          <x:a class="cursor" onClick="@command('sideBarRecruitment')">
            <x:i class="fa fa-group"></x:i> <x:span> Recrutamento</x:span>
          </x:a>
@@ -121,17 +122,17 @@
            </x:li>
          </x:ul>
        </x:li>
-       <x:li sclass="@load(vm.activeMore)">
+       <x:li sclass="">
          <x:a class="cursor" onClick="@command('sideBarMore')">
            <x:i class="fa fa-money"></x:i> <x:span>Recibos de Salários</x:span>
          </x:a>
        </x:li>
-       <x:li sclass="@load(vm.activeMore)">
+       <x:li sclass="">
          <x:a class="cursor" onClick="@command('sideBarMore')">
            <x:i class="fa fa-check-circle-o"></x:i> <x:span>Aprovações</x:span>
          </x:a>
        </x:li>
-       <x:li sclass="@load(vm.activeMore)">
+       <x:li sclass="">
          <x:a class="cursor" onClick="@command('sideBarMore')">
            <x:i class="fa fa-sort"></x:i> <x:span>${c:l('sidebar.more')}</x:span>
          </x:a>

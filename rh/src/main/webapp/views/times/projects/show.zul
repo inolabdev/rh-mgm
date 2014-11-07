@@ -1,0 +1,96 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="org.zkoss.bind.BindComposer"
+		 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.ProjectVM')">
+		<div zclass="col-md-10">
+			<div zclass="box box-primary">
+				<div zclass="box-header">
+			        <x:h3 class="box-title">Projecto: ${arg.project.name}</x:h3>
+			    </div>
+			</div>
+			<div>
+				<x:table class="table table-condensed">
+					<x:tr>
+						<x:th style="width: 35%;">Colaboradores</x:th>
+						<x:th style="width: 35%">Administradores</x:th>
+						<x:th style="width: 30%">Descrição</x:th>
+					</x:tr>
+					<x:tr>
+						<x:td>
+							<x:ul><x:li forEach="${arg.project.customers}">${each.fullName()}</x:li></x:ul>
+						</x:td>
+						<x:td>
+							<x:ul><x:li forEach="${arg.project.admins}">${each.fullName()}</x:li></x:ul>
+						</x:td>
+						<x:td>${arg.project.description}</x:td>
+					</x:tr>
+				</x:table>
+				<div zclass="box box-primary">
+					<div zclass="box-header">
+				        <x:h3 class="box-title">Actividades</x:h3>
+				    </div>
+				    <div id="activityForm" visible="false">
+				    	<zscript>
+							import mz.inolabdev.rh.entity.Project;
+							Project pro = (Project) Executions.getCurrent().getArg().get("project");
+						</zscript>
+				    	<include src="views/times/activity/create.zul" />
+				    </div>
+				    <div sclass="box-footer clearfix" id="menuActivity">
+                        <div sclass="pull-right">
+                          <button zclass="btn btn-flat btn-success btn-sm" label="Nova" onClick="forms()"/>
+                          <separator orient="vertical"/>
+                          <button zclass="btn btn-flat btn-danger btn-sm" label="Apagar" 
+                          	onClick="@command('deleteActivity', activity = lbx.selectedItem.value, list = lbx, project = mdl)">                  	
+                          	<custom-attributes mdl="${arg.project}" />
+                          </button>
+                        </div>
+                    </div>
+				    <listbox model="${arg.activities}" checkmark="true" mold="paging" pageSize="10"
+				    	emptyMessage="Nenhuma actividade associada a este projecto!" id="lbx">
+				    	<listhead>
+				    		<listheader label="Nome" />
+				    	</listhead>
+				    	<template name="model">
+							<listitem label="${each.name}" style="color: black" />
+						</template>
+				    </listbox>
+				</div>
+			</div>
+		</div>
+		<div sclass="col-md-2">
+		  <div sclass="box box-solid menuAlign">
+			<x:center>
+			    <x:div class="box-header">
+			        <x:span sclass="menuOperations" >Projectos</x:span>
+			    </x:div>
+			    <x:div sclass="box-body">
+			    	<x:table>
+			    	<x:tr><x:td>
+						<x:a class="btn btn-app" onClick="@command('projectNew')">
+					        <x:i class="fa fa-clipboard"></x:i>
+					        Novo
+					    </x:a>
+				    </x:td></x:tr>
+				    <x:tr><x:td>
+						<x:a class="btn btn-app" onClick="@command('projectList')">
+					        <x:i class="fa fa-list"></x:i>
+					        Listar
+					    </x:a>
+				    </x:td></x:tr>
+				    </x:table>
+			    </x:div>
+		    </x:center>
+		  </div>
+		</div>
+		<zscript>
+	   	public void forms(){
+	   		activityForm.setVisible(true);
+	   		menuActivity.setVisible(false);
+	   	}
+	   	public void cancel(){
+	   		activityForm.setVisible(false);
+	   		menuActivity.setVisible(true);
+	   	}
+	   </zscript>
+	</window>
+</zk>

@@ -1,60 +1,60 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
-<div sclass="col-lg-3 col-xs-6">
-    <div sclass="small-box bg-teal">
-        <div sclass="inner">
-            <x:h3>14</x:h3>
-            <x:p>Notofications</x:p>
-        </div>
-        <div sclass="icon">
-            <x:i class="ion ion-ios7-alarm-outline" />
-        </div>
-        <x:a href="#" sclass="small-box-footer">
-            More info <x:i class="fa fa-arrow-circle-right"/>
-        </x:a>
-    </div>
-</div>
-<div sclass="col-lg-3 col-xs-6">
-    <div sclass="small-box bg-green">
-        <div sclass="inner">
-            <x:h3>14</x:h3>
-            <x:p>Notofications</x:p>
-        </div>
-        <div sclass="icon">
-            <x:i class="ion ion-ios7-alarm-outline" />
-        </div>
-        <x:a href="#" sclass="small-box-footer">
-            More info <x:i class="fa fa-arrow-circle-right"/>
-        </x:a>
-    </div>
-</div>
-<div sclass="col-lg-3 col-xs-6">
-    <div sclass="small-box bg-blue">
-        <div sclass="inner">
-            <x:h3>14</x:h3>
-            <x:p>Notofications</x:p>
-        </div>
-        <div sclass="icon">
-            <x:i class="ion ion-ios7-alarm-outline" />
-        </div>
-        <x:a href="#" sclass="small-box-footer">
-            More info <x:i class="fa fa-arrow-circle-right"/>
-        </x:a>
-    </div>
-</div>
-<div sclass="col-lg-3 col-xs-6">
-    <div sclass="small-box bg-red">
-        <div sclass="inner">
-            <x:h3>14</x:h3>
-            <x:p>Notofications</x:p>
-        </div>
-        <div sclass="icon">
-            <x:i class="ion ion-ios7-alarm-outline" />
-        </div>
-        <x:a href="#" sclass="small-box-footer">
-            More info <x:i class="fa fa-arrow-circle-right"/>
-        </x:a>
-    </div>
-</div>
-
+	<div sclass="col-lg-3 col-xs-6">
+	    <div sclass="small-box bg-teal">
+	        <div sclass="inner">
+	            <x:h3>14</x:h3>
+	            <x:p>Notofications</x:p>
+	        </div>
+	        <div sclass="icon">
+	            <x:i class="ion ion-ios7-alarm-outline" />
+	        </div>
+	        <x:a href="#" sclass="small-box-footer">
+	            More info <x:i class="fa fa-arrow-circle-right"/>
+	        </x:a>
+	    </div>
+	</div>
+	<div sclass="col-lg-3 col-xs-6">
+	    <div sclass="small-box bg-green">
+	        <div sclass="inner">
+	            <x:h3>14</x:h3>
+	            <x:p>Notofications</x:p>
+	        </div>
+	        <div sclass="icon">
+	            <x:i class="ion ion-ios7-alarm-outline" />
+	        </div>
+	        <x:a href="#" sclass="small-box-footer">
+	            More info <x:i class="fa fa-arrow-circle-right"/>
+	        </x:a>
+	    </div>
+	</div>
+	<div sclass="col-lg-3 col-xs-6">
+	    <div sclass="small-box bg-blue">
+	        <div sclass="inner">
+	            <x:h3>14</x:h3>
+	            <x:p>Notofications</x:p>
+	        </div>
+	        <div sclass="icon">
+	            <x:i class="ion ion-ios7-alarm-outline" />
+	        </div>
+	        <x:a href="#" sclass="small-box-footer">
+	            More info <x:i class="fa fa-arrow-circle-right"/>
+	        </x:a>
+	    </div>
+	</div>
+	<div sclass="col-lg-3 col-xs-6">
+	    <div sclass="small-box bg-red">
+	        <div sclass="inner">
+	            <x:h3>14</x:h3>
+	            <x:p>Notofications</x:p>
+	        </div>
+	        <div sclass="icon">
+	            <x:i class="ion ion-ios7-alarm-outline" />
+	        </div>
+	        <x:a href="#" sclass="small-box-footer">
+	            More info <x:i class="fa fa-arrow-circle-right"/>
+	        </x:a>
+	    </div>
+	</div>
 </zk>

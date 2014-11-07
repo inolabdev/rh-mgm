@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <?link rel="shortcut icon" type="image/x-icon" href="img/ild_rh.ico"?>
 <?link rel="icon" type="image/x-icon" href="img/ild_rh.ico"?>
 <?link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" ?>
@@ -25,8 +26,8 @@
 	
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
      </zscript>
-  <div apply="org.zkoss.bind.BindComposer" height="100%" width="100%"
-  	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PagesFlowsViewModel')">
+  <div height="100%" width="100%" apply="org.zkoss.bind.BindComposer"
+  	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.MainVM')">
     <x:div class="skin-blue body fixed">
       <x:header class="header">
        <a href="#" class="logo">${c:l('appName')}</a>
@@ -85,15 +86,16 @@
       <div sclass="wrapper row-offcanvas row-offcanvas-left">
 		<include src = "sidebar.zul"/>
         <x:aside class="right-side">
-        	<div sclass="content-header" apply="org.zkoss.bind.BindComposer"
-        		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbstractViewModel')" >
+        	<div sclass="content-header">
 	          <x:section class="content-header">
 	            <x:ol class="breadcrumb" id="breadcrumb"/>
 	          </x:section>
 	        </div>
-          <x:section class="content">
-          	<include src="@bind(vm.page)" self="@define(content)" id="mainInclude" />
-          </x:section>
+          <div class="content">
+          	<div id="mainlayout" height="100%">
+				<include src="dashboard.zul" />
+			</div>
+          </div>
         </x:aside>
       </div>
       <x:script src="js/jquery.min.js"></x:script>
@@ -115,6 +117,5 @@
       <x:script src="js/AdminLTE/dashboard.js" type="text/javascript"></x:script>
       <x:script src="js/AdminLTE/demo.js" type="text/javascript"></x:script>
     </x:div>
-    
   </div>
 </zk>

@@ -10,31 +10,39 @@
 <?page title="${c:l('title')} - Login"?>
 
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-<div sclass="bg-black body loginFont" width="100%" height="100%">
-    <div sclass="bg-black">
+<div sclass="bg-navy body loginFont" width="100%" height="100%">
+    <div sclass="bg-navy">
         <x:div sclass="form-box" id="login-box">
-            <x:div sclass="header">Login to RH Space</x:div>
+            <x:div sclass="header loginSpecial">HR</x:div>
             <x:form id="f" name="f" action="j_spring_security_check" method="POST">
                 <div zclass="body bg-gray">
                 	<div sclass="alert alert-danger alert-dismissable" if="${not empty param.login_error}">
-	                	<x:label>
-	                	 <![CDATA[${c:l('spring_security_exception.message')}]]>
-	                	</x:label>
+	                	<span sclass="loginFont"><![CDATA[${c:l('spring_security_exception.message')}]]></span>
 	                </div>
-                    <div zclass="form-group">
-                    	<x:label value="">Usuário:</x:label>
-                        <textbox name="j_username" id="username" zclass="form-control" placeholder="Usuário" />
+	                <div sclass="alert alert-warning alert-dismissable" if="${empty param.login_error}">            	
+	                	 <span sclass="loginFont" >Por favor, autentique com seu utilizador e senha!</span>
+	                </div>
+                    <div sclass="form-group">
+                    	<x:i class="fa fa-user"/>
+                        <textbox name="j_username" id="username" sclass="form-control" placeholder="Utilizador" />
                     </div>
-                    <div zclass="form-group">
-                    	<x:label>Senha:</x:label>
+                    <div sclass="form-group">
+                    	<x:i class="fa  fa-unlock"/>
                         <textbox name="j_password" id="password" type="password" sclass="form-control" placeholder="Password" />
                     </div>
                     <x:input type="checkbox" name="_spring_security_remember_me" /><x:labe>Lembre-me</x:labe>
                 </div>
-                <div zclass="footer">                                                               
-                    <button id="btn_login" zclass="btn bg-olive btn-block btnLog" type="submit" label="Login" ></button>
+                <div sclass="footer">
+                	<div style="text-align: right;">                                                          
+	                    <x:button id="btn_login" sclass="btn btn-success btn-flat " 
+	                    	type="submit">
+	                    	Autenticar
+	                    	<x:i sclass="fa fa-sign-in"></x:i>
+	                    </x:button>
+                    </div>
                 </div>
             </x:form>
+            <x:div sclass="header loginSpecial">Space</x:div>
         </x:div>
     </div>
 </div>

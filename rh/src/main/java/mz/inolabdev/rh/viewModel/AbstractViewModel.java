@@ -18,6 +18,7 @@ import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zul.Div;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class AbstractViewModel {
@@ -30,11 +31,17 @@ public class AbstractViewModel {
 	@WireVariable
 	private LogService logService;
 
+	protected List<String> links;
+
+	protected Div target;
+
+	protected Ol ol;
+
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
 		Selectors.wireComponents(view, this, false);
 	}
-	
+
 	public Log getLog() {
 		return log;
 	}
