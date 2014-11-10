@@ -19,23 +19,23 @@
        </x:li>
        <x:li class="treeview">
          <x:a href="#">
-           <x:i class="fa fa-desktop"></x:i>
-           <x:span>Horas</x:span>
+           <x:i class="fa fa-calendar-o"></x:i>
+           <x:span> Horas</x:span>
            <x:i class="fa fa-angle-left pull-right"></x:i>
          </x:a>
          <x:ul class="treeview-menu">
            <x:li><x:a href="#" onClick="@command('timesheet')">
-             <x:i class="fa fa-angle-double-right"></x:i> Timesheets</x:a>
+             <x:i class="fa fa-calendar"></x:i> Timesheets</x:a>
            </x:li>
            <x:li>
            	<x:a href="#" onClick="@command('projectList')">
-             <x:i class="fa fa-angle-double-right"></x:i> Projectos</x:a>
+             <x:i class="fa fa-sitemap"></x:i> Projectos</x:a>
            </x:li>
          </x:ul>
        </x:li>
        <x:li sclass="">
          <x:a class="cursor" onClick="@command('sideBarRecruitment')">
-           <x:i class="fa fa-group"></x:i> <x:span> Recrutamento</x:span>
+           <x:i class="fa fa-retweet"></x:i> <x:span> Recrutamento</x:span>
          </x:a>
        </x:li>
        <x:li class="treeview">

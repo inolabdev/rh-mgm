@@ -4,7 +4,9 @@
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
-        	<x:h3 class="box-title">${c:l('model.departament')}</x:h3>
+        	<x:h3 class="box-title">
+        		<x:i class="fa fa-th-large"/> ${c:l('model.departament')}
+        	</x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
@@ -21,7 +23,9 @@
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
-            <x:h3 class="box-title">${c:l('model.documentType')}</x:h3>
+            <x:h3 class="box-title">
+            	<x:i class="fa fa-book"/> ${c:l('model.documentType')}
+            </x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
@@ -38,7 +42,9 @@
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
-            <x:h3 class="box-title">${c:l('model.jobPosition')}</x:h3>
+        	<x:h3 class="box-title">
+            	<x:i class="glyphicon glyphicon-user"/> ${c:l('model.jobPosition')}
+            </x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
@@ -55,7 +61,9 @@
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
-            <x:h3 class="box-title">${c:l('model.role')}</x:h3>
+        	<x:h3 class="box-title">
+            	<x:i class="fa fa-lock"/> ${c:l('model.role')}
+            </x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
@@ -72,7 +80,9 @@
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PermissionVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
-            <x:h3 class="box-title">${c:l('model.permition')}</x:h3>
+        	<x:h3 class="box-title">
+            	<x:i class="glyphicon glyphicon-check"/> ${c:l('model.permition')}
+            </x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
@@ -89,7 +99,9 @@
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.UserVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
-            <x:h3 class="box-title">${c:l('model.admin_user')}</x:h3>
+        	<x:h3 class="box-title">
+            	<x:i class="fa fa-user"/> ${c:l('model.admin_user')}
+            </x:h3>
         </div>
         <div zclass="box-body">
         	<x:center>
@@ -107,8 +119,8 @@
 	<div zclass="box box-solid box-primary">
 		<div zclass="box-header bg-inoLab">
 			<x:h3 class="box-title">
-				${c:l('model.documentType')}
-			</x:h3>
+            	<x:i class="fa fa-qrcode"/> ${c:l('model.documentType')}
+            </x:h3>
 		</div>
 		<div zclass="box-body">
 			<x:center>
@@ -127,7 +139,9 @@
 	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
 	<div zclass="box box-solid box-primary">
 		<div zclass="box-header bg-inoLab">
-			<x:h3 class="box-title">${c:l('model.role')}</x:h3>
+			<x:h3 class="box-title">
+            	<x:i class="fa fa-lock"/> ${c:l('model.role')}
+            </x:h3>
 		</div>
 		<div zclass="box-body">
 			<x:center>
@@ -146,7 +160,9 @@
 	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.EmployeeViewModel')">
 	<div zclass="box box-solid box-primary">
 		<div zclass="box-header bg-inoLab">
-			<x:h3 class="box-title">${c:l('model.employees')}</x:h3>
+			<x:h3 class="box-title">
+            	<x:i class="fa fa-users"/> ${c:l('model.employees')}
+            </x:h3>
 		</div>
 		<div zclass="box-body">
 			<x:center>
@@ -165,7 +181,9 @@
 	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.IdentityDocumentTypeViewModel')">
 	<div zclass="box box-solid box-primary">
 		<div zclass="box-header bg-inoLab">
-			<x:h3 class="box-title">${c:l('model.employees.type')}</x:h3>
+			<x:h3 class="box-title">
+            	<x:i class="fa fa-female"/> ${c:l('model.employees.type')}
+            </x:h3>
 		</div>
 		<div zclass="box-body">
 			<x:center>
