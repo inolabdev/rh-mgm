@@ -102,48 +102,10 @@
         </div>
     </div>
 </div>
-<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
-	<div zclass="box box-solid box-primary">
-		<div zclass="box-header bg-inoLab">
-			<x:h3 class="box-title">
-				${c:l('model.documentType')}
-			</x:h3>
-		</div>
-		<div zclass="box-body">
-			<x:center>
-				<x:h3>150</x:h3>
-				<x:p>${c:l('model.documentTypes')}</x:p>
-				<x:a class="btn btn-flat btn-default btn-block"
-					onClick="@command('documentTypeList')">
-					<x:code>${c:l('view')}</x:code>
-				</x:a>
-			</x:center>
-		</div>
-	</div>
-</div>
+
 
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
-	<div zclass="box box-solid box-primary">
-		<div zclass="box-header bg-inoLab">
-			<x:h3 class="box-title">${c:l('model.role')}</x:h3>
-		</div>
-		<div zclass="box-body">
-			<x:center>
-				<x:h3>${vm.roles.size()}</x:h3>
-				<x:p>${c:l('model.roles')}</x:p>
-				<x:a class="btn btn-flat btn-default btn-block"
-					onClick="@command('roleList')">
-					<x:code>${c:l('view')}</x:code>
-				</x:a>
-			</x:center>
-		</div>
-	</div>
-</div>
-
-<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.EmployeeViewModel')">
+	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.EmployeeVM')">
 	<div zclass="box box-solid box-primary">
 		<div zclass="box-header bg-inoLab">
 			<x:h3 class="box-title">${c:l('model.employees')}</x:h3>
@@ -162,17 +124,17 @@
 </div>
 	
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.IdentityDocumentTypeViewModel')">
+	viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.IdentityDocumentTypeVM')">
 	<div zclass="box box-solid box-primary">
 		<div zclass="box-header bg-inoLab">
-			<x:h3 class="box-title">${c:l('model.employees.type')}</x:h3>
+			<x:h3 class="box-title">${c:l('model.identityDocumentType')}</x:h3>
 		</div>
 		<div zclass="box-body">
 			<x:center>
-				<x:h3>${vm.types.size()}</x:h3>
-				<x:p>${c:l('model.employees.type')}</x:p>
+				<x:h3>${vm.docTypes	.size()}</x:h3>
+				<x:p>${c:l('model.identityDocumentType')}</x:p>
 				<x:a class="btn btn-flat btn-default btn-block"
-					onClick="@command('DocTypeList')">
+					onClick="@command('docTypeList')">
 					<x:code>${c:l('view')}</x:code>
 				</x:a>
 			</x:center>
