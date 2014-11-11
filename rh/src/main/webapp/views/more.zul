@@ -12,8 +12,8 @@
         	<x:center>
 	        	<x:h3>${vm.deps.size()}</x:h3>
 	        	<x:p>${c:l('model.departaments')}</x:p>
-	        	<x:a class="btn btn-flat btn-default btn-block" onClick="@command('departamentList')">
-	        		<x:code>${c:l('view')}</x:code>
+	        	<x:a class="btn btn-flat" onClick="@command('departamentList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 	        	</x:a>
         	</x:center>
         </div>
@@ -31,8 +31,8 @@
         	<x:center>
 	        	<x:h3>150</x:h3>
 	        	<x:p>${c:l('model.documentTypes')}</x:p>
-	        	<x:a class="btn btn-flat btn-default btn-block" onClick="@command('documentTypeList')">
-	        		<x:code>${c:l('view')}</x:code>
+	        	<x:a class="btn btn-flat" onClick="@command('documentTypeList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 	        	</x:a>
         	</x:center>
         </div>
@@ -50,8 +50,8 @@
         	<x:center>
 	        	<x:h3>${vm.jobs.size()}</x:h3>
 	        	<x:p>${c:l('model.jobPositions')}</x:p>
-	        	<x:a class="btn btn-flat btn-default btn-block" onClick="@command('jobPositionList')">
-	        		<x:code>${c:l('view')}</x:code>
+	        	<x:a class="btn btn-flat" onClick="@command('jobPositionList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 	        	</x:a>
         	</x:center>
         </div>
@@ -69,8 +69,8 @@
         	<x:center>
 	        	<x:h3>${vm.roles.size()}</x:h3>
 	        	<x:p>${c:l('model.roles')}</x:p>
-	        	<x:a class="btn btn-flat btn-default btn-block" onClick="@command('roleList')">
-	        		<x:code>${c:l('view')}</x:code>
+	        	<x:a class="btn btn-flat" onClick="@command('roleList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 	        	</x:a>
         	</x:center>
         </div>
@@ -88,8 +88,8 @@
         	<x:center>
 	        	<x:h3>${vm.perms.size()}</x:h3>
 	        	<x:p>${c:l('model.permitions')}</x:p>
-	        	<x:a class="btn btn-flat btn-default btn-block" onClick="@command('permissionList')">
-	        		<x:code>${c:l('view')}</x:code>
+	        	<x:a class="btn btn-flat" onClick="@command('permissionList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 	        	</x:a>
         	</x:center>
         </div>
@@ -107,8 +107,8 @@
         	<x:center>
 	        	<x:h3>${vm.adminUsers.size()}</x:h3>
 	        	<x:p>${c:l('model.admin_users')}</x:p>
-	        	<x:a class="btn btn-flat btn-default btn-block" onClick="@command('userList')">
-	        		<x:code>${c:l('view')}</x:code>
+	        	<x:a class="btn btn-flat" onClick="@command('userList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 	        	</x:a>
         	</x:center>
         </div>
@@ -126,9 +126,9 @@
 			<x:center>
 				<x:h3>150</x:h3>
 				<x:p>${c:l('model.documentTypes')}</x:p>
-				<x:a class="btn btn-flat btn-default btn-block"
+				<x:a class="btn btn-flat"
 					onClick="@command('documentTypeList')">
-					<x:code>${c:l('view')}</x:code>
+					<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 				</x:a>
 			</x:center>
 		</div>
@@ -147,9 +147,9 @@
 			<x:center>
 				<x:h3>${vm.roles.size()}</x:h3>
 				<x:p>${c:l('model.roles')}</x:p>
-				<x:a class="btn btn-flat btn-default btn-block"
+				<x:a class="btn btn-flat"
 					onClick="@command('roleList')">
-					<x:code>${c:l('view')}</x:code>
+					<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 				</x:a>
 			</x:center>
 		</div>
@@ -168,9 +168,9 @@
 			<x:center>
 				<x:h3>${vm.emps.size()}</x:h3>
 				<x:p>${c:l('model.employees')}</x:p>
-				<x:a class="btn btn-flat btn-default btn-block"
+				<x:a class="btn btn-flat"
 					onClick="@command('empList')">
-					<x:code>${c:l('view')}</x:code>
+					<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 				</x:a>
 			</x:center>
 		</div>
@@ -189,9 +189,9 @@
 			<x:center>
 				<x:h3>${vm.types.size()}</x:h3>
 				<x:p>${c:l('model.employees.type')}</x:p>
-				<x:a class="btn btn-flat btn-default btn-block"
+				<x:a class="btn btn-flat"
 					onClick="@command('DocTypeList')">
-					<x:code>${c:l('view')}</x:code>
+					<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 				</x:a>
 			</x:center>
 		</div>

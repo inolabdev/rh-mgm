@@ -42,7 +42,7 @@
 	  <div sclass="box box-solid menuAlign">
 		<x:center>
 		    <x:div class="box-header">
-		        <x:span sclass="menuOperations" >Projectos</x:span>
+		        <x:span sclass="menuOperations" ><x:i class="fa fa-sitemap"></x:i> Projectos</x:span>
 		    </x:div>
 		    <x:div sclass="box-body">
 		    	<x:table>

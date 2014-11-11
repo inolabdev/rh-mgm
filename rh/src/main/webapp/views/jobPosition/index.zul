@@ -41,7 +41,7 @@
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:span class="menuOperations" >Cargos</x:span>
+		        <x:span class="menuOperations" ><x:i class="glyphicon glyphicon-user"/> Cargos</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>

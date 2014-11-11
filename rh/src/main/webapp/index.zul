@@ -15,6 +15,10 @@
 <?link href="css/listbox.css" rel="stylesheet" type="text/css" ?>
 <?link href="css/chosenBox.css" rel="stylesheet" type="text/css" ?>
 
+<?link href="css/metro/style.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-responsive.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-default.css" rel="stylesheet" type="text/css" ?>
+
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
@@ -28,25 +32,6 @@
         <x:nav class="navbar navbar-static-top" role="navigation">
           <x:div class="navbar-right">
             <x:ul sclass="nav navbar-nav">
-              <x:li sclass="dropdown notifications-menu">
-                <x:a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <x:i sclass="fa fa-warning"></x:i>
-                  <x:span sclass="label label-warning">${vm.logs.size()}</x:span>
-                </x:a>
-                <x:ul sclass="dropdown-menu">
-                  <x:li class="header">Tens ${vm.logs.size()} notificacoes</x:li>
-                  <x:li>
-                    <x:ul sclass="menu">
-                      <x:li>
-                        <x:a href="#" forEach="${vm.logs}">
-                          <x:i sclass="ion ion-ios7-people info"></x:i> ${each.message}
-                        </x:a>
-                      </x:li>
-                    </x:ul>
-                  </x:li>
-                  <x:li class="footer"><x:a href="#">Ver Todos</x:a></x:li>
-                </x:ul>
-              </x:li>
               <x:li class="dropdown user user-menu">
                 <x:a href="#" sclass="dropdown-toggle" data-toggle="dropdown">
                   <x:i class="glyphicon glyphicon-user"></x:i>
@@ -69,10 +54,10 @@
                   </x:li>
                   <x:li class="user-footer">
                     <div class="pull-left">
-                      <x:a href="#" onClick="@command('userProfile')" class="btn btn-default btn-flat">${c:l('profile')}</x:a>
+                      <x:a href="#" onClick="@command('userProfile')" style="color:#888888" class="btn btn-flat">${c:l('profile')}</x:a>
                     </div>
                     <div class="pull-right">
-                      <x:a href="j_spring_security_logout" class="btn btn-default btn-flat">${c:l('out')}</x:a>
+                      <x:a href="j_spring_security_logout" style="color:#888888" class="btn btn-flat">${c:l('out')}</x:a>
                     </div>
                   </x:li>
                 </x:ul>

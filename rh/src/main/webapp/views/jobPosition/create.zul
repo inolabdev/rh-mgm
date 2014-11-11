@@ -30,7 +30,7 @@
 	  <div sclass="box box-solid menuAlign">
 		<x:center>
 		    <x:div class="box-header">
-		        <x:span sclass="menuOperations" >Cargos</x:span>
+		        <x:span sclass="menuOperations" ><x:i class="glyphicon glyphicon-user"/> Cargos</x:span>
 		    </x:div>
 		    <x:div sclass="box-body">
 		    	<x:table>
