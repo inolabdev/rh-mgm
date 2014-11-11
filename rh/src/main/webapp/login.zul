@@ -17,7 +17,7 @@
 <div sclass="bg-navy body loginFont" width="100%" height="100%">
     <div sclass="bg-navy">
         <x:div sclass="form-box" id="login-box">
-            <x:div sclass="header loginSpecial">HR</x:div>
+            <x:div sclass="header loginSpecial">RH</x:div>
             <x:form id="f" name="f" action="j_spring_security_check" method="POST">
                 <div zclass="body bg-gray">
                 	<div sclass="alert alert-danger alert-dismissable" if="${not empty param.login_error}">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </x:form>
-            <x:div sclass="header loginSpecial">Space</x:div>
+            <x:div sclass="header loginSpecial">InoLab</x:div>
         </x:div>
     </div>
 </div>

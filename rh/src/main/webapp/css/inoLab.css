@@ -133,3 +133,9 @@
 font-weight: 600;
 font-size: 17px !important;
 }
+
+.z-label, .z-radio-content, .z-checkbox-content, .z-loading {
+	font-family: 'MyriadPro-Regular' !important;
+	font-size: 14px !important;
+	font-weight: normal;
+}
