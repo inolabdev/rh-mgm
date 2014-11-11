@@ -2,26 +2,26 @@
 
 <window sclass="mailbox row" apply="org.zkoss.bind.BindComposer"
  		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.TimeSheetVM')">
-	
-	<div sclass="col-md-12">
+   	
+   	<div sclass="col-md-12">
  		<div sclass="box box-solid">
- 			<div sclass="box-body">
+ 			<div sclass="box-body" style="background: #f5f5f5">
  				<x:table>
  					<x:tr>
  						<x:td>
- 							<x:a class="btn btn-info btn-flat btn-sm" onClick="@command('aprooved')">
- 								<x:i class="fa fa-hand-o-up"/> Aprovados
- 							</x:a>
+ 							<a class="btn bg-olive btn-flat" onClick="@command('aprooved')" tooltiptext="Aprovados">
+ 								<x:i class="fa fa-exclamation-triangle"/>
+ 							</a>
  						</x:td>
  						<x:td>
- 							<x:a class="btn btn-info btn-flat btn-sm" onClick="@command('current')">
- 								<x:i class="fa fa-hand-o-up"/> Actual
- 							</x:a>
+ 							<a class="btn bg-olive btn-flat" onClick="@command('current')" tooltiptext="Actual">
+ 								<x:i class="fa fa-eye-slash"/>
+ 							</a>
  						</x:td>
  						<x:td>
- 							<x:a class="btn btn-info btn-flat btn-sm" onClick="@command('reprooved')">
- 								<x:i class="fa fa-thumbs-o-down"/> Reprovados
- 							</x:a>
+ 							<a class="btn bg-olive btn-flat" onClick="@command('reprooved')" tooltiptext="Reprovados">
+ 								<x:i class="fa fa-times-circle"/>
+ 							</a>
  						</x:td>
  					</x:tr>
  				</x:table>

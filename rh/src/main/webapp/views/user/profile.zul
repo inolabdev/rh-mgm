@@ -1,5 +1,27 @@
-<zk>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
 
-<label value="User profile"></label>
+<div sclass="col-md-12" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.UserVM')">
+	<div sclass="box box-primary">
+		<div sclass="box-header">
+			<x:h3 class="box-title">Pagina de Perfil | ${vm.loggedUser.userProfile.fullName()}</x:h3>
+		</div>
+		<div>
+		
+		</div>
+	</div>
+</div>
+
+<div sclass="col-md-12">
+	<div sclass="box box-primary">
+		<div sclass="box-body">
+			<div width="100%">
+				<x:center>
+					<x:img src="img/avatar3.png" alt="User Image"/>
+				</x:center>
+			</div>
+		</div>
+	</div>
+</div>
 
 </zk>

@@ -1,26 +1,29 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk" >
-  <div sclass="mailbox row" apply="org.zkoss.bind.BindComposer"
+  <div sclass="mailbox row" apply="org.zkoss.bind.BindComposer" id="divTimesheet"
  		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.TimeSheetVM')">
  		
  	<div sclass="col-md-12">
  		<div sclass="box box-solid">
- 			<div sclass="box-body">
+ 			<div sclass="box-body" style="background: #f5f5f5">
  				<x:table>
  					<x:tr>
  						<x:td>
- 							<x:a class="btn btn-info btn-flat btn-sm" onClick="@command('pending')">
- 								<x:i class="fa fa-map-marker"/> Pendentes
- 							</x:a>
+ 							<a sclass="btn btn-app" onClick="@command('pending')">
+                                <span sclass="badge bg-yellow">3</span>
+                                <x:i class="fa fa-exclamation-triangle"></x:i> Pendentes
+                            </a>
  						</x:td>
  						<x:td>
- 							<x:a class="btn btn-info btn-flat btn-sm" onClick="@command('aprooved')">
- 								<x:i class="fa fa-hand-o-up"/> Aprovados
- 							</x:a>
+ 							<a sclass="btn btn-app" onClick="@command('aprooved')">
+                                <span sclass="badge bg-green">4</span>
+                                <x:i class="fa fa-thumbs-up"></x:i> Aprovados
+                            </a>
  						</x:td>
  						<x:td>
- 							<x:a class="btn btn-info btn-flat btn-sm" onClick="@command('reprooved')">
- 								<x:i class="fa fa-thumbs-o-down"/> Reprovados
- 							</x:a>
+ 							<a sclass="btn btn-app" onClick="@command('Reprovados')">
+                                <span sclass="badge bg-red">5</span>
+                                <x:i class="fa fa-thumbs-down"></x:i> Reprovados
+                            </a>
  						</x:td>
  					</x:tr>
  				</x:table>
@@ -32,28 +35,39 @@
             <div sclass="box-body">
                 <div sclass="row">
                     <div sclass="col-md-12 col-sm-4">
+                    	<x:h4>
+                    		<zscript>
+                    			import java.util.Calendar;
+                    			Calendar cal = Calendar.getInstance();
+                    			int num = cal.get(Calendar.WEEK_OF_YEAR);
+                    		</zscript>
+                    		<div sclass="box-body" style="background: #367fa9">
+                    			<x:label class="logo">Semana ${num}</x:label>
+                    		</div>
+                    	</x:h4>
 	                    <div sclass="table-responsive" height="300px">  
 	                      <x:table sclass="table table-bordered" id="tblTimesheet">
 	                      	<x:tr>
-								<x:th style="width: 30%">Nome do Projecto</x:th>
-								<x:th style="width: 26%">Actividade</x:th>
-								<x:th style="width: 8%" forEach="${vm.week}">${each}</x:th>
+								<x:th style="width: 28%">Nome do Projecto</x:th>
+								<x:th style="width: 23%">Actividade</x:th>
+								<x:th style="width: 7%" forEach="${vm.week}">${each}</x:th>
 							</x:tr>
 	                      </x:table>
 	                      <separator height="15px" orient="vertical"></separator>
-	                      <div id="result">
-	                      
-	                      
-	                      </div>
-	                      <separator height="15px" orient="vertical"></separator>
 	                      <div sclass="box-footer clearfix">
-	                           <div sclass="pull-right">
-	                           	  <x:button class="btn bg-navy btn-flat margin btn-sm" onClick="@command('saveTimisheet')">Submeter</x:button>
-	                              <x:button class="btn bg-navy btn-flat margin btn-sm" onClick="@command('newLine')">Nova Linha</x:button>
-	                              <x:button class="btn btn-danger btn-flat btn-sm" onClick="@command('removeLine')">Apagar Linhas</x:button><separator orient="vertical"/>
-	                              <x:button class="btn btn-sm btn-flat" onClick="@command('clearFiels')">Limpar</x:button><separator orient="vertical"/>
+	                           <div sclass="pull-right" id="operationsGroup">
+	                           	  <button zclass="btn bg-navy btn-flat margin" onClick="@command('showModal')" autodisable="self" label="Submeter" />
+	                              <button zclass="btn bg-navy btn-flat margin" onClick="@command('newLine')" label="Nova Linha" />
+	                              <button zclass="btn bg-orange btn-flat margin" disabled="true" 
+	                              	onClick="@command('editTimisheet')" label="Modificar"/>
+	                              <button zclass="btn btn-flat" onClick="@command('clearFiels')" label="Limpar"/>
 	                           </div>
 	                      </div>
+	                       <div sclass="box-footer clearfix" id="divStatus">
+                       		<x:p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                               Estado: <x:label id="lblStatus"></x:label>
+                            </x:p>
+	                       </div>
 	                    </div>
                     </div>
                  </div>
