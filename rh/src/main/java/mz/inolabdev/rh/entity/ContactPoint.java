@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "contact_points")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="FROM_CLASS", discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorColumn(name="cp_type", discriminatorType=DiscriminatorType.STRING)
 public class ContactPoint extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
