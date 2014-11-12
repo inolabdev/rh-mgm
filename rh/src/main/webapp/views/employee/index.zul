@@ -5,7 +5,7 @@
 	 <div zclass="col-md-10">
 	   <div zclass="box box-primary">
 		<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
-			<x:table id="departaments" class="table table-bordered table-striped">
+			<x:table id="employees" class="table table-bordered table-striped">
 				<x:thead>
 					<x:tr>
 						<x:th>#</x:th>
@@ -21,7 +21,7 @@
 					<x:tr forEach="${vm.emps}">
 						<x:td>${each.id}</x:td>
 						<x:td>${each.fullName()}</x:td>
-						<x:td>${each.birthday}</x:td>
+						<x:td>${dateFormat.format(each.birthday)}</x:td>
 						<x:td>${each.gender}</x:td>
 						<x:td>${each.jobPosition.type}</x:td>
 						<x:td>${each.department.name}</x:td>
@@ -61,7 +61,7 @@
 	</div>
 <script type="text/javascript">
 	function initDataTable(){
-	  $("#employee").dataTable();
+	  $("#employees").dataTable();
 	}
 </script>
 </window>

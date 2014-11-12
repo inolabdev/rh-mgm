@@ -20,8 +20,8 @@
 			<x:tr forEach="${vm.jobs}">
 				<x:td>${each.id}</x:td>
 				<x:td>${each.type}</x:td>
-				<x:td>${each.created}</x:td>
-				<x:td>${each.updated}</x:td>
+				<x:td>${dateFormat.format(each.created)}</x:td>
+				<x:td>${dateFormat.format(each.updated)}</x:td>
 				<x:td>
 					<a class="btn bg-olive btn-flat btn-sm">
                       <x:i class="fa fa-eye"></x:i>
