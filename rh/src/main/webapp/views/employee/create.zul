@@ -185,7 +185,7 @@
 				<x:center>
 					<x:div class="box-header">
 						<x:span sclass="menuOperations">
-							Funcionarios
+							<x:i class="fa fa-users"/> Funcionarios
 						</x:span>
 					</x:div>
 					<x:div sclass="box-body">
