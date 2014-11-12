@@ -246,6 +246,12 @@
 			<artifactId>atlantic</artifactId>
 			<version>1.0.2</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.zkoss.calendar</groupId>
+		    <artifactId>calendar</artifactId>
+		    <version>2.1.4</version>
+		</dependency>
 
 	</dependencies>
 
