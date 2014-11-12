@@ -75,26 +75,26 @@
            <x:i class="fa fa-angle-left pull-right"></x:i>
          </x:a>
          <x:ul class="treeview-menu">
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Solicitar Licença</x:a>
+           <x:li><x:a href="#" onClick="@command('requestAbsence')">
+             <x:i class="fa fa-mail-forward"></x:i> Solicitar Licença</x:a>
            </x:li>
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Cancelar Licença</x:a>
+           <x:li><x:a href="#" onClick="@command('cancelAbsence')">
+             <x:i class="fa fa-times-circle"></x:i> Cancelar Licença</x:a>
            </x:li>
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Status das Licenças</x:a>
+           <x:li><x:a href="#" onClick="@command('absencesStatus')">
+             <x:i class="fa fa-question-circle"></x:i> Status das Licenças</x:a>
            </x:li>
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Calendário Industrial</x:a>
+           <x:li><x:a href="#" onClick="@command('holidaysCalendar')">
+             <x:i class="fa fa-calendar-o"></x:i> Calendário de Feriados</x:a>
            </x:li>
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Gestão de licenças da equipa</x:a>
+           <x:li><x:a href="#" onClick="@command('absencesStatus')">
+             <x:i class="fa fa-gears"></x:i> Gestão de licenças da equipa</x:a>
            </x:li>
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Detalhes da licença da equipa</x:a>
+           <x:li><x:a href="#" onClick="@command('absencesStatus')">
+             <x:i class="fa fa-group"></x:i> Detalhes da licença da equipa</x:a>
            </x:li>
-           <x:li><x:a href="pages/charts/morris.html">
-             <x:i class="fa fa-angle-double-right"></x:i> Licança Colectiva</x:a>
+           <x:li><x:a href="#" onClick="@command('absencesStatus')">
+             <x:i class="fa fa-exchange"></x:i> Licança Colectiva</x:a>
            </x:li>
          </x:ul>
        </x:li>
