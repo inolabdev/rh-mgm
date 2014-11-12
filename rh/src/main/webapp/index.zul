@@ -20,6 +20,7 @@
 <?link href="css/metro/style-default.css" rel="stylesheet" type="text/css" ?>
 
 <?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/holidays.css" rel="stylesheet" type="text/css" ?>
 
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
 <?page title="${c:l('title')}"?>

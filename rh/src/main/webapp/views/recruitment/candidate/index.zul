@@ -1,7 +1,12 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk"
 	xmlns:w="http://www.zkoss.org/2005/zk/client">
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVm')">
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
+		<zscript>
+			java.util.Date date = new java.util.Date();
+		</zscript>
+
 		<div zclass="col-md-10" id="candidateList">
 			<div zclass="box box-primary">
 				<div zclass="box-body table-responsive"
@@ -26,14 +31,15 @@
 								<x:td>${each.fullName()}</x:td>
 								<x:td>${each.vacancies}</x:td>
 								<x:td>
-									<x:ul>
-										<x:li
-											forEach="${each.cellPhones}">
-											${each.value}
-										</x:li>
-									</x:ul>
+									<label class="label label-default"
+										forEach="${each.cellPhones}">
+										${each.value}
+									</label>
 								</x:td>
-								<x:td>${dateFormat.format(each.created)}</x:td>
+								<x:td>
+									<label
+										value="${c:formatDate(each.created, 'MM/dd/yyyy')}" />
+								</x:td>
 								<x:td>
 									<label class="label label-default"
 										visible="false">
@@ -41,35 +47,44 @@
 									</label>
 								</x:td>
 								<x:td>
-									<x:ul>
-										<div>
-											<label
-												onClick="@command('download', target=self, file_id=mdl)"
-												onMouseOver="@command('preview', target=self, file_id=mdl)"
-												value="${each.fileName}" forEach="${each.documents}">
-												<custom-attributes
-													mdl="${each.id}" />
-											</label>
-											<popup id="iframePoUp">
-												<iframe id="filePreview"
-													width="100%" autohide="true">
-												</iframe>
-											</popup>
-										</div>
-									</x:ul>
+									<label
+										tooltip="aponte o cursor aqui para previsualizar"
+										onMouseOver="@command('preview', target=self, file_id=mdl)"
+										value="resume_${each.id}" forEach="${each.documents}">
+										<custom-attributes
+											mdl="${each.id}" />
+									</label>
+									<separator orient="vertical"
+										width="2px" />
+									<x:i forEach="${each.documents}"
+										onClick="@command('download', target=self, file_id=mdl)"
+										position="end_before" style="cursor:pointer"
+										class="fa fa-save pull-center bg-blue">
+										<custom-attributes
+											mdl="${each.id}" />
+									</x:i>
+									<div id="${vm.divId}"
+										sclass="document_col">
+									</div>
 								</x:td>
 								<x:td>
-								<div zclass="custom_margin">
-									<a class="btn btn-success btn-sm" onClick="@command('ShowCandidate', candId = mdlId)">
-	                      				<x:i class="fa fa-eye"></x:i>
-	                      				<custom-attributes mdlId="${each.id}" />
-	                   				</a>
-	                   					<separator orient="horizontal" width="2px"></separator>
-									<a class="btn btn-warning btn-sm">
-	                      				<x:i class="fa fa-edit"></x:i>
-	                   				</a>
-                   				</div>
-                   				</x:td>
+									<div zclass="custom_margin">
+										<a
+											class="btn btn-success btn-sm"
+											onClick="@command('ShowCandidate', candId = mdlId)">
+											<x:i class="fa fa-eye"></x:i>
+											<custom-attributes
+												mdlId="${each.id}" />
+										</a>
+										<separator orient="horizontal"
+											width="2px">
+										</separator>
+										<a
+											class="btn btn-warning btn-sm">
+											<x:i class="fa fa-edit"></x:i>
+										</a>
+									</div>
+								</x:td>
 							</x:tr>
 						</x:tbody>
 					</x:table>
@@ -81,7 +96,7 @@
 				<x:center>
 					<x:div class="box-header">
 						<x:span sclass="menuOperations">
-							<x:i class="fa fa-male"/> Candidatos
+							Candidatos
 						</x:span>
 					</x:div>
 					<x:div sclass="box-body">

@@ -1,0 +1,36 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbsenceVM')">
+	<div zclass="box box-primary col-md-12">
+		<div zclass="">
+		    <div zclass="box-header">
+		        <x:h3 class="box-title">Calendário de Feriados</x:h3>
+		    </div>
+		    <x:br/>
+		    <zscript>
+		    	import mz.inolabdev.rh.util.*;
+		    	import java.text.SimpleDateFormat;
+		    	Locale ptBr = new Locale("pt", "BR");
+		    	
+				SimpleDateFormat day = new SimpleDateFormat("dd", ptBr);
+				SimpleDateFormat month = new SimpleDateFormat("MMMM - yyyy", ptBr);
+		    	
+		    	ListModelList holidays = new ListModelList(Holidays.values());
+
+		    </zscript>
+		   <div zclass="box-body">
+			   <div sclass="col-md-4" forEach="${holidays}">
+			   	 <div sclass="form-group">
+					<x:p class="calendar">
+						${day.format(each.date)} <x:em>${month.format(each.date)}</x:em>
+					</x:p>
+					<x:p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+		               OBS: <x:label>${each.title}</x:label>
+		            </x:p>
+		          </div>
+	            </div>
+            </div>
+		</div>
+	</div>
+	</window>
+</zk>

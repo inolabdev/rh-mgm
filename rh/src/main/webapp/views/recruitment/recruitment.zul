@@ -1,7 +1,8 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
+<div zclass="col-xs-12 box box box-solid">
+<x:br/>
 <div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVm')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
     <div zclass="box box-solid box-primary">
         <div zclass="box-header bg-inoLab">
         	<x:h3 class="box-title">
@@ -37,5 +38,6 @@
         	</x:center>
         </div>
     </div>
+</div>
 </div>
 </zk>

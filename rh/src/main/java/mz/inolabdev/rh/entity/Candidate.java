@@ -35,6 +35,7 @@ public class Candidate extends Individual {
 	public Candidate() {
 
 		this.setEmails(new HashSet<Email>());
+		this.comment = new Comment();
 	}
 	
 	@OneToOne

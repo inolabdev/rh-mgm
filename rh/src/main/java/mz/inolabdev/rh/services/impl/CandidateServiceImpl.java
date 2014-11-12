@@ -38,18 +38,11 @@ public class CandidateServiceImpl extends GenericServiceImpl<Candidate>
 
 	@Autowired
 	CommentService commentService;
-	
-	
+
 	@Override
 	public Candidate create(Candidate candidate) {
-		
+
 		Candidate cand = specificDao.create(candidate);
-		
-		if (commentService.find(candidate.getComment().getId()) != null)
-			commentService.update(candidate.getComment());
-		else {
-			commentService.create(candidate.getComment());
-		}
 
 		for (Email email : cand.getEmails()) {
 			email.setHolder(cand);
@@ -65,7 +58,9 @@ public class CandidateServiceImpl extends GenericServiceImpl<Candidate>
 			document.setHolder(cand);
 			documentService.update(document);
 		}
-
+		
+		commentService.create(candidate.getComment());
+		
 		return cand;
 	}
 }
