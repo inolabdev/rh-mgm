@@ -2,10 +2,10 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk"
 	xmlns:w="http://www.zkoss.org/2005/zk/client">
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVm')">
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
 		<zscript>
-	java.util.Date date = new java.util.Date();
-</zscript>
+			java.util.Date date = new java.util.Date();
+		</zscript>
 
 		<div zclass="col-md-10" id="candidateList">
 			<div zclass="box box-primary">
