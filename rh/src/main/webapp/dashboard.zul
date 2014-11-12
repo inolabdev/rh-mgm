@@ -1,5 +1,134 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
-<x:h2>Conteudo Inicial Aqui</x:h2>
-
+<div zclass="box-body">
+	<div zclass="box box-solid col-xs-12">
+		<x:br/>
+		<div zclass="" validationMessages="@id('vmsgs')">
+		    <div zclass="col-xs-6">
+        		<x:fieldset class="scheduler-border">
+        			<x:br></x:br>
+		        	<x:legend class="scheduler-border">Menu Rápido</x:legend>
+		        	<div zclass="col-xs-4">
+				        <div zclass="box-body">
+							<div class="form-group">
+							    <div sclass="small-box bg-orange">
+							        <div sclass="inner">
+							            <x:h3>&#160;</x:h3>
+							            <x:p>&#160;</x:p>
+							        </div>
+							        <div sclass="icon">
+							            <x:i class="fa fa-calendar" />
+							        </div>
+							        <a href="#" sclass="small-box-footer" onClick="@command('timesheet')">
+							            Timesheets <x:i class="fa fa-arrow-circle-right"/>
+							        </a>
+							    </div>
+							</div>
+				        </div>
+			        </div>
+			        <div zclass="col-xs-4">
+				        <div zclass="box-body">
+							<div class="form-group">
+								<div sclass="small-box bg-green">
+							        <div sclass="inner">
+							            <x:h3>&#160;</x:h3>
+							            <x:p>&#160;</x:p>
+							        </div>
+							        <div sclass="icon">
+							            <x:i class="fa fa-mail-forward" />
+							        </div>
+							        <a href="#" sclass="small-box-footer" onClick="@command('requestAbsence')">
+							            Nova Licença <x:i class="fa fa-arrow-circle-right"/>
+							        </a>
+							    </div>
+							</div>
+				        </div>
+			        </div>
+			        <div zclass="col-xs-4">
+				        <div zclass="box-body">
+							<div class="form-group">
+							    <div sclass="small-box bg-red">
+							        <div sclass="inner">
+							            <x:h3>&#160;</x:h3>
+							            <x:p>&#160;</x:p>
+							        </div>
+							        <div sclass="icon">
+							            <x:i class="fa fa-question-circle" />
+							        </div>
+							        <a href="#" sclass="small-box-footer" onClick="@command('absencesStatus')">
+							            Status das Lic. <x:i class="fa fa-arrow-circle-right"/>
+							        </a>
+							    </div>
+							</div>
+				        </div>
+			        </div>
+		        </x:fieldset>
+        	</div>
+        	<div zclass="col-xs-6">
+        		<x:fieldset class="scheduler-border">
+        			<x:br></x:br>
+		        	<x:legend class="scheduler-border">Timesheets Pendentes</x:legend>
+		        	<div zclass="box-body">
+						<div sclass="box-body table-responsive no-padding">
+							<x:table class="table table-hover">
+								<x:tbody>
+									<x:tr>
+										<x:td>10, Nov/2014</x:td>
+										<x:td>16, Nov/2014</x:td>
+										<x:td><x:span class="label label-success">Pendente</x:span></x:td>
+									</x:tr>
+									<x:tr>
+										<x:td>10, Nov/2014</x:td>
+										<x:td>16, Nov/2014</x:td>
+										<x:td><x:span class="label label-success">Pendente</x:span></x:td>
+									</x:tr>
+									<x:tr>
+										<x:td>10, Nov/2014</x:td>
+										<x:td>16, Nov/2014</x:td>
+										<x:td><x:span class="label label-success">Pendente</x:span></x:td>
+									</x:tr>
+								</x:tbody>
+							</x:table>
+						</div>
+					</div>
+		        </x:fieldset>
+		    </div>
+		</div>
+		<div zclass="col-xs-12">
+		    <div zclass="col-xs-4">
+        		<x:fieldset class="scheduler-border">
+        			<x:br></x:br>
+		        	<x:legend class="scheduler-border">Formações</x:legend>
+		        	<div sclass="box-body table-responsive no-padding">
+						<x:table class="table table-hover">
+							<x:tbody>
+								<x:tr>
+									<x:td>Formação Quelimane</x:td>
+									<x:td><x:span class="label label-success">Em curso</x:span></x:td>
+								</x:tr>
+								<x:tr>
+									<x:td>Formação Ruby on Rails</x:td>
+									<x:td><x:span class="label label-warning">Pendente</x:span></x:td>
+								</x:tr>
+							</x:tbody>
+						</x:table>
+					</div>
+		        </x:fieldset>
+		    </div>
+		    <div zclass="col-xs-4">
+        		<x:fieldset class="scheduler-border">
+        			<x:br></x:br>
+		        	<x:legend class="scheduler-border">Não sei</x:legend>
+		        </x:fieldset>
+		    </div>
+		    <div zclass="col-xs-4">
+        		<x:fieldset class="scheduler-border">
+        			<x:br></x:br>
+		        	<x:legend class="scheduler-border">Inventa</x:legend>
+		        </x:fieldset>
+		    </div>
+		</div>
+	</div>
+</div>
 </zk>

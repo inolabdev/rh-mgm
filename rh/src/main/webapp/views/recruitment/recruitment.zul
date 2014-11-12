@@ -1,0 +1,43 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<div zclass="col-xs-12 box box box-solid">
+<x:br/>
+<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
+    <div zclass="box box-solid box-primary">
+        <div zclass="box-header bg-inoLab">
+        	<x:h3 class="box-title">
+            	<x:i class="fa fa-male"/> ${c:l('model.candidate')}
+            </x:h3>
+        </div>
+        <div zclass="box-body">
+        	<x:center>
+	        	<x:h3>${vm.candidates.size()}</x:h3>
+	        	<x:p>${c:l('model.candidates')}</x:p>
+	        	<x:a class="btn btn-flat" onClick="@command('candidateList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+	        	</x:a>
+        	</x:center>
+        </div>
+    </div>
+</div>
+<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
+    <div zclass="box box-solid box-primary">
+        <div zclass="box-header bg-inoLab">
+        	<x:h3 class="box-title">
+            	<x:i class="fa fa-briefcase"/> ${c:l('model.vacancy')}
+            </x:h3>
+        </div>
+        <div zclass="box-body">
+        	<x:center>
+	        	<x:h3>150</x:h3>
+	        	<x:p>${c:l('model.vacancies')}</x:p>
+	        	<x:a class="btn btn-flat" onClick="@command('vacancyList')">
+	        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+	        	</x:a>
+        	</x:center>
+        </div>
+    </div>
+</div>
+</div>
+</zk>

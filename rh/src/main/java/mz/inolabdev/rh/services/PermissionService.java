@@ -3,21 +3,23 @@ package mz.inolabdev.rh.services;
 import java.util.List;
 
 import mz.inolabdev.rh.entity.Permission;
-import mz.inolabdev.rh.exception.DuplicatePermissionException;
-import mz.inolabdev.rh.exception.PermissionNotFoundException;
 
 public interface PermissionService {
 
-    public void addPermission(Permission permission) throws DuplicatePermissionException;
+	public Permission create(Permission permission);
 
-    public Permission getPermission(Long id) throws PermissionNotFoundException;
+	public List<Permission> getAll();
+
+	public Permission find(Long id);
+
+	public Permission update(Permission permission);
+
+	public long count();
+
+	public void delete(Object id);
+	
+	public Permission first();
     
-    public Permission getPermission(String permissionname) throws PermissionNotFoundException;
-
-    public void updatePermission(Permission permission) throws PermissionNotFoundException;
-
-    public void deletePermission(Long id) throws PermissionNotFoundException;
-
-    public List<Permission> getPermissions();
+    public Permission last();
 
 }

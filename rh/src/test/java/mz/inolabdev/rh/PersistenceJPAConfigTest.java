@@ -83,6 +83,8 @@ public class PersistenceJPAConfigTest {
 				env.getProperty("hibernate.hbm2ddl.auto"));
 		hibernateProperties.setProperty("hibernate.dialect",
 				env.getProperty("hibernate.dialect"));
+		hibernateProperties.setProperty("hibernate.show_sql",
+				env.getProperty("hibernate.show_sql"));
 		// hibernateProperties.setProperty("hibernate.globally_quoted_identifiers",
 		// "true");
 		return hibernateProperties;

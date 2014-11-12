@@ -1,7 +1,5 @@
 package mz.inolabdev.rh.dao;
 
-
-
 import java.util.List;
 
 import mz.inolabdev.rh.entity.IdEntity;
@@ -20,4 +18,7 @@ public interface GenericDao<T extends IdEntity> {
 
     public T update(T t); 
 
+    public T first();
+    
+    public T last();
 }

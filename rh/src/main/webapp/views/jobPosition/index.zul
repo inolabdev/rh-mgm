@@ -1,6 +1,6 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionVM')">
  
  <div zclass="col-md-10" id="jobPositionList">
  	<div zclass="box box-primary">
@@ -20,14 +20,14 @@
 			<x:tr forEach="${vm.jobs}">
 				<x:td>${each.id}</x:td>
 				<x:td>${each.type}</x:td>
-				<x:td>${each.created}</x:td>
-				<x:td>${each.updated}</x:td>
+				<x:td>${dateFormat.format(each.created)}</x:td>
+				<x:td>${dateFormat.format(each.updated)}</x:td>
 				<x:td>
-					<a class="btn btn-success btn-sm">
+					<a class="btn bg-olive btn-flat btn-sm">
                       <x:i class="fa fa-eye"></x:i>
                    	</a>
                    	<separator orient="vertical" width="7px"></separator>
-					<a class="btn btn-warning btn-sm">
+					<a class="btn bg-orange btn-flat btn-sm">
                       <x:i class="fa fa-edit"></x:i>
                    	</a>
 				</x:td>
@@ -36,34 +36,19 @@
 	</x:table>
 	</div>
 	</div>
-	
-	<script type="text/javascript">
-		function initDataTable(){
-		  $("#cargos").dataTable();
-		}
-	</script>
-</div>
-<div zclass="col-md-10" id="jobPositionNew" visible="false">
-	<include src="views/jobPosition/create.zul"></include>
 </div>
  <div zclass="col-md-2">
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:span class="menuOperations" >Cargos</x:span>
+		        <x:span class="menuOperations" ><x:i class="glyphicon glyphicon-user"/> Cargos</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>
 		    	<x:tr><x:td>
 					<x:a class="btn btn-app" onClick="@command('jobPositionNew')">
-				        <x:i class="fa fa-file-text-o"></x:i>
+				        <x:i class="fa fa-clipboard"></x:i>
 				        Novo
-				    </x:a>
-			    </x:td></x:tr>
-			    <x:tr><x:td>
-					<x:a class="btn btn-app" onClick="@command('jobPositionList')">
-				        <x:i class="fa fa-list"></x:i>
-				        Todos
 				    </x:a>
 			    </x:td></x:tr>
 			    </x:table>
@@ -71,5 +56,10 @@
 	    </x:center>
 	</div>
  </div>
+ <script type="text/javascript">
+	function initDataTable(){
+	  $("#cargos").dataTable();
+	}
+</script>
 </window>
 </zk>

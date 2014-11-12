@@ -4,4 +4,6 @@ import mz.inolabdev.rh.entity.Cellphone;
 
 public interface CellPhoneDao extends GenericDao<Cellphone> {
 
+	Cellphone findByValue(String value);
+
 }

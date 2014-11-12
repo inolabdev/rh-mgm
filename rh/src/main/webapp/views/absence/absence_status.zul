@@ -1,0 +1,58 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbsenceVM')">
+	<div zclass="col-md-12">
+		<div zclass="box box-primary" onCreate='Clients.evalJavaScript("initDataTable()")'>
+		    <div zclass="box-header">
+		        <x:h3 class="box-title">Status das Licenças</x:h3>
+		    </div>
+		    <x:br/>
+			<div sclass="box-body table-responsive no-padding">
+				<x:table class="table table-hover" id="absStatus">
+					<x:thead>
+						<x:tr>
+							<x:th>ID</x:th>
+							<x:th>Utilizador</x:th>
+							<x:th>De</x:th>
+							<x:th>Para</x:th>
+							<x:th>Estado</x:th>
+							<x:th>Motivo</x:th>
+						</x:tr>
+					</x:thead>
+					<x:tbody>
+						<x:tr>
+							<x:td>1</x:td>
+							<x:td>Jorge José Mulungo</x:td>
+							<x:td>16, Nov/2014</x:td>
+							<x:td>26, Nov/2014</x:td>
+							<x:td><x:span class="label label-success">Aprovado</x:span></x:td>
+							<x:td>Formação</x:td>
+						</x:tr>
+						<x:tr>
+							<x:td>7</x:td>
+							<x:td>Eusébio José Maposse</x:td>
+							<x:td>03, Dez/2014</x:td>
+							<x:td>10, Dez/2014</x:td>
+							<x:td><x:span class="label label-warning">Cancelado</x:span></x:td>
+							<x:td>Outras Licenças</x:td>
+						</x:tr>
+						<x:tr>
+							<x:td>7</x:td>
+							<x:td>Admilson Benilde Francisco Cossa</x:td>
+							<x:td>03, Dez/2014</x:td>
+							<x:td>10, Dez/2014</x:td>
+							<x:td><x:span class="label label-danger">Recusada</x:span></x:td>
+							<x:td>Outras Licenças</x:td>
+						</x:tr>
+					</x:tbody>
+				</x:table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function initDataTable(){
+		  $("#absStatus").dataTable();
+		}
+	</script>
+	</window>
+</zk>

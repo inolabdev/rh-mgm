@@ -1,0 +1,45 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk" >
+
+<window sclass="mailbox row" apply="org.zkoss.bind.BindComposer"
+ 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.TimeSheetVM')">
+
+   	<div sclass="col-md-12">
+ 		<div sclass="box box-solid">
+ 			<div sclass="box-body" style="background: #f5f5f5">
+ 				<x:table>
+ 					<x:tr>
+ 						<x:td>
+ 							<a class="btn bg-olive btn-flat" onClick="@command('aprooved')" tooltiptext="Pendentes">
+ 								<x:i class="fa fa-exclamation-triangle"/>
+ 							</a>
+ 						</x:td>
+ 						<x:td>
+ 							<a class="btn bg-olive btn-flat" onClick="@command('current')" tooltiptext="Actual">
+ 								<x:i class="fa fa-eye-slash"/>
+ 							</a>
+ 						</x:td>
+ 						<x:td>
+ 							<a class="btn bg-olive btn-flat" onClick="@command('aprooved')" tooltiptext="Aprovados">
+ 								<x:i class="fa fa-times-circle"/>
+ 							</a>
+ 						</x:td>
+ 					</x:tr>
+ 				</x:table>
+	        </div>
+        </div>
+   	</div>
+	<div sclass="col-md-12">
+		 <div class="box box-primary">
+	 		<div sclass="box box-solid">
+	 			<div sclass="box-header">
+	 				 <x:h3 class="box-title">Relatórios de Timesheets reprovados</x:h3>
+	 			</div>
+	 			<div sclass="box-body">
+	 			
+	 			</div>
+	 		</div>
+ 		</div>
+ 	</div>
+</window>
+
+</zk>

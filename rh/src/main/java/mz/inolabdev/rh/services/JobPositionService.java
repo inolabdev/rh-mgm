@@ -17,4 +17,8 @@ public interface JobPositionService {
     public long count();
     
     public void delete(Object id);
+    
+	public JobPosition first();
+    
+    public JobPosition last();
 }

@@ -1,56 +1,203 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-
-<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentViewModel')">
-    <div zclass="box box-solid box-primary">
-        <div zclass="box-header">
-        	<x:center>
-            	<x:h3 class="box-title">${c:l('model.departament')}</x:h3>
-            </x:center>
-        </div>
-        <div zclass="box-body">
-        	<x:center>
-	        	<x:h3>${vm.deps.size()}</x:h3>
-	        	<x:p>${c:l('model.departaments')}</x:p>
-	        	<x:a class="btn btn-default btn-block" onClick="@command('departamentList')">
-	        		<x:code>${c:l('view')}</x:code>
-	        	</x:a>
-        	</x:center>
-        </div>
-    </div>
-</div>
-<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
-    <div zclass="box box-solid box-primary">
-        <div zclass="box-header">
-            <x:h3 class="box-title">${c:l('model.documentType')}</x:h3>
-        </div>
-        <div zclass="box-body">
-        	<x:center>
-	        	<x:h3>150</x:h3>
-	        	<x:p>${c:l('model.documentTypes')}</x:p>
-	        	<x:a class="btn btn-default btn-block" onClick="@command('documentTypeList')">
-	        		<x:code>${c:l('view')}</x:code>
-	        	</x:a>
-        	</x:center>
-        </div>
-    </div>
-</div>
-<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
- viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionViewModel')">
-    <div zclass="box box-solid box-primary">
-        <div zclass="box-header">
-            <x:h3 class="box-title">${c:l('model.jobPosition')}</x:h3>
-        </div>
-        <div zclass="box-body">
-        	<x:center>
-	        	<x:h3>${vm.jobs.size()}</x:h3>
-	        	<x:p>${c:l('model.jobPositions')}</x:p>
-	        	<x:a class="btn btn-default btn-block" onClick="@command('jobPositionList')">
-	        		<x:code>${c:l('view')}</x:code>
-	        	</x:a>
-        	</x:center>
-        </div>
-    </div>
+<div zclass="col-xs-12 box box box-solid">
+<x:br/>
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DepartamentVM')">
+	    <div zclass="box box-solid box-primary">
+	        <div zclass="box-header bg-inoLab">
+	        	<x:h3 class="box-title">
+	        		<x:i class="fa fa-th-large"/> ${c:l('model.departament')}
+	        	</x:h3>
+	        </div>
+	        <div zclass="box-body">
+	        	<x:center>
+		        	<x:h3>${vm.deps.size()}</x:h3>
+		        	<x:p>${c:l('model.departaments')}</x:p>
+		        	<x:a class="btn btn-flat" onClick="@command('departamentList')">
+		        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+		        	</x:a>
+	        	</x:center>
+	        </div>
+	    </div>
+	</div>
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
+	    <div zclass="box box-solid box-primary">
+	        <div zclass="box-header bg-inoLab">
+	            <x:h3 class="box-title">
+	            	<x:i class="fa fa-book"/> ${c:l('model.documentType')}
+	            </x:h3>
+	        </div>
+	        <div zclass="box-body">
+	        	<x:center>
+		        	<x:h3>150</x:h3>
+		        	<x:p>${c:l('model.documentTypes')}</x:p>
+		        	<x:a class="btn btn-flat" onClick="@command('documentTypeList')">
+		        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+		        	</x:a>
+	        	</x:center>
+	        </div>
+	    </div>
+	</div>
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.JobPositionVM')">
+	    <div zclass="box box-solid box-primary">
+	        <div zclass="box-header bg-inoLab">
+	        	<x:h3 class="box-title">
+	            	<x:i class="glyphicon glyphicon-user"/> ${c:l('model.jobPosition')}
+	            </x:h3>
+	        </div>
+	        <div zclass="box-body">
+	        	<x:center>
+		        	<x:h3>${vm.jobs.size()}</x:h3>
+		        	<x:p>${c:l('model.jobPositions')}</x:p>
+		        	<x:a class="btn btn-flat" onClick="@command('jobPositionList')">
+		        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+		        	</x:a>
+	        	</x:center>
+	        </div>
+	    </div>
+	</div>
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
+	    <div zclass="box box-solid box-primary">
+	        <div zclass="box-header bg-inoLab">
+	        	<x:h3 class="box-title">
+	            	<x:i class="fa fa-lock"/> ${c:l('model.role')}
+	            </x:h3>
+	        </div>
+	        <div zclass="box-body">
+	        	<x:center>
+		        	<x:h3>${vm.roles.size()}</x:h3>
+		        	<x:p>${c:l('model.roles')}</x:p>
+		        	<x:a class="btn btn-flat" onClick="@command('roleList')">
+		        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+		        	</x:a>
+	        	</x:center>
+	        </div>
+	    </div>
+	</div>
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.PermissionVM')">
+	    <div zclass="box box-solid box-primary">
+	        <div zclass="box-header bg-inoLab">
+	        	<x:h3 class="box-title">
+	            	<x:i class="glyphicon glyphicon-check"/> ${c:l('model.permition')}
+	            </x:h3>
+	        </div>
+	        <div zclass="box-body">
+	        	<x:center>
+		        	<x:h3>${vm.perms.size()}</x:h3>
+		        	<x:p>${c:l('model.permitions')}</x:p>
+		        	<x:a class="btn btn-flat" onClick="@command('permissionList')">
+		        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+		        	</x:a>
+	        	</x:center>
+	        </div>
+	    </div>
+	</div>
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.UserVM')">
+	    <div zclass="box box-solid box-primary">
+	        <div zclass="box-header bg-inoLab">
+	        	<x:h3 class="box-title">
+	            	<x:i class="fa fa-user"/> ${c:l('model.admin_user')}
+	            </x:h3>
+	        </div>
+	        <div zclass="box-body">
+	        	<x:center>
+		        	<x:h3>${vm.adminUsers.size()}</x:h3>
+		        	<x:p>${c:l('model.admin_users')}</x:p>
+		        	<x:a class="btn btn-flat" onClick="@command('userList')">
+		        		<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+		        	</x:a>
+	        	</x:center>
+	        </div>
+	    </div>
+	</div>
+	
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
+		<div zclass="box box-solid box-primary">
+			<div zclass="box-header bg-inoLab">
+				<x:h3 class="box-title">
+	            	<x:i class="fa fa-qrcode"/> ${c:l('model.documentType')}
+	            </x:h3>
+			</div>
+			<div zclass="box-body">
+				<x:center>
+					<x:h3>150</x:h3>
+					<x:p>${c:l('model.documentTypes')}</x:p>
+					<x:a class="btn btn-flat"
+						onClick="@command('documentTypeList')">
+						<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+					</x:a>
+				</x:center>
+			</div>
+		</div>
+	</div>
+	
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.RoleVM')">
+		<div zclass="box box-solid box-primary">
+			<div zclass="box-header bg-inoLab">
+				<x:h3 class="box-title">
+	            	<x:i class="fa fa-lock"/> ${c:l('model.role')}
+	            </x:h3>
+			</div>
+			<div zclass="box-body">
+				<x:center>
+					<x:h3>${vm.roles.size()}</x:h3>
+					<x:p>${c:l('model.roles')}</x:p>
+					<x:a class="btn btn-flat"
+						onClick="@command('roleList')">
+						<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+					</x:a>
+				</x:center>
+			</div>
+		</div>
+	</div>
+	
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.EmployeeVM')">
+		<div zclass="box box-solid box-primary">
+			<div zclass="box-header bg-inoLab">
+				<x:h3 class="box-title">
+	            	<x:i class="fa fa-users"/> ${c:l('model.employees')}
+	            </x:h3>
+			</div>
+			<div zclass="box-body">
+				<x:center>
+					<x:h3>${vm.emps.size()}</x:h3>
+					<x:p>${c:l('model.employees')}</x:p>
+					<x:a class="btn btn-flat"
+						onClick="@command('empList')">
+						<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+					</x:a>
+				</x:center>
+			</div>
+		</div>
+	</div>
+		
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.IdentityDocumentTypeVM')">
+		<div zclass="box box-solid box-primary">
+			<div zclass="box-header bg-inoLab">
+				<x:h3 class="box-title">
+	            	<x:i class="fa fa-female"/> ${c:l('model.employees.type')}
+	            </x:h3>
+			</div>
+			<div zclass="box-body">
+				<x:center>
+					<x:h3>${vm.docTypes.size()}</x:h3>
+					<x:p>${c:l('model.identityDocumentType')}</x:p>
+					<x:a class="btn btn-flat"
+						onClick="@command('docTypeList')">
+						<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+					</x:a>
+				</x:center>
+			</div>
+		</div>
+	</div>
 </div>
 </zk>

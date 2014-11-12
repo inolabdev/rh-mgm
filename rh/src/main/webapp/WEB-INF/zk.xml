@@ -11,7 +11,8 @@
 	<!-- Configure the Hibernate "Open Session In View" Session Lifecycle -->
 	<listener>
 		<description>ThreadLocal Variables Synchronizer</description>
-		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener</listener-class>
+		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener
+		</listener-class>
 	</listener>
 
 	<preference>
@@ -25,8 +26,27 @@
 	</preference>
 
 	<error-page>
-		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type>
+		<exception-type>org.springframework.security.access.AccessDeniedException
+		</exception-type>
 		<location>/WEB-INF/errors/handleAccessDenied.zul</location>
 	</error-page>
+
+	<library-property>
+		<name>org.zkoss.theme.preferred</name>
+		<value>atlantic</value>
+	</library-property>
+
+	<desktop-config>
+		<disable-theme-uri>~./zul/css/zk.wcs</disable-theme-uri>
+	</desktop-config>
+
+	<library-property>
+		<name>org.zkoss.util.label.web.charset</name>
+		<value>ISO-8859-1</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.util.label.classpath.charset</name>
+		<value>ISO-8859-1</value>
+	</library-property>
 
 </zk>

@@ -1,0 +1,69 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.ProjectVM')">
+ 
+ <div zclass="col-md-10" id="projectList">
+ 	<div zclass="box box-primary">
+	<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+	<x:table id="projectos" class="table table-bordered table-striped">
+		<x:thead>
+			<x:tr>
+				<x:th>#</x:th>
+				<x:th>Projecto</x:th>
+				<x:th>Colaboradores</x:th>
+				<x:th>Data de Criação</x:th>
+				<x:th>Data de Actualização</x:th>
+				<x:th></x:th>
+			</x:tr>
+		</x:thead>
+		<x:tbody>
+			<x:tr forEach="${vm.projects}">
+				<x:td>${each.id}</x:td>
+				<x:td>${each.name}</x:td>
+				<x:td>
+					<x:ul><x:li forEach="${each.customers}">${each}</x:li></x:ul>
+				</x:td>
+				<x:td>${dateFormat.format(each.created)}</x:td>
+				<x:td>${dateFormat.format(each.updated)}</x:td>
+				<x:td>
+					<a class="btn btn-flat bg-olive btn-sm" onClick="@command('projectShow', projId = mdlId)">
+                      <x:i class="fa fa-eye"></x:i>
+                      <custom-attributes mdlId="${each.id}" />
+                   	</a>
+                   	<separator orient="vertical" width="7px"></separator>
+					<a class="btn btn-flat bg-orange btn-sm">
+                      <x:i class="fa fa-edit"></x:i>
+                   	</a>
+				</x:td>
+			</x:tr>
+		</x:tbody>
+	</x:table>
+	</div>
+	</div>
+</div>
+<div sclass="col-md-2">
+  <div sclass="box box-solid menuAlign">
+	<x:center>
+	    <x:div class="box-header">
+	        <x:span sclass="menuOperations" ><x:i class="fa fa-sitemap"></x:i> Projectos</x:span>
+	    </x:div>
+	    <x:div sclass="box-body">
+	    	<x:table>
+		    <x:tr><x:td>
+				<x:a class="btn btn-app" onClick="@command('projectNew')">
+			        <x:i class="fa fa-clipboard"></x:i>
+			        Novo
+			    </x:a>
+		    </x:td></x:tr>
+		    </x:table>
+	    </x:div>
+    </x:center>
+  </div>
+</div>
+<script type="text/javascript">
+	function initDataTable(){
+	  $("#projectos").dataTable();
+	}
+</script>
+</window>
+</zk>

@@ -1,0 +1,23 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window>
+	<div zclass="col-md-8">
+		<div form="@id('fx') @load(vm.activity) @save(vm.activity, before='saveActivity')">
+	       <div zclass="box-body">
+				<div class="form-group">
+				    <x:label>Nome *</x:label>
+				    <textbox zclass="form-control" placeholder="Actividade" value="@bind(fx.name)" id="txbName"
+				    	constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+				</div>
+	        </div>
+	        <div zclass="box-footer">
+	           <button zclass="btn btn-flat btn-primary btn-sm" label="Gravar" 
+	           		onClick="@command('saveActivity', action=0, project=mdl, list = lbx)">
+	           	<custom-attributes mdl="${pro}" />
+	           </button>
+	           <separator orient="vertical"/>
+               <button zclass="btn btn-flat btn-sm" onClick="cancel()" label="Cancelar" />
+	        </div>
+	    </div>
+	</div>
+</window>
+</zk>

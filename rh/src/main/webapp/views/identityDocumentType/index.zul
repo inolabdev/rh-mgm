@@ -1,0 +1,64 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.IdentityDocumentTypeVM')">
+ 
+	 <div zclass="col-md-10">
+	   <div zclass="box box-primary">
+		<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+			<x:table id="identityDocumentType" class="table table-bordered table-striped">
+				<x:thead>
+					<x:tr>
+						<x:th>#</x:th>
+						<x:th>Name</x:th>
+						<x:th>Data de Criação</x:th>
+						<x:th>Data de Actualização</x:th>
+						<x:th></x:th>
+					</x:tr>
+				</x:thead>
+				<x:tbody>
+					<x:tr forEach="${vm.docTypes}">
+						<x:td>${each.id}</x:td>
+						<x:td>${each.name}</x:td>
+						<x:td>${dateFormat.format(each.created)}</x:td>
+						<x:td>${dateFormat.format(each.updated)}</x:td>
+						<x:td>
+							<a class="btn bg-olive btn-flat btn-sm">
+		                      <x:i class="fa fa-eye"></x:i>
+		                   	</a>
+		                   	<separator orient="vertical" width="7px"></separator>
+							<a class="btn bg-orange btn-flat btn-sm">
+		                      <x:i class="fa fa-edit"></x:i>
+		                   	</a>
+						</x:td>
+					</x:tr>
+				</x:tbody>
+			</x:table>
+		</div>
+	</div>
+	</div>
+	<div sclass="col-md-2">
+	  <div sclass="box box-solid menuAlign">
+		<x:center>
+		    <x:div class="box-header">
+		        <x:span sclass="menuOperations" >Documentos de Identificacao</x:span>
+		    </x:div>
+		    <x:div sclass="box-body">
+		    	<x:table>
+			    <x:tr><x:td>
+					<x:a class="btn btn-app" onClick="@command('docTypeNew')">
+				        <x:i class="fa fa-clipboard"></x:i>
+				        Novo
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </x:div>
+	    </x:center>
+	  </div>
+	</div>
+<script type="text/javascript">
+	function initDataTable(){
+	  $("#identityDocumentType").dataTable();
+	}
+</script>
+</window>
+</zk>

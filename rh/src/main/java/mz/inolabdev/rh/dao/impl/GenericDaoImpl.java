@@ -63,5 +63,19 @@ public abstract class GenericDaoImpl<T extends IdEntity> implements
 		Query query = em.createQuery("from " + type.getName());
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public T last() {
+		Query query = em.createQuery("from " + type.getName()+" order by created desc");
+		return (T) query.getResultList().get(0);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public T first() {
+		Query query = em.createQuery("from " + type.getName()+" order by created asc");
+		return (T) query.getResultList().get(0);
+	}
 
 }

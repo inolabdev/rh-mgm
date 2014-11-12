@@ -1,22 +1,20 @@
 package mz.inolabdev.rh.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.google.common.base.Objects;
@@ -26,36 +24,23 @@ import com.google.common.base.Objects;
 public class Role extends IdEntity implements Serializable, GrantedAuthority  {
 
     private static final long serialVersionUID = 6874667425302308430L;
-    static Logger logger = LoggerFactory.getLogger(Role.class);
-    /*
-        CREATE TABLE `ROLES` (
-            `ID` INT(6) NOT NULL,
-            `ROLENAME`  VARCHAR(50) NOT NULL,
-            PRIMARY KEY (`ID`)
-        )
-        ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-     */
 
-    @NotNull(message = "{error.roles.role.null}")
-    @NotEmpty(message = "{error.roles.role.empty}")
-    @Size(max = 50, message = "{error.roles.role.max}")
-    @Column(name = "rolename", length = 50)
+    @NotNull
+    @NotEmpty
+    @Column(name = "rolename")
     private String rolename;
     
-    //@OneToMany(cascade = CascadeType.ALL)  
-    @OneToMany(fetch = FetchType.EAGER)  
-    @JoinTable(name = "user_roles",   
-        joinColumns        = {@JoinColumn(name = "role_id", referencedColumnName = "id")},  
-        inverseJoinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")}  
-    )  
-    private Set<User> userRoles;
-    
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "role_permissions",
-        joinColumns        = { @JoinColumn(name = "role_id",       referencedColumnName = "id") },
-        inverseJoinColumns = { @JoinColumn(name = "permission_id", referencedColumnName = "id") }
-    )    
+    @ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "role_permissions", joinColumns = { 
+			@JoinColumn(name = "role_id", nullable = false, updatable = false) }, 
+			inverseJoinColumns = { @JoinColumn(name = "permission_id", 
+					nullable = false, updatable = false) })
     private Set<Permission> permissions;
+    
+    public Role() {
+		
+    	permissions = new HashSet<Permission>();
+	}
 
     public String getRolename() {
         return rolename;
@@ -63,14 +48,6 @@ public class Role extends IdEntity implements Serializable, GrantedAuthority  {
 
     public void setRolename(String rolename) {
         this.rolename = rolename;
-    }
-
-    public Set<User> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(Set<User> userRoles) {
-        this.userRoles = userRoles;
     }
 
     public Set<Permission> getPermissions() { 
@@ -81,11 +58,14 @@ public class Role extends IdEntity implements Serializable, GrantedAuthority  {
         this.permissions = permissions;
     }
     
+    @Transient
+	public void addPermition(Permission per){
+    	this.permissions.add(per);
+    }
+    
     @Override
     public String toString() {
-        return String.format("%s(id=%d, rolename='%s')", 
-                this.getClass().getSimpleName(), 
-                this.getId(), this.getRolename());
+        return rolename;
     }
 
     @Override
