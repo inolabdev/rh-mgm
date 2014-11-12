@@ -1,6 +1,6 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVm')">
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
 		<div zclass="col-md-10">
 			<div zclass="box box-primary">
 				<div zclass="box-header">
@@ -18,29 +18,49 @@
 							<x:tr>
 								<x:th>Email:</x:th>
 								<x:td>
-									<label class= "" forEach="${arg.candidate.emails}">${each.value}</label>
+									<label class=""
+										forEach="${arg.candidate.emails}">
+										${each.value}
+									</label>
 								</x:td>
 							</x:tr>
 							<x:tr>
 								<x:th>CellPhone:</x:th>
 								<x:td>
-									<label forEach="${arg.candidate.cellPhones}">${each.value}</label>
+									<label
+										forEach="${arg.candidate.cellPhones}">
+										${each.value}
+									</label>
 								</x:td>
 							</x:tr>
 							<x:tr>
 								<x:th>Vacancy:</x:th>
 								<x:td>
-									<label forEach="${arg.candidate.vacancies}">${each.name}</label>
+									<label
+										forEach="${arg.candidate.vacancies}">
+										${each.name}
+									</label>
 								</x:td>
 							</x:tr>
 							<x:tr>
 								<x:th>Status</x:th>
-								<x:td>${arg.candidate.status}</x:td>
+								<x:td>
+									${arg.candidate.status}
+								</x:td>
 							</x:tr>
 							<x:tr>
 								<x:th>Resume</x:th>
 								<x:td>
-									<label forEach="${arg.candidate.documents}">${each.fileName}</label>
+									<label
+										forEach="${arg.candidate.documents}">
+										${each.fileName}
+									</label>
+									<separator orient="vertical"
+										width="2px" />
+									<x:a class="btn  btn btn-primary btn-sm">
+										<x:i class="fa-file-o"></x:i>
+										Abrir
+									</x:a>		
 								</x:td>
 							</x:tr>
 							<x:tr>
@@ -51,20 +71,13 @@
 					</x:table>
 				</div>
 			</div>
-			<div sclass="col-md-2">
-				<x:a class="btn btn-app"
-					onClick="@command('newCandidate')">
-					<x:i class="fa fa-clipboard"></x:i>
-					Edit
-				</x:a>
-				<x:a class="btn btn-app"
-					onClick="@command('newCandidate')">
-					<x:i class="fa fa-clipboard"></x:i>
-					Alter State
-				</x:a>
+			<div class="pull-left">
+				<button label="Edit" zclass="btn btn-primary btn-flat"/>
+				<button label="delete" zclass="btn btn-danger btn-flat"/>
+				<button label="select Action" zclass="btn btn-olive btn-flat"/>
 			</div>
 		</div>
-		
+
 		<div sclass="col-md-2">
 			<div sclass="box box-solid menuAlign">
 				<x:center>
@@ -100,7 +113,8 @@
 		</div>
 	</window>
 	<zscript>
-	import mz.inolabdev.rh.entity.Candidate;;
-	Candidate cand = (Candidate) Executions.getCurrent().getArg().get("project");
-	</zscript>
+	import mz.inolabdev.rh.entity.Candidate;
+	Candidate cand = (Candidate) Executions.getCurrent().getArg()
+			.get("project");
+</zscript>
 </zk>
