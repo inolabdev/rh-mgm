@@ -23,8 +23,8 @@
 				<x:td>
 					<x:ul><x:li forEach="${each.customers}">${each}</x:li></x:ul>
 				</x:td>
-				<x:td>${each.created}</x:td>
-				<x:td>${each.updated}</x:td>
+				<x:td>${dateFormat.format(each.created)}</x:td>
+				<x:td>${dateFormat.format(each.updated)}</x:td>
 				<x:td>
 					<a class="btn btn-flat bg-olive btn-sm" onClick="@command('projectShow', projId = mdlId)">
                       <x:i class="fa fa-eye"></x:i>

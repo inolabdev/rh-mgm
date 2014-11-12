@@ -78,7 +78,7 @@
 }
 
 .z-select {
-	font-family: times new roman;
+	font-family: 'MyriadPro-Regular' !important;
 	font-size: 14px;
 }
 
@@ -129,13 +129,70 @@
 	font-size: 14px;
 }
 
-.timeline > li > .timeline-item > .timeline-header > a {
-font-weight: 600;
-font-size: 17px !important;
+.timeline>li>.timeline-item>.timeline-header>a {
+	font-weight: 600;
+	font-size: 17px !important;
 }
 
 .z-label, .z-radio-content, .z-checkbox-content, .z-loading {
 	font-family: 'MyriadPro-Regular' !important;
 	font-size: 14px !important;
 	font-weight: normal;
+}
+
+.z-combobox-input, .z-bandbox-input, .z-datebox-input, .z-timebox-input,
+	.z-spinner-input, .z-doublespinner-input {
+	font-family: 'MyriadPro-Regular' !important;
+	font-size: 14px !important;
+	font-weight: normal;
+	font-style: normal;
+	color: #000;
+	height: 34px;
+	border: 1px solid #cfcfcf;
+	border-right: 0;
+	-webkit-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+	margin: 0;
+	padding: 4px 5px;
+	line-height: 14px;
+	background: #fff;
+	font-size: 14px !important;
+}
+
+.z-combobox-button, .z-bandbox-button, .z-datebox-button,
+	.z-timebox-button, .z-spinner-button, .z-doublespinner-button {
+	font-family: 'MyriadPro-Regular' !important;
+	font-size: 14px !important;
+	color: #636363;
+	display: inline-block;
+	min-width: 24px;
+	height: 34px;
+	border: 1px solid #cfcfcf;
+	-webkit-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+	padding: 4px;
+	line-height: 14px;
+	background: #fff;
+	text-align: left;
+	vertical-align: middle;
+	overflow: hidden;
+	cursor: pointer;
+	font-size: 14px !important;
+}
+
+.z-calendar-cell {
+	font-family: 'MyriadPro-Regular' !important; font-size : 14px !important;
+	color: #636363;
+	min-width: 24px;
+	min-height: 24px;
+	padding: 3px 0;
+	line-height: 17px;
+	background: #fff;
+	text-align: center;
+	cursor: pointer;
+	font-size: 14px !important;
+}
+
+.z-datebox-button {
+	
 }

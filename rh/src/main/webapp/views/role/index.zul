@@ -19,8 +19,8 @@
 			<x:tr forEach="${vm.roles}">
 				<x:td>${each.id}</x:td>
 				<x:td>${each.rolename}</x:td>
-				<x:td>${each.created}</x:td>
-				<x:td>${each.updated}</x:td>
+				<x:td>${dateFormat.format(each.created)}</x:td>
+				<x:td>${dateFormat.format(each.updated)}</x:td>
 				<x:td>
 					<a class="btn bg-olive btn-sm btn-flat">
                       <x:i class="fa fa-eye"></x:i>

@@ -13,16 +13,14 @@
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.EmployeeVM')">
 		<div zclass="col-md-10">
-			<div zclass="box box-primary"
-				validationMessages="@id('vmsgs')">
+			<div zclass="box box-primary" validationMessages="@id('vmsgs')">
 				<div zclass="box-header">
 					<x:h3 class="box-title">Novo Funcionario</x:h3>
 				</div>
-				<div
-					form="@id('fx') @load(vm.emp) @save(vm.emp, before='saveEmp')">
-					<div sclass="col-md-6">
-						<div zclass="box-body">
-							<div class="form-group">
+				<div form="@id('fx') @load(vm.emp) @save(vm.emp, before='saveEmp')">
+					<div zclass="box-body">					
+						<div sclass="col-md-6">						
+							<div sclass="form-group">
 								<x:label>
 									${c:l('model.employees.name')}
 								</x:label>
@@ -30,7 +28,7 @@
 									placeholder="Nome" value="@bind(fx.name)"
 									constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
 							</div>
-							<div class="form-group">
+							<div sclass="form-group">
 								<x:label>
 									${c:l('model.employees.lastName')}
 								</x:label>
@@ -38,34 +36,26 @@
 									placeholder="Apelido" value="@bind(fx.lastName)"
 									constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
 							</div>
-							<div class="form-group">
+							<div sclass="form-group">
 								<x:label>
 									${c:l('model.employees.middleName')}
 								</x:label>
 								<textbox zclass="form-control"
 									placeholder="Nome do Meio" value="@bind(fx.middleName)"
 									constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+							</div>							
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.birthday')}
+								</x:label>
+								<datebox value="@bind(fx.birthday)" width="98%" cols="12" placeholder="Aniversario" />
 							</div>
-
-						</div>
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.birthday')}
-							</x:label>
-							<div />
-							<div class="form-group">
-								<datebox value="@bind(fx.birthday)"
-									width="98%" cols="12" placeholder="Aniversario" />
-							</div>
-						</div>
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.type')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.type')}
+								</x:label>
 								<listbox mold="select"
-									sclass="form-control" model="@load(vm.docTypes)"
+									sclass="form-control inoLabFont" model="@load(vm.docTypes)"
 									selectedItem="@bind(fx.type)" tooltiptext="Documentos">
 									<template name="model"
 										var="docType">
@@ -75,149 +65,99 @@
 									</template>
 								</listbox>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.idNumber')}
-							</x:label>
-							<div />
-							<div class="form-group">
-								<textbox zclass="form-control"
-									placeholder="Numero de Identificacão" />
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.idNumber')}
+								</x:label>
+								<textbox zclass="form-control" placeholder="Numero de Identificacão" />
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.gender')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.gender')}
+								</x:label>
 								<listbox mold="select"
-									sclass="form-control" model="@load(genders)"
+									sclass="form-control inoLabFont" model="@load(genders)"
 									selectedItem="@bind(fx.gender)" tooltiptext="sexo">
 									<template name="model" var="s">
 										<listitem label="${s.value}"></listitem>
 									</template>
 								</listbox>
 							</div>
+
 						</div>
-
-						<div zclass="box-footer">
-							<x:button type="submit"
-								class="btn btn-primary btn-flat"
-								onClick="@command('saveEmp', action=0)">
-								Gravar
-								<x:i
-									class="glyphicon glyphicon-floppy-disk">
-								</x:i>
-							</x:button>
-						</div>
-					</div>
-					<div sclass="col-md-6">
-						<div class="form-group">
-
-							<x:label>
-								${c:l('model.employees.nationality')}
-							</x:label>
-							<space></space>
-							<space></space>
-							<div class="form-group">
-
+						<div sclass="col-md-6">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.nationality')}
+								</x:label>
 								<listbox mold="select"
-									model="${countries}" sclass="form-control"
+									model="${countries}" sclass="form-control inoLabFont"
 									selectedItem="@bind(fx.nationality)" tooltiptext="Nacionalidade">
 									<template name="model">
 										<listitem label="${each.name}" />
 									</template>
 								</listbox>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.academicLevel')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.academicLevel')}
+								</x:label>
 								<listbox mold="select"
-									model="${educationLevels}" sclass="form-control"
+									model="${educationLevels}" sclass="form-control inoLabFont"
 									selectedItem="@bind(fx.academicLevel)" tooltiptext="Nivel Academico">
 									<template name="model">
 										<listitem label="${each.value}" />
 									</template>
 								</listbox>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.maritalStatus')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.maritalStatus')}
+								</x:label>
 								<listbox mold="select"
-									sclass="form-control" model="@load(status)"
+									sclass="form-control inoLabFont" model="@load(status)"
 									selectedItem="@bind(fx.maritalStatus)" tooltiptext="Estado Marital">
 									<template name="model" var="s">
 										<listitem label="${s.value}"></listitem>
 									</template>
 								</listbox>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.jobPosition')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							</div>	
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.jobPosition')}
+								</x:label>
 								<listbox mold="select"
-									sclass="form-control" model="@load(vm.jobs)"
+									sclass="form-control inoLabFont" model="@load(vm.jobs)"
 									selectedItem="@bind(fx.jobPosition)" tooltiptext="Categoria de Trabaho">
 									<template name="model" var="job">
 										<listitem label="${job.type}"></listitem>
 									</template>
 								</listbox>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.department')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.department')}
+								</x:label>
 								<listbox mold="select"
-									sclass="form-control" selectedItem="@bind(fx.department)"
+									sclass="form-control inoLabFont" selectedItem="@bind(fx.department)"
 									model="@load(vm.deps)" tooltiptext="Departamento">
 									<template name="model" var="dep">
 										<listitem label="${dep.name}"></listitem>
 									</template>
 								</listbox>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.numberChildren')}
-							</x:label>
-							<div />
-							<div class="form-group">
-								<intbox zclass="form-control"
-									placeholder="Numero de Filhos" />
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.numberChildren')}
+								</x:label>
+								<intbox zclass="form-control" placeholder="Numero de Filhos" />
 							</div>
-						</div>
-
-						<div class="form-group">
-							<x:label>
-								${c:l('model.employees.userLogin')}
-							</x:label>
-							<div />
-							<div class="form-group">
+							<div sclass="form-group">
+								<x:label>
+									${c:l('model.employees.userLogin')}
+								</x:label>
 								<listbox mold="select"
-									sclass="form-control" model="@load(vm.users)"
+									sclass="form-control inoLabFont" model="@load(vm.users)"
 									selectedItem="@bind(fx.userLogin)" tooltiptext="Usuario">
 									<template name="model" var="user">
 										<listitem
@@ -227,7 +167,14 @@
 								</listbox>
 							</div>
 						</div>
-
+						<div zclass="box-footer">
+							<x:button type="submit"
+								class="btn btn-primary btn-flat"
+								onClick="@command('saveEmp', action=0)">
+								Gravar
+								<x:i class="glyphicon glyphicon-floppy-disk"></x:i>
+							</x:button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -238,7 +185,7 @@
 				<x:center>
 					<x:div class="box-header">
 						<x:span sclass="menuOperations">
-							Funcionarios
+							<x:i class="fa fa-users"/> Funcionarios
 						</x:span>
 					</x:div>
 					<x:div sclass="box-body">
