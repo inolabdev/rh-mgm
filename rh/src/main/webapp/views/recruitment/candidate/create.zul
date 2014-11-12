@@ -1,6 +1,6 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVm')">
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
 		<div zclass="col-md-10">
 			<div zclass="box box-primary"
 				validationMessages="@id('vmsgs')">
