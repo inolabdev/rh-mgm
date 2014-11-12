@@ -1,14 +1,15 @@
 package mz.inolabdev.rh.viewModel;
 
 import java.io.IOException;
-import java.util.EventListener;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import mz.inolabdev.rh.entity.Candidate;
 import mz.inolabdev.rh.entity.Cellphone;
+import mz.inolabdev.rh.entity.Comment;
 import mz.inolabdev.rh.entity.Document;
 import mz.inolabdev.rh.entity.Email;
 import mz.inolabdev.rh.entity.Vacancy;
@@ -18,6 +19,7 @@ import mz.inolabdev.rh.services.ContactPointService;
 import mz.inolabdev.rh.services.DocumentService;
 import mz.inolabdev.rh.services.EmailService;
 import mz.inolabdev.rh.services.VacancyService;
+import mz.inolabdev.rh.util.DateFormat;
 
 import org.zkoss.bind.BindContext;
 import org.zkoss.bind.annotation.AfterCompose;
@@ -29,29 +31,23 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zhtml.Filedownload;
-import org.zkoss.zhtml.Li;
 import org.zkoss.zhtml.Ol;
-import org.zkoss.zhtml.Ul;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zul.A;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Popup;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
-public class CandidateVm extends AbstractViewModel {
+public class CandidateVM extends AbstractViewModel {
 
 	// dependencies
 	@WireVariable
@@ -87,16 +83,16 @@ public class CandidateVm extends AbstractViewModel {
 	@Wire("#newCandidate")
 	private Div newCandidate;
 
-	@Wire("#filePreview")
-	private Iframe iFrame;
-
-	@Wire("#iframePoUp")
-	Popup popup;
+	@Wire(".document_col")
+	private Div dcCol;
 	// end of components
-
+	
+	private DateFormat dateFormat;
 	// simple attrs
+	private String divId;
 	private String currentFileName;
 	private Document document;
+	private Comment comment;
 	private Candidate candidate;
 	private Vacancy pickedVacancy;
 
@@ -118,10 +114,12 @@ public class CandidateVm extends AbstractViewModel {
 
 	@Init
 	public void init() {
-
+		
 		setCurrentFileName("No file chosen");
+		dateFormat  = new DateFormat();
 		candidate = new Candidate();
 		document = new Document();
+		comment = new Comment();
 		emails = new ListModelList<Email>(emailService.getAll());
 		cellPModelList = new ListModelList<Cellphone>(cellPhoneService.getAll());
 		documents = new ListModelList<Document>(documentService.getAll());
@@ -136,6 +134,8 @@ public class CandidateVm extends AbstractViewModel {
 		map.put("target", target);
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
+		Clients.showNotification("Point the cursor to the Resume name to preview", "info",
+				dcCol, "end_center", 4000);
 		Executions.createComponents("views/recruitment/candidate/index.zul",
 				target, map);
 	}
@@ -210,15 +210,48 @@ public class CandidateVm extends AbstractViewModel {
 		return document;
 	}
 
-	@Command
+	@Command("preview")
 	public void preview(@BindingParam("file_id") Long id,
 			@BindingParam("target") Component targetComponent) {
+		
+		divId = "document_col";
+		Iframe iFrame = new Iframe();
+		Popup popup = new Popup();
 
+		Random random = new Random();
 		Document resume = documentService.find(id);
 		FileManager fileManager = new FileManager();
-		iFrame.setContent(fileManager.byteToFile("resume",
-				resume.getFileType(), resume.getContent()));
-		popup.open(targetComponent, "end_before");
+		
+		dcCol.setAttribute("position", "end_before");
+		dcCol.setAttribute("style", "cursor:pointer");
+		dcCol.setPopup(popup);
+		
+		if (documentService.getAll().size() > 1) {
+			iFrame.setId("i_preview_" + random.nextLong());
+			popup.setId("p_preview_" + random.nextLong());
+
+			iFrame.setContent(fileManager.byteToFile("resume",
+					resume.getFileType(), resume.getContent()));
+
+			divId = divId + id;
+			dcCol.setId(divId);
+			
+			iFrame.setParent(popup);
+			popup.setParent(dcCol);
+
+			popup.open(targetComponent, "end_before");
+
+		} else {
+
+			iFrame.setContent(fileManager.byteToFile("resume",
+					resume.getFileType(), resume.getContent()));
+
+			dcCol.setId(divId);
+			iFrame.setParent(popup);
+			popup.setParent(dcCol);
+
+			popup.open(targetComponent, "end_before");
+		}
 	}
 
 	@Command
@@ -325,6 +358,30 @@ public class CandidateVm extends AbstractViewModel {
 
 	public void setDocuments(ListModelList<Document> documents) {
 		this.documents = documents;
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+
+	public String getDivId() {
+		return divId;
+	}
+
+	public void setDivId(String divId) {
+		this.divId = divId;
+	}
+
+	public DateFormat getDateFormat() {
+		return dateFormat;
+	}
+
+	public void setDateFormat(DateFormat dateFormat) {
+		this.dateFormat = dateFormat;
 	}
 
 }
