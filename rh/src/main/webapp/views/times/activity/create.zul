@@ -1,6 +1,6 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window>
-	<div zclass="col-md-3">
+	<div zclass="col-md-8">
 		<div form="@id('fx') @load(vm.activity) @save(vm.activity, before='saveActivity')">
 	       <div zclass="box-body">
 				<div class="form-group">

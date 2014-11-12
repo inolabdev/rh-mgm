@@ -40,7 +40,7 @@
 	<div class="box box-solid">
 		<x:center>
 		    <div class="box-header">
-		        <x:span class="menuOperations" >Papeis</x:span>
+		        <x:span class="menuOperations" ><x:i class="fa fa-lock"/> Papeis</x:span>
 		    </div>
 		    <div class="box-body">
 		    	<x:table>

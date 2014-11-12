@@ -94,4 +94,12 @@ public class AbstractViewModel {
 
 	}
 
+	public List<String> getLinks() {
+		return links;
+	}
+
+	public void setLinks(List<String> links) {
+		this.links = links;
+	}
+
 }

@@ -124,7 +124,7 @@ public class MainVM extends AbstractViewModel {
 
 		links = new ArrayList<String>();
 		links.add("Inicio");
-		drawnBreadcrumb("fa fa-group", "Recrutamento", links);
+		drawnBreadcrumb("fa fa-retweet", "Recrutamento", links);
 	}
 
 	@Command

@@ -5,13 +5,13 @@
 	    <div sclass="small-box bg-teal">
 	        <div sclass="inner">
 	            <x:h3>14</x:h3>
-	            <x:p>Notofications</x:p>
+	            <x:p>Funcionários</x:p>
 	        </div>
 	        <div sclass="icon">
 	            <x:i class="ion ion-ios7-alarm-outline" />
 	        </div>
 	        <x:a href="#" sclass="small-box-footer">
-	            More info <x:i class="fa fa-arrow-circle-right"/>
+	            Todos <x:i class="fa fa-arrow-circle-right"/>
 	        </x:a>
 	    </div>
 	</div>

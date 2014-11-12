@@ -12,7 +12,7 @@
 
 .body {
   overflow-x: hidden!important;
-  font-family: times new roman !important;
+  font-family: 'MyriadPro-Regular' !important;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f9f9f9;
@@ -129,7 +129,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: times new roman !important;
+  font-family: 'MyriadPro-Regular' !important;
 }
 /* Page Header */
 .page-header {
@@ -529,7 +529,7 @@ Gradient Background colors
   text-align: center;
   padding: 0 10px;
   width: 220px;
-  font-family: times new roman !important;
+  font-family: 'MyriadPro-Regular' !important;
   font-weight: 500;
   height: 50px;
   display: block;
@@ -1551,7 +1551,7 @@ Gradient Background colors
   color: #fff;
   background: #3c8dbc;
   background-color: #3c8dbc;
-  font-family: times new roman !important;
+  font-family: 'MyriadPro-Regular' !important;
   -webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;

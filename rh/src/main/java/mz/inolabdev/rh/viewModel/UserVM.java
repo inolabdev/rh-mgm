@@ -32,7 +32,6 @@ import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Label;
-import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
@@ -88,6 +87,8 @@ public class UserVM extends AbstractViewModel {
 
 	private Set<String> erros = new HashSet<String>();
 
+	private User loggedUser;
+
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view,
 			@ExecutionArgParam("target") Div target,
@@ -97,6 +98,8 @@ public class UserVM extends AbstractViewModel {
 
 		this.target = target;
 		this.ol = ol;
+		
+		loggedUser = userService.find(Executions.getCurrent().getUserPrincipal().getName());
 
 	}
 
@@ -115,6 +118,8 @@ public class UserVM extends AbstractViewModel {
 		employeeList = employeeService.allWhereUserIdIsNull();
 
 		adminUsers = userService.getAll();
+		
+		loggedUser = userService.find(Executions.getCurrent().getUserPrincipal().getName());
 	}
 
 	@Command
@@ -262,7 +267,6 @@ public class UserVM extends AbstractViewModel {
 	@Command
 	public void updatePass() {
 
-		
 	}
 
 	private void clearErrors(String error) {
@@ -359,5 +363,13 @@ public class UserVM extends AbstractViewModel {
 
 	public void setConfNewPass(String confNewPass) {
 		this.confNewPass = confNewPass;
+	}
+
+	public User getLoggedUser() {
+		return loggedUser;
+	}
+
+	public void setLoggedUser(User loggedUser) {
+		this.loggedUser = loggedUser;
 	}
 }

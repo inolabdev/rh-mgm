@@ -47,7 +47,7 @@
 }
 
 .z-chosenbox-item-content {
-	font-family: Times New Roman;
+	font-family: 'MyriadPro-Regular' !important;
 	font-size: 14px;
 	font-weight: normal;
 	font-style: normal;
@@ -84,17 +84,19 @@
 }
 
 .z-chosenbox-option {
+	font-family: 'MyriadPro-Regular' !important;
 	cursor: pointer;
 	padding: 1px 5px;
 	font-size: 14px;
 	display: none;
-line-height: 15px;
-padding: 5px 6px;
-margin: 0;
-list-style: none;
+	line-height: 15px;
+	padding: 5px 6px;
+	margin: 0;
+	list-style: none;
 }
 
 .z-chosenbox-button {
+	font-family: 'MyriadPro-Regular' !important;
 	overflow: hidden;
 	height: auto !important;
 	height: 15px;
@@ -174,7 +176,7 @@ list-style: none;
 }
 
 .z-chosenbox-input {
-	font-family: Times New Roman;
+	font-family: 'MyriadPro-Regular' !important;
 	font-size: 14px;
 	font-weight: normal;
 	font-style: normal;
@@ -190,4 +192,18 @@ list-style: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	margin: 2px;
+}
+
+.z-chosenbox-popup {
+	font-family: 'MyriadPro-Regular' !important;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	color: #363636;
+	display: block;
+	border: 1px solid #cfcfcf;
+	padding: 2px;
+	background: #fff;
+	position: absolute;
+	overflow: auto;
 }

@@ -33,7 +33,7 @@
 
 .loginFont {
 	font-size: 18px !important;
-	font-family: times new roman !important;
+	font-family: 'MyriadPro-Regular' !important;
 }
 
 .btnLog {
@@ -89,7 +89,7 @@
 }
 
 .z-label, .z-radio-content, .z-checkbox-content, .z-loading {
-	font-family: times new roman !important;
+	font-family: 'MyriadPro-Regular' !important;
 	font-size: 14px;
 	font-weight: normal;
 }
@@ -106,11 +106,10 @@
 	border-bottom-left-radius: 0px !important;
 	box-shadow: inset 0px -0px 0px rgba(0, 0, 0, 0.2) !important;
 	padding: 13px 10px !important;
-
 }
 
 .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox {
-	font-family: times new roman !important;
+	font-family: 'MyriadPro-Regular' !important;
 	font-size: 15px !important;
 	font-weight: normal;
 	font-style: normal;
@@ -123,4 +122,20 @@
 	padding: 4px 5px 3px;
 	line-height: 14px;
 	background: #fff;
+}
+
+.z-a {
+	font-family: 'MyriadPro-Regular' !important;
+	font-size: 14px;
+}
+
+.timeline > li > .timeline-item > .timeline-header > a {
+font-weight: 600;
+font-size: 17px !important;
+}
+
+.z-label, .z-radio-content, .z-checkbox-content, .z-loading {
+	font-family: 'MyriadPro-Regular' !important;
+	font-size: 14px !important;
+	font-weight: normal;
 }

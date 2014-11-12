@@ -64,6 +64,8 @@ public class ProjectVM extends AbstractViewModel {
 	private ActivityService activityService;
 
 	private ListModelList<Activity> activities;
+	
+	private Activity selectActivity;
 
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view,
@@ -254,5 +256,13 @@ public class ProjectVM extends AbstractViewModel {
 
 	public void setActivities(ListModelList<Activity> activities) {
 		this.activities = activities;
+	}
+
+	public Activity getSelectActivity() {
+		return selectActivity;
+	}
+
+	public void setSelectActivity(Activity selectActivity) {
+		this.selectActivity = selectActivity;
 	}
 }

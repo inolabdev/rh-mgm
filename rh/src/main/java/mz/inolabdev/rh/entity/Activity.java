@@ -33,4 +33,10 @@ public class Activity extends IdEntity {
 	public void setProject(Project project) {
 		this.project = project;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 }

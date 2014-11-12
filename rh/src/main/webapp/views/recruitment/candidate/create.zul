@@ -89,7 +89,7 @@
 				<x:center>
 					<x:div class="box-header">
 						<x:span sclass="menuOperations">
-							Candidatos
+							<x:i class="fa fa-male"/> Candidatos
 						</x:span>
 					</x:div>
 					<x:div sclass="box-body">
