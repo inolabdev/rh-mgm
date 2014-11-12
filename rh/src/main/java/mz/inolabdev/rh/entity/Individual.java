@@ -60,7 +60,7 @@ public class Individual extends IdEntity {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
-	@Where(clause = "FROM_CLASS='cp_email'")
+	@Where(clause = "cp_type='email'")
 	private Set<Email> emails;
 
 	@OneToMany(fetch = FetchType.EAGER)
@@ -69,7 +69,7 @@ public class Individual extends IdEntity {
 
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "holder_id", insertable = false, updatable = false)
-	@Where(clause = "FROM_CLASS='cp_cell_phone'")
+	@Where(clause = "cp_type='cell_phone'")
 	private Set<Cellphone> cellPhones;
 
 	public String fullName() {

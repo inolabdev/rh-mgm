@@ -5,7 +5,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "cp_cell_phone")
+@DiscriminatorValue(value = "cell_phone")
 public class Cellphone extends ContactPoint {
 
 	private static final long serialVersionUID = 1L;
