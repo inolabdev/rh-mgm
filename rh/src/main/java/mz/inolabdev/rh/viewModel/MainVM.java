@@ -168,6 +168,66 @@ public class MainVM extends AbstractViewModel {
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-desktop", "Horas", links);
 	}
+	
+	@Command
+	public void requestAbsence() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("views/absence/absence_request.zul", target,
+				map);
+
+		links = new ArrayList<String>();
+		links.add("Licença");
+		links.add("Nova");
+		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
+	}
+	
+	@Command
+	public void cancelAbsence() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("views/absence/cancel_absence.zul", target,
+				map);
+
+		links = new ArrayList<String>();
+		links.add("Licença");
+		links.add("Cancelar");
+		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
+	}
+	
+	@Command
+	public void absencesStatus() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("views/absence/absence_status.zul", target,
+				map);
+
+		links = new ArrayList<String>();
+		links.add("Licença");
+		links.add("Cancelar");
+		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
+	}
+	
+	@Command
+	public void holidaysCalendar() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("views/absence/holidays_calendar.zul", target,
+				map);
+
+		links = new ArrayList<String>();
+		links.add("Calendário de Feriados");
+		links.add("Inicio");
+		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
+	}
 
 	public List<Log> getLogs() {
 		return logs;
