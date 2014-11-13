@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -20,14 +21,27 @@ public class Employee extends Individual {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToOne
+	@Column(name = "employee_code")
+	private String employeeCode;
+
+	@Column(name = "is_dupervisor")
+	private String isSupervisor;
+
+	@Column(name = "nuit_number")
+	private String nuitNumber;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "location_id", insertable=false, updatable=false)
+	private Location location;
+
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "jobPosition_id")
 	private JobPosition jobPosition;
 
 	@ManyToMany(mappedBy = "hiringManagers")
 	private Set<Vacancy> vacancies = new HashSet<Vacancy>();
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "department_id")
 	private Department department;
 
@@ -43,14 +57,22 @@ public class Employee extends Individual {
 	public String since() {
 
 		Locale ptBr = new Locale("pt", "BR");
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM, yyyy", ptBr);
-		
+
 		return sdf.format(getCreated());
 	}
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public String getEmployeeCode() {
+		return this.employeeCode;
+	}
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
 	}
 
 	public void setJobPosition(JobPosition jobPosition) {
@@ -84,6 +106,30 @@ public class Employee extends Individual {
 	@Override
 	public String toString() {
 		return fullName();
+	}
+
+	public String getIsSupervisor() {
+		return isSupervisor;
+	}
+
+	public void setIsSupervisor(String isSupervisor) {
+		this.isSupervisor = isSupervisor;
+	}
+
+	public String getNuitNumber() {
+		return nuitNumber;
+	}
+
+	public void setNuitNumber(String nuitNumber) {
+		this.nuitNumber = nuitNumber;
+	}
+
+	public Location getLocation() {
+		return this.location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 }
