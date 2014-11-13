@@ -2,7 +2,6 @@ package mz.inolabdev.rh.services.impl;
 
 import mz.inolabdev.rh.entity.Candidate;
 import mz.inolabdev.rh.entity.Cellphone;
-import mz.inolabdev.rh.entity.Comment;
 import mz.inolabdev.rh.entity.Document;
 import mz.inolabdev.rh.entity.Email;
 import mz.inolabdev.rh.services.CandidateService;
@@ -15,7 +14,6 @@ import mz.inolabdev.rh.services.VacancyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zkoss.zk.ui.select.annotation.Wire;
 
 @Service("candidateService")
 public class CandidateServiceImpl extends GenericServiceImpl<Candidate>
