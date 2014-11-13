@@ -11,9 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Where;
-
 import mz.inolabdev.rh.util.DateFormat;
+
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "individuals")
@@ -35,6 +35,9 @@ public class Individual extends IdEntity {
 	@OneToOne
 	@JoinColumn(name = "Individual_id")
 	private IdentityDocumentType type;
+
+	@Column(name = "location_id")
+	private Location location;
 
 	@Column(name = "id_number")
 	private String idNumber;
@@ -76,9 +79,9 @@ public class Individual extends IdEntity {
 
 		return name + " " + middleName + " " + lastName;
 	}
-	
-	public String dateFormat(){
-		
+
+	public String dateFormat() {
+
 		return DateFormat.formated(this.birthday);
 	}
 
@@ -201,6 +204,14 @@ public class Individual extends IdEntity {
 
 	public void setType(IdentityDocumentType type) {
 		this.type = type;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 }
