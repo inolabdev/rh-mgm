@@ -1,6 +1,5 @@
 package mz.inolabdev.rh.viewModel;
 
-import mz.inolabdev.rh.entity.Department;
 import mz.inolabdev.rh.entity.License;
 
 import org.zkoss.bind.annotation.AfterCompose;
@@ -28,7 +27,7 @@ public class AbsenceVM extends AbstractViewModel {
 
 		Selectors.wireComponents(view, this, false);
 
-		this.target = target;
+		this.setTarget(target);
 		this.ol = ol;
 	}
 	
@@ -46,5 +45,13 @@ public class AbsenceVM extends AbstractViewModel {
 
 	public void setLicense(License license) {
 		this.license = license;
+	}
+
+	public Div getTarget() {
+		return target;
+	}
+
+	public void setTarget(Div target) {
+		this.target = target;
 	}
 }
