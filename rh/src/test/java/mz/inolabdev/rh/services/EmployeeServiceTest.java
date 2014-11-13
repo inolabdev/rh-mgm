@@ -1,13 +1,13 @@
 package mz.inolabdev.rh.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.List;
 
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Department;
