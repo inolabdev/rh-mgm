@@ -2,19 +2,19 @@ package mz.inolabdev.rh.services;
 
 import java.util.List;
 
-import mz.inolabdev.rh.entity.Performace;
+import mz.inolabdev.rh.entity.Performance;
 
-public interface PerformaceService {
+public interface PerformanceService {
 
-	public Performace create(Performace performace);
+	public Performance create(Performance performance);
 
-	public List<Performace> getAll();
+	public List<Performance> getAll();
 
-	public Performace find(Long id);
+	public Performance find(Long id);
 
 	public long count();
 
-	public Performace first();
+	public Performance first();
 
-	public Performace last();
+	public Performance last();
 }

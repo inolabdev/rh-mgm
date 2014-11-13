@@ -30,8 +30,8 @@ public class Evaluation extends IdEntity {
 	private String description;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "performace_id")
-	private Performace performace;
+	@JoinColumn(name = "performance_id")
+	private Performance performance;
 
 	public String getName() {
 		return this.name;

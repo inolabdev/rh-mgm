@@ -1,7 +1,7 @@
 package mz.inolabdev.rh.dao;
 
-import mz.inolabdev.rh.entity.Performace;
+import mz.inolabdev.rh.entity.Performance;
 
-public interface PerformaceDao extends GenericDao<Performace> {
+public interface PerformanceDao extends GenericDao<Performance> {
 
 }

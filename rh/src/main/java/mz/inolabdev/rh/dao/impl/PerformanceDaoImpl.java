@@ -1,12 +1,12 @@
 package mz.inolabdev.rh.dao.impl;
 
-import mz.inolabdev.rh.dao.PerformaceDao;
-import mz.inolabdev.rh.entity.Performace;
+import mz.inolabdev.rh.dao.PerformanceDao;
+import mz.inolabdev.rh.entity.Performance;
 
 import org.springframework.stereotype.Repository;
 
-@Repository("performaceDao")
-public class PerformaceDaoImpl extends GenericDaoImpl<Performace> implements
-		PerformaceDao {
+@Repository("performanceDao")
+public class PerformanceDaoImpl extends GenericDaoImpl<Performance> implements
+		PerformanceDao {
 
 }

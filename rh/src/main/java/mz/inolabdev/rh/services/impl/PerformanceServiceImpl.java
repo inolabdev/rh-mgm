@@ -1,11 +1,11 @@
 package mz.inolabdev.rh.services.impl;
 
-import mz.inolabdev.rh.entity.Performace;
-import mz.inolabdev.rh.services.PerformaceService;
+import mz.inolabdev.rh.entity.Performance;
+import mz.inolabdev.rh.services.PerformanceService;
 
 import org.springframework.stereotype.Service;
 
-@Service("performaceService")
-public class PerformaceServiceImpl extends GenericServiceImpl<Performace> implements PerformaceService{
+@Service("performanceService")
+public class PerformanceServiceImpl extends GenericServiceImpl<Performance> implements PerformanceService{
 
 }
