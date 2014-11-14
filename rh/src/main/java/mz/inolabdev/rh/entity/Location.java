@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +25,12 @@ public class Location extends IdEntity {
 	@Column(name = "type")
 	private String type;
 	
+	@OneToOne
+	@JoinColumn(name="parent_id")
+	private Location parent;
+	
 	@ManyToOne
-	@JoinColumn(name = "tenant_id")
+	@JoinColumn(name = "tenant_id", insertable=false, updatable=false)
 	private Tenant tenant;
 
 	public Tenant getTenant() {
@@ -67,5 +72,15 @@ public class Location extends IdEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public Location getParent() {
+		return parent;
+	}
+
+	public void setParent(Location parent) {
+		this.parent = parent;
+	}
+
+
 
 }

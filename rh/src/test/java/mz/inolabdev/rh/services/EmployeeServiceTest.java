@@ -1,17 +1,18 @@
 package mz.inolabdev.rh.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.List;
 
 import mz.inolabdev.rh.GenericTestUnit;
 import mz.inolabdev.rh.entity.Department;
 import mz.inolabdev.rh.entity.Employee;
+import mz.inolabdev.rh.entity.IndividualType;
 import mz.inolabdev.rh.entity.JobPosition;
 import mz.inolabdev.rh.entity.Permission;
 import mz.inolabdev.rh.entity.Role;
@@ -47,6 +48,14 @@ public class EmployeeServiceTest extends GenericTestUnit {
 	@Autowired
 	private RoleService roleService;
 
+	private IndividualType createNewIndividualType() {
+		IndividualType type = new IndividualType();
+		type.setName("Gestor de Clientes");
+		type.setDescription("Gerir Clientes");
+		individualTypeService.create(type);
+		return type;
+	}
+
 	private JobPosition createNewJobPositionTest() {
 		JobPosition jobPosition = new JobPosition();
 		jobPosition.setType("Gestor de Clientes");
@@ -75,6 +84,7 @@ public class EmployeeServiceTest extends GenericTestUnit {
 		employee.setNationality("Moçambicana");
 		employee.setJob_position(createNewJobPositionTest());
 		employee.setDepartment(createNewDepartament());
+		employee.setIndividualType(createNewIndividualType());
 
 		return employee;
 	}
