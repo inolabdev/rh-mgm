@@ -9,7 +9,10 @@ import javax.persistence.Table;
 public class JobPosition extends IdEntity {
 
 	private static final long serialVersionUID = -2994535517681373646L;
-
+	
+	@Column(name = "title")
+	private String title;
+	
 	@Column(name = "type")
 	private String type;
 
@@ -32,10 +35,17 @@ public class JobPosition extends IdEntity {
 		this.description = description;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	@Override
 	public String toString() {
-		return "JobPosition [type=" + type + ", description=" + description
-				+ "]";
+		return type;
 	}
 
 }
