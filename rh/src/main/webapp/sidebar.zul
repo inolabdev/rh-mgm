@@ -3,7 +3,7 @@
    <x:section class="sidebar">
      <x:div class="user-panel">
        <div class="pull-left image">
-         <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
+         <image sclass="img-circle" id="imgPflSide"></image>
        </div>
        <div class="pull-left info">
          <x:p>Olá, ${vm.user.userProfile.name}</x:p>

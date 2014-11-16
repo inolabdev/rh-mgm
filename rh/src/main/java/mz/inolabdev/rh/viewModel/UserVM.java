@@ -129,7 +129,7 @@ public class UserVM extends AbstractViewModel {
 
 			if (image == null)
 
-				imgProfile.setSrc("img/avatar3.png");
+				imgProfile.setSrc("img/default_image.png");
 
 			else {
 
