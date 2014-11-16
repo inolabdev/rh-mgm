@@ -1,0 +1,65 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window apply="org.zkoss.bind.BindComposer"
+ viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.ReasonVM')">
+ 
+ <div zclass="col-md-10">
+ 	<div zclass="box box-primary">
+	<div sclass="box-body table-responsive" onCreate='Clients.evalJavaScript("initDataTable()")'>
+	
+	<x:table id="reasons" class="table table-bordered table-striped">
+		<x:thead>
+			<x:tr>
+				<x:th>#</x:th>
+				<x:th>Tipo</x:th>
+				<x:th>Data de Criação</x:th>
+				<x:th>Data de Actualização</x:th>
+				<x:th></x:th>
+			</x:tr>
+		</x:thead>
+		<x:tbody>
+			<x:tr forEach="${vm.reasons}">
+				<x:td>${each.id}</x:td>
+				<x:td>${each.type}</x:td>
+				<x:td>${dateFormat.format(each.created)}</x:td>
+				<x:td>${dateFormat.format(each.updated)}</x:td>
+				<x:td>
+					<a class="btn bg-olive btn-flat btn-sm">
+                      <x:i class="fa fa-eye"></x:i>
+                   	</a>
+                   	<separator orient="vertical" width="7px"></separator>
+					<a class="btn bg-orange btn-flat btn-sm">
+                      <x:i class="fa fa-edit"></x:i>
+                   	</a>
+				</x:td>
+			</x:tr>
+		</x:tbody>
+	</x:table>
+	</div>
+	</div>
+</div>
+ <div zclass="col-md-2">
+	<div class="box box-solid">
+		<x:center>
+		    <div class="box-header">
+		        <x:span class="menuOperations" ><x:i class="fa fa-qrcode"/> Motivações</x:span>
+		    </div>
+		    <div class="box-body">
+		    	<x:table>
+		    	<x:tr><x:td>
+					<x:a class="btn btn-app" onClick="@command('reasonNew')">
+				        <x:i class="fa fa-clipboard"></x:i>
+				        Nova
+				    </x:a>
+			    </x:td></x:tr>
+			    </x:table>
+		    </div>
+	    </x:center>
+	</div>
+ </div>
+ <script type="text/javascript">
+	function initDataTable(){
+	  $("#reasons").dataTable();
+	}
+</script>
+</window>
+</zk>

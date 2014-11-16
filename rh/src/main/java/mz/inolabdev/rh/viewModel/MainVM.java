@@ -210,7 +210,7 @@ public class MainVM extends AbstractViewModel {
 
 		links = new ArrayList<String>();
 		links.add("Licença");
-		links.add("Cancelar");
+		links.add("Status");
 		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
 	}
 	

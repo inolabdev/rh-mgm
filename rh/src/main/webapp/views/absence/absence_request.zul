@@ -1,8 +1,8 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
 <window apply="org.zkoss.bind.BindComposer"
  viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbsenceVM')">
-	 <div zclass="col-md-12">
-		<div zclass="box box-primary" validationMessages="@id('vmsgs')">
+	 <div zclass="col-md-12 box box-primary">
+		<div zclass="" validationMessages="@id('vmsgs')">
 		    <div zclass="box-header">
 		        <x:h3 class="box-title">Pedir Licença</x:h3>
 		    </div>
@@ -10,13 +10,13 @@
 		        <div zclass="box-body col-md-4">
 					<div class="form-group">
 					    <x:label>Ano *</x:label>
-					    <listbox mold="select" sclass="form-control inoLabFont"></listbox>
+					    <listbox mold="select" selectedItem="@bind(fx.year)" model="@bind(vm.years)" sclass="form-control inoLabFont"></listbox>
 					</div>
 		        </div>
 		        <div zclass="box-body col-md-5">
 					<div class="form-group">
 					    <x:label>Tipo de Licença *</x:label>
-					    <listbox mold="select" sclass="form-control inoLabFont "></listbox>
+					    <listbox mold="select" selectedItem="@bind(fx.license_type)" model="@bind(vm.types)" sclass="form-control inoLabFont "></listbox>
 					</div>
 		        </div>
 		        <div zclass="col-md-8">
@@ -26,7 +26,7 @@
 					        <div zclass="box-body">
 								<div class="form-group">
 								    <x:label>De*</x:label>
-								    <datebox width="100%" value="@bind(fx.begin)"></datebox>
+								    <datebox width="100%" constraint="no empty: Esse campo não pode ser vazio" value="@bind(fx.begin)"></datebox>
 								</div>
 					        </div>
 				        </div>
@@ -34,7 +34,7 @@
 					        <div zclass="box-body">
 								<div class="form-group">
 								    <x:label>Para *</x:label>
-								    <datebox width="100%" value="@bind(fx.end)"></datebox>
+								    <datebox width="100%" constraint="no empty: Esse campo não pode ser vazio" value="@bind(fx.end)"></datebox>
 								</div>
 					        </div>
 				        </div>
@@ -43,12 +43,12 @@
 		        <div zclass="box-body col-md-6">
 					<div class="form-group">
 					    <x:label>Motivação *</x:label>
-					    <listbox mold="select" sclass="form-control inoLabFont"></listbox>
+					    <listbox mold="select" selectedItem="@bind(fx.reason)" model="@bind(vm.reasons)" sclass="form-control inoLabFont"></listbox>
 					</div>
 		        </div>
 		        <div zclass="box-body col-md-8">
 					<div class="form-group">
-					    <x:label>Descrição</x:label>
+					    <x:label>Comentário</x:label>
 					    <textbox zclass="form-control txtArea" value="@bind(fx.description)" rows="5" width="100%"  />
 					</div>
 		        </div>
