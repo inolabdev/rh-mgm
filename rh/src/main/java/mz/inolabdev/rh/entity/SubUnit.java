@@ -8,6 +8,7 @@ import javax.persistence.Table;
 public class SubUnit extends IdEntity {
 
 	private static final long serialVersionUID = 5862508092750681509L;
+	
 	private String name;
 
 	public String getName() {
