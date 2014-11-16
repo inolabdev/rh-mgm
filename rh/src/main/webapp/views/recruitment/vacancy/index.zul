@@ -1,11 +1,12 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
 <zk xmlns:x="xhtml" xmlns:zk="zk"
 	xmlns:w="http://www.zkoss.org/2005/zk/client">
 	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.VacancyVM')">
 		<zscript>
-			java.util.Date date = new java.util.Date();
-		</zscript>
+	java.util.Date date = new java.util.Date();
+</zscript>
 
 		<div zclass="col-md-10" id="candidateList">
 			<div zclass="box box-primary">
@@ -16,29 +17,24 @@
 						<x:thead>
 							<x:tr>
 								<x:th>#</x:th>
-								<x:th>Candidate</x:th>
-								<x:th>Vacancy</x:th>
-								<x:th>CellPhone</x:th>
-								<x:th>Date of Application</x:th>
+								<x:th>Vacany</x:th>
+								<x:th>JobTitle</x:th>
+								<x:th>HiringManagers</x:th>
 								<x:th>Status</x:th>
-								<x:th>Resume</x:th>
+								<x:th>Period</x:th>
 								<x:th></x:th>
 							</x:tr>
 						</x:thead>
 						<x:tbody>
-							<x:tr forEach="${vm.candidates}">
+							<x:tr forEach="${vm.vacancies}">
 								<x:td>${each.id}</x:td>
-								<x:td>${each.fullName()}</x:td>
-								<x:td><label forEach="${each.vacancies}"> ${each.name} </label> </x:td>
+								<x:td>${each.name}</x:td>
+								<x:td>${each.jobTitle}</x:td>
 								<x:td>
 									<label class="label label-default"
-										forEach="${each.cellPhones}">
-										${each.value}
+										forEach="${each.hiringManagers}">
+										${each.fullName()}
 									</label>
-								</x:td>
-								<x:td>
-									<label
-										value="${c:formatDate(each.created, 'MM/dd/yyyy')}" />
 								</x:td>
 								<x:td>
 									<label class="label label-default"
@@ -48,42 +44,25 @@
 								</x:td>
 								<x:td>
 									<label
-										tooltip="aponte o cursor aqui para previsualizar"
-										onMouseOver="@command('preview', target=self, file_id=mdl)"
-										value="resume_${each.id}" forEach="${each.documents}">
-										<custom-attributes
-											mdl="${each.id}" />
-									</label>
-									<separator orient="vertical"
-										width="2px" />
-									<x:i forEach="${each.documents}"
-										onClick="@command('download', target=self, file_id=mdl)"
-										position="end_before" style="cursor:pointer"
-										class="fa fa-save pull-center bg-blue">
-										<custom-attributes
-											mdl="${each.id}" />
-									</x:i>
-									<div id="${vm.divId}"
-										sclass="document_col">
-									</div>
+										value="${c:formatDate(each.created, 'MM/dd/yyyy')}" />
 								</x:td>
 								<x:td>
 									<div zclass="custom_margin">
 										<a
 											class="btn btn-success btn-sm"
 											onClick="@command('ShowCandidate', candId = mdlId)">
-											<x:i class="fa fa-eye"></x:i>
+											<x:i class="fa fa-eye">
+											</x:i>
 											<custom-attributes
 												mdlId="${each.id}" />
 										</a>
 										<separator orient="horizontal"
 											width="2px">
 										</separator>
-										<a class="btn btn-warning btn-sm"
-										 onClick="@command('UpdateCandidate', candId = mdlId)">
-											<x:i class="fa fa-edit"></x:i>
-											<custom-attributes
-												mdlId="${each.id}" />
+										<a
+											class="btn btn-warning btn-sm">
+											<x:i class="fa fa-edit">
+											</x:i>
 										</a>
 									</div>
 								</x:td>
@@ -98,7 +77,7 @@
 				<x:center>
 					<x:div class="box-header">
 						<x:span sclass="menuOperations">
-							Candidatos
+							Vacancy
 						</x:span>
 					</x:div>
 					<x:div sclass="box-body">
@@ -106,9 +85,10 @@
 							<x:tr>
 								<x:td>
 									<x:a class="btn btn-app"
-										onClick="@command('newCandidate')">
-										<x:i class="fa fa-clipboard"></x:i>
-										Novo
+										onClick="@command('newVacancy')">
+										<x:i class="fa fa-clipboard">
+										</x:i>
+										Nova
 									</x:a>
 								</x:td>
 							</x:tr>

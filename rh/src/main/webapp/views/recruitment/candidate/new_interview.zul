@@ -1,0 +1,56 @@
+<?page title="Schedule an Interview" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.InterviewVM')" 
+	id="modalDialog" title="New_interview" width="460px" position="center,center" zclass=""
+	closable="true" action="show: slideDown;hide: slideUp" border="none">
+ 
+    <div sclass="col-md-12">
+    	<div sclass="box box-warning">
+    		<div sclass="box-header">
+    			<x:h3 class="box-title">Schedule Interview</x:h3>
+    		</div>
+    					
+    		<div sclass="box-body">
+    			<div form="@id('fx')  @load(vm.interview) @save(vm.interview, before='saveInterview')">
+	    			<div class="form-group">
+						<x:label> Title *</x:label>
+						<textbox zclass="form-control"
+							placeholder="name" value="@bind(fx.title)"
+							constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+					</div>
+		    		<div class="form-group">
+						<x:label>hiring Managers *</x:label>						
+						<chosenbox id="choosenHiringMans" sclass="mailinput form-control"
+							hflex="1" model="@load(vm.employeeList)" emptyMessage="select one or more Employees"
+							noResultsText="No such Employee - {0}"
+							/>
+					</div>
+					<div class="form-group">
+						<x:label> Date *</x:label>
+						<datebox
+							placeholder="DD/MM/YYYY" value="@bind(fx.date)"
+							constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+					</div>
+					<div class="form-group">
+						<x:label> Time *</x:label>
+						<timebox
+							placeholder="11:45" value="@bind(fx.time)"
+							constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+					</div>	
+    			</div>
+    			<div sclass="box-footer clearfix" >
+    				<div sclass="pull-right">
+    					<button zclass="btn btn-warning btn-flat margin" onClick="@command('saveInterview')" label="Save" />
+    					<button zclass="btn btn-flat margin" onClick="close()" label="Cancelar" />
+    				</div>
+    			</div>
+    			<zscript>
+    				public void close(){modalDialog.detach();}
+    			</zscript>
+    		</div>
+    	</div>
+    </div>
+
+</window>
+</zk>
