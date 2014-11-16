@@ -29,7 +29,7 @@
 							<x:tr forEach="${vm.candidates}">
 								<x:td>${each.id}</x:td>
 								<x:td>${each.fullName()}</x:td>
-								<x:td>${each.vacancies}</x:td>
+								<x:td><label forEach="${each.vacancies}"> ${each.name} </label> </x:td>
 								<x:td>
 									<label class="label label-default"
 										forEach="${each.cellPhones}">
@@ -79,9 +79,11 @@
 										<separator orient="horizontal"
 											width="2px">
 										</separator>
-										<a
-											class="btn btn-warning btn-sm">
+										<a class="btn btn-warning btn-sm"
+										 onClick="@command('UpdateCandidate', candId = mdlId)">
 											<x:i class="fa fa-edit"></x:i>
+											<custom-attributes
+												mdlId="${each.id}" />
 										</a>
 									</div>
 								</x:td>
