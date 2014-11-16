@@ -1,5 +1,6 @@
 package mz.inolabdev.rh.viewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.image.AImage;
 import org.zkoss.zhtml.Ol;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -22,6 +24,7 @@ import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Image;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class MainVM extends AbstractViewModel {
@@ -42,8 +45,14 @@ public class MainVM extends AbstractViewModel {
 
 	private User user;
 
+	@Wire
+	private Image imgPfl;
+
+	@Wire("#sidebar #imgPflSide")
+	private Image imgPflSide;
+
 	@AfterCompose
-	public void initSetup(@ContextParam(ContextType.VIEW) Component view) {
+	public void initSetup(@ContextParam(ContextType.VIEW) Component view) throws IOException {
 
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 
@@ -58,6 +67,29 @@ public class MainVM extends AbstractViewModel {
 		links = new ArrayList<String>();
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-sort", "Pagina Inicial", links);
+		
+		if (target != null) {
+
+			mz.inolabdev.rh.entity.Image image = user.getUserProfile()
+					.getImageProfile();
+
+			if (image == null) {
+
+				imgPfl.setSrc("img/default_image.png");
+				imgPflSide.setSrc("img/default_image.png");
+			}
+
+			else {
+
+				org.zkoss.image.Image img = new AImage(image.getFileName(),
+						image.getContent());
+
+				imgPfl.setContent(img);
+				imgPflSide.setContent(img);
+			}
+			
+			imgPflSide.invalidate();
+		}
 
 	}
 
@@ -168,22 +200,22 @@ public class MainVM extends AbstractViewModel {
 		links.add("Inicio");
 		drawnBreadcrumb("fa fa-desktop", "Horas", links);
 	}
-	
+
 	@Command
 	public void requestAbsence() {
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
-		Executions.createComponents("views/absence/absence_request.zul", target,
-				map);
+		Executions.createComponents("views/absence/absence_request.zul",
+				target, map);
 
 		links = new ArrayList<String>();
 		links.add("Licença");
 		links.add("Nova");
 		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
 	}
-	
+
 	@Command
 	public void cancelAbsence() {
 		final HashMap<String, Object> map = new HashMap<String, Object>();
@@ -198,7 +230,7 @@ public class MainVM extends AbstractViewModel {
 		links.add("Cancelar");
 		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
 	}
-	
+
 	@Command
 	public void absencesStatus() {
 		final HashMap<String, Object> map = new HashMap<String, Object>();
@@ -213,15 +245,15 @@ public class MainVM extends AbstractViewModel {
 		links.add("Status");
 		drawnBreadcrumb("fa fa-plane", "Gestão de Ausências", links);
 	}
-	
+
 	@Command
 	public void holidaysCalendar() {
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
-		Executions.createComponents("views/absence/holidays_calendar.zul", target,
-				map);
+		Executions.createComponents("views/absence/holidays_calendar.zul",
+				target, map);
 
 		links = new ArrayList<String>();
 		links.add("Calendário de Feriados");
