@@ -22,6 +22,7 @@ import mz.inolabdev.rh.services.VacancyService;
 import mz.inolabdev.rh.util.DateFormat;
 
 import org.zkoss.bind.BindContext;
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -31,9 +32,13 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zhtml.Filedownload;
+import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zhtml.Ol;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -44,7 +49,10 @@ import org.zkoss.zul.Div;
 import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Menuitem;
+import org.zkoss.zul.Menupopup;
 import org.zkoss.zul.Popup;
+import org.zkoss.zul.Window;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class CandidateVM extends AbstractViewModel {
@@ -71,6 +79,14 @@ public class CandidateVM extends AbstractViewModel {
 	// components
 	private Div target;
 
+	private Menupopup menupopup;
+
+	@Wire("#showId")
+	private Window showWindow;
+
+	@Wire("#show_buttons_acts")
+	private Div divActs;
+
 	@Wire("#buttonActs")
 	private Button button;
 
@@ -85,8 +101,15 @@ public class CandidateVM extends AbstractViewModel {
 
 	@Wire(".document_col")
 	private Div dcCol;
+
+	private String menupopupId;
+
+	private Window window;
+
+	@Wire
+	private Div newInterview;
 	// end of components
-	
+
 	private DateFormat dateFormat;
 	// simple attrs
 	private String divId;
@@ -94,6 +117,7 @@ public class CandidateVM extends AbstractViewModel {
 	private Document document;
 	private Comment comment;
 	private Candidate candidate;
+	private Candidate selectedCandidate;
 	private Vacancy pickedVacancy;
 
 	private ListModelList<Vacancy> vacancies;
@@ -114,9 +138,9 @@ public class CandidateVM extends AbstractViewModel {
 
 	@Init
 	public void init() {
-		
+
 		setCurrentFileName("No file chosen");
-		dateFormat  = new DateFormat();
+		dateFormat = new DateFormat();
 		candidate = new Candidate();
 		document = new Document();
 		comment = new Comment();
@@ -124,6 +148,7 @@ public class CandidateVM extends AbstractViewModel {
 		cellPModelList = new ListModelList<Cellphone>(cellPhoneService.getAll());
 		documents = new ListModelList<Document>(documentService.getAll());
 		candidates = new ListModelList<Candidate>(candidateService.getAll());
+		vacancies = new ListModelList<Vacancy>(vacancyService.getAll());
 	}
 
 	@Command
@@ -134,7 +159,8 @@ public class CandidateVM extends AbstractViewModel {
 		map.put("target", target);
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
-		Clients.showNotification("Point the cursor to the Resume name to preview", "info",
+		Clients.showNotification(
+				"Point the cursor to the Resume name to preview", "info",
 				dcCol, "end_center", 4000);
 		Executions.createComponents("views/recruitment/candidate/index.zul",
 				target, map);
@@ -213,7 +239,7 @@ public class CandidateVM extends AbstractViewModel {
 	@Command("preview")
 	public void preview(@BindingParam("file_id") Long id,
 			@BindingParam("target") Component targetComponent) {
-		
+
 		divId = "document_col";
 		Iframe iFrame = new Iframe();
 		Popup popup = new Popup();
@@ -221,11 +247,11 @@ public class CandidateVM extends AbstractViewModel {
 		Random random = new Random();
 		Document resume = documentService.find(id);
 		FileManager fileManager = new FileManager();
-		
+
 		dcCol.setAttribute("position", "end_before");
 		dcCol.setAttribute("style", "cursor:pointer");
 		dcCol.setPopup(popup);
-		
+
 		if (documentService.getAll().size() > 1) {
 			iFrame.setId("i_preview_" + random.nextLong());
 			popup.setId("p_preview_" + random.nextLong());
@@ -235,7 +261,7 @@ public class CandidateVM extends AbstractViewModel {
 
 			divId = divId + id;
 			dcCol.setId(divId);
-			
+
 			iFrame.setParent(popup);
 			popup.setParent(dcCol);
 
@@ -263,6 +289,92 @@ public class CandidateVM extends AbstractViewModel {
 				resume.getFileType(), resume.getContent()));
 	}
 
+	@NotifyChange("*")
+	@Command
+	public void selectActions(@BindingParam("popup") Menupopup popup,
+			@BindingParam("candidate") Candidate candidate) {
+
+		this.menupopup = popup;
+
+		Menuitem action1 = new Menuitem();
+		Menuitem action2 = new Menuitem();
+		Menuitem action3 = new Menuitem();
+
+		if (candidate.getStatus() == null) {
+
+			action1.setLabel("schedule an Interview");
+
+			action1.addEventListener(Events.ON_CLICK,
+					new EventListener<Event>() {
+						public void onEvent(Event event) {
+							showModal();
+						}
+					});
+
+			action2.setLabel("Reject");
+			action2.addEventListener(Events.ON_CLICK,
+					new EventListener<Event>() {
+						public void onEvent(Event event) {
+							// reject();
+						}
+					});
+
+			action1.setParent(menupopup);
+			action2.setParent(menupopup);
+
+		} else if (candidate.getStatus() == "interview Scheluded") {
+			action1.setLabel("mark interview passed");
+			action1.addEventListener(Events.ON_CLICK,
+					new EventListener<Event>() {
+						public void onEvent(Event event) {
+
+						}
+					});
+			action2.setLabel("mark interview failed");
+			action2.addEventListener(Events.ON_CLICK,
+					new EventListener<Event>() {
+						public void onEvent(Event event) {
+							// schedueleInterview();
+						}
+					});
+
+			action3.setLabel("Reject");
+			action3.addEventListener(Events.ON_CLICK,
+					new EventListener<Event>() {
+						public void onEvent(Event event) {
+							// schedueleInterview();
+						}
+					});
+
+			action1.setParent(menupopup);
+			action2.setParent(menupopup);
+			action3.setParent(menupopup);
+
+		} else if (candidate.getStatus() == "interview passed") {
+			action1.setLabel("schedule an Interview");
+			action2.setLabel("offer Job");
+			action3.setLabel("Reject");
+			action1.setParent(menupopup);
+			action2.setParent(menupopup);
+			action3.setParent(menupopup);
+
+		} else if (candidate.getStatus() == "interview failed") {
+			action1.setLabel("Reject");
+			action1.setParent(menupopup);
+		}
+
+		menupopup.invalidate();
+
+		BindUtils.postNotifyChange(null, null, CandidateVM.this, "*");
+	}
+
+	public void showModal() {
+
+		window = (Window) Executions.createComponents(
+				"/views/recruitment/candidate/new_interview.zul", target, null);
+		window.doModal();
+	}
+
 	@Command
 	public void newCandidate() {
 
@@ -276,9 +388,10 @@ public class CandidateVM extends AbstractViewModel {
 
 	@Command
 	@NotifyChange({ "candidate" })
-	public void ShowCandidate(@BindingParam("candId") Long id) {
+	public void ShowCandidate(@BindingParam("candId") Long id,
+			@ContextParam(ContextType.VIEW) Component view) {
+
 		candidate = candidateService.find(id);
-		Clients.showNotification("is a fuck:" + candidate.getId() + "");
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
 		map.put("breadcrumb", ol);
@@ -288,6 +401,23 @@ public class CandidateVM extends AbstractViewModel {
 				target, map);
 	}
 
+	@Command
+	@NotifyChange({ "selectedCandidate" })
+	public void UpdateCandidate(@BindingParam("candId") Long id,
+			@ContextParam(ContextType.VIEW) Component view) {
+
+		selectedCandidate = candidateService.find(id);
+		
+		//Messagebox.show(selectedCandidate.fullName());
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		map.put("selectedCandidate", selectedCandidate);
+		target.getChildren().clear();
+		Executions.createComponents("views/recruitment/candidate/edit.zul",
+				target, map);
+	}
+	
 	public String getCurrentFileName() {
 		return currentFileName;
 	}
@@ -382,6 +512,22 @@ public class CandidateVM extends AbstractViewModel {
 
 	public void setDateFormat(DateFormat dateFormat) {
 		this.dateFormat = dateFormat;
+	}
+
+	public String getMenupopupId() {
+		return menupopupId;
+	}
+
+	public void setMenupopupId(String menupopupId) {
+		this.menupopupId = menupopupId;
+	}
+
+	public Candidate getSelectedCandidate() {
+		return selectedCandidate;
+	}
+
+	public void setSelectedCandidate(Candidate selectedCandidate) {
+		this.selectedCandidate = selectedCandidate;
 	}
 
 }

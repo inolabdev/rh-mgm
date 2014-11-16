@@ -1,7 +1,7 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-	<window apply="org.zkoss.bind.BindComposer"
+	<window apply="org.zkoss.bind.BindComposer" id="showId" 
 		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.CandidateVM')">
-		<div zclass="col-md-10">
+		<div zclass="col-md-10" id ="newInterview">
 			<div zclass="box box-primary">
 				<div zclass="box-header">
 					<x:h3 class="box-title">
@@ -74,10 +74,17 @@
 			<div class="pull-left">
 				<button label="Edit" zclass="btn btn-primary btn-flat"/>
 				<button label="delete" zclass="btn btn-danger btn-flat"/>
-				<button label="select Action" zclass="btn btn-olive btn-flat"/>
+				<menupopup id="m1" onCreate="@command('selectActions', popup = self, candidate = mdl)">
+					<custom-attributes mdl="${arg.candidate}" />
+				</menupopup>
+				<div class="btn-group">
+					<button dir="reverse" zclass="btn btn-olive dropdown-toggle"
+						popup="m1, after_start" iconSclass="caret">
+						Select Action
+					</button>
+				</div>
 			</div>
 		</div>
-
 		<div sclass="col-md-2">
 			<div sclass="box box-solid menuAlign">
 				<x:center>
@@ -115,6 +122,6 @@
 	<zscript>
 	import mz.inolabdev.rh.entity.Candidate;
 	Candidate cand = (Candidate) Executions.getCurrent().getArg()
-			.get("project");
+			.get("candidate");
 </zscript>
 </zk>

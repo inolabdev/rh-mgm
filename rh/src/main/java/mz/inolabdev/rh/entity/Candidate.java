@@ -6,14 +6,17 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import mz.inolabdev.rh.util.Consts;
 
@@ -27,7 +30,9 @@ public class Candidate extends Individual {
 	@Column(name = "date_of_application")
 	private Date dateOfApplication;
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "candidates")
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinTable(name = "job_applications", joinColumns = { @JoinColumn(name = "candidate_id", referencedColumnName="id") }, inverseJoinColumns = { @JoinColumn(name = "vacancy_id", referencedColumnName="id")  })
 	private Set<Vacancy> vacancies = new HashSet<Vacancy>(0);
 
 	private String status; //rejected, hired
@@ -122,3 +127,4 @@ public class Candidate extends Individual {
 		this.comment = comment;
 	}
 }
+ 

@@ -15,13 +15,13 @@
 					</div>
 					<div class="form-group">
 					    <x:label>Empregados</x:label>
-					    <chosenbox sclass="customerinput" hflex="1" width="100%"
+					    <chosenbox sclass="customerinput" hflex="1"
 		                    model="@load(vm.customers)" id="chsCustomers"
 		                    emptyMessage="Escolha um ou mais empregados" />
 					</div>
 					<div class="form-group">
 					    <x:label>Administradores</x:label>
-					    <chosenbox sclass="customerinput" hflex="1" width="100%"
+					    <chosenbox sclass="customerinput" hflex="1"
 		                    model="@load(vm.customers)" id="chsAdmins"
 		                    emptyMessage="Escolha um ou mais administradores" />
 					</div>
