@@ -13,7 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "employees")
@@ -47,8 +46,11 @@ public class Employee extends Individual {
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
-	@NotNull
 	private User userLogin;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "image_id")
+	private Image imageProfile;
 
 	public Department getDepartment() {
 		return department;
@@ -130,6 +132,14 @@ public class Employee extends Individual {
 
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+
+	public Image getImageProfile() {
+		return imageProfile;
+	}
+
+	public void setImageProfile(Image imageProfile) {
+		this.imageProfile = imageProfile;
 	}
 
 }

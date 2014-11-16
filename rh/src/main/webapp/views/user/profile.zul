@@ -6,21 +6,127 @@
 		<div sclass="box-header">
 			<x:h3 class="box-title">Pagina de Perfil | ${vm.loggedUser.userProfile.fullName()}</x:h3>
 		</div>
-		<div>
-		
-		</div>
-	</div>
-</div>
-
-<div sclass="col-md-12">
-	<div sclass="box box-primary">
-		<div sclass="box-body">
-			<div width="100%">
-				<x:center>
-					<x:img src="img/avatar3.png" alt="User Image"/>
-				</x:center>
-			</div>
-		</div>
+		<x:hr/>
+        <div sclass="nav-tabs-custom">
+          <x:ul class="nav nav-tabs">
+              <x:li class="active"><x:a href="#dados" data-toggle="tab">Dados Pessoais</x:a></x:li>
+              <x:li><x:a href="#acts" data-toggle="tab">Actividades</x:a></x:li>
+              <x:li><x:a href="#projs" data-toggle="tab">Projectos</x:a></x:li>
+              <x:li class="pull-right"><x:a href="#" class="text-muted"><x:i class="fa fa-gear"></x:i></x:a></x:li>
+          </x:ul>
+          <div sclass="tab-content">
+              <x:div sclass="tab-pane active" id="dados">
+                  <div sclass="profile-header"><label value="Acerca"></label></div>
+                  	<div width="100%" height="200px">
+						<x:center>
+							<image height="200px" id="imgProfile"></image>
+						</x:center>
+					</div>
+					<x:hr></x:hr>
+					<x:table>
+						<x:tr>
+							<x:td>
+								<button zclass="btn btn-flat bg-navy btn-sm" onUpload="@command('upLoadImage',upEvent=event)" label="Carregar Nova" upload="true"></button>
+							</x:td>
+							<x:td>
+								<button zclass="btn btn-flat btn-info btn-sm" onClick="@command('savePicture')" label="Gravar"></button>
+							</x:td>
+						</x:tr>
+					</x:table>
+					<x:hr></x:hr>
+					<x:br></x:br>
+                  <x:table class="table">
+	                 <x:tbody>
+	                   <x:tr>
+	                     <x:td><x:strong>Idade:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.age())" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Utilizador:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.username)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Nome:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.name)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Apelido:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.lastName)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Nome do Meio:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.middleName)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Estado:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.maritalStatus)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Numero de Filhos:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.numberChildren)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Nuit:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.nuitNumber)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Nacionalidade:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.nationality)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Cargo:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.jobPosition.type)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Emails:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.emails)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Nivel Académico:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.academicLevel)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Departamento:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.department.name)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Localização:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.location)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Código:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.employeeCode)" sclass="form-control" readonly="true"></textbox></x:td>
+	                     <x:td><x:strong>Celulares:</x:strong></x:td>
+	                     <x:td><textbox value="@bind(vm.loggedUser.userProfile.cellPhones)" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                 </x:tbody>
+	              </x:table>
+              </x:div>
+              <x:div sclass="tab-pane" id="acts">
+                  <div sclass="profile-header"><label value="Actividades"></label></div>
+                  	<x:ul class="timeline">
+					   <x:li class="time-label">
+					       <x:span class="bg-red">
+					           10 Feb. 2014
+					       </x:span>
+					   </x:li>
+					   <x:li>
+					        <x:i class="fa fa-envelope bg-blue"/>
+					        <div sclass="timeline-item">
+					            <x:span class="time"><x:i class="fa fa-clock-o"></x:i> 18:05</x:span>
+					
+					            <x:h3 class="timeline-header"><x:a href="#">Novo Projecto</x:a> ...</x:h3>
+					
+					            <div sclass="timeline-body">
+					                Adicionou um novo projecto!
+					            </div>
+					        </div>
+					    </x:li>
+					</x:ul>
+              </x:div>
+              <x:div sclass="tab-pane" id="projs">
+                  <div sclass="profile-header"><label value="Projectos"></label></div>
+                  <div sclass="col-md-4" forEach="${vm.projects}">
+	                  <div sclass="tiny-user-block clearfix">
+	                  	<x:ul class="timeline">
+	                  		<x:i class="fa fa-sitemap"/>
+	                  	</x:ul>
+	                    <x:strong><x:h3>${each.name}</x:h3></x:strong>
+	                    <x:ul>
+	                      <x:li>Desde: <x:strong>${dateFormat.format(each.created)}</x:strong></x:li>
+	                      <x:li>Membros: <x:strong>${each.customers.size()}</x:strong></x:li>
+	                    </x:ul>
+	                  </div>
+                  </div>
+              </x:div>
+          </div>
+      </div>
 	</div>
 </div>
 
