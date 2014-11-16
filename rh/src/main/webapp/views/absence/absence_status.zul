@@ -20,29 +20,18 @@
 						</x:tr>
 					</x:thead>
 					<x:tbody>
-						<x:tr>
-							<x:td>1</x:td>
-							<x:td>Jorge José Mulungo</x:td>
-							<x:td>16, Nov/2014</x:td>
-							<x:td>26, Nov/2014</x:td>
-							<x:td><x:span class="label label-success">Aprovado</x:span></x:td>
-							<x:td>Formação</x:td>
-						</x:tr>
-						<x:tr>
-							<x:td>7</x:td>
-							<x:td>Eusébio José Maposse</x:td>
-							<x:td>03, Dez/2014</x:td>
-							<x:td>10, Dez/2014</x:td>
-							<x:td><x:span class="label label-warning">Cancelado</x:span></x:td>
-							<x:td>Outras Licenças</x:td>
-						</x:tr>
-						<x:tr>
-							<x:td>7</x:td>
-							<x:td>Admilson Benilde Francisco Cossa</x:td>
-							<x:td>03, Dez/2014</x:td>
-							<x:td>10, Dez/2014</x:td>
-							<x:td><x:span class="label label-danger">Recusada</x:span></x:td>
-							<x:td>Outras Licenças</x:td>
+						<x:tr forEach="${vm.licences}">
+							<x:td>${each.id}</x:td>
+							<x:td>${each.employee}</x:td>
+							<x:td>${dateFormat.format(each.begin)}</x:td>
+							<x:td>${dateFormat.format(each.end)}</x:td>
+							<x:td>
+								<span sclass="label label-success" if='${each.id == "Aprovado"}'>Aprovado</span>
+								<span sclass="label label-warning" if='${each.status == "Cancelado"}'>Cancelado</span>
+								<span sclass="label label-danger" if='${each.status == "Recusada"}'>Recusada</span>
+								<span sclass="label label-info" if='${each.status == "Pendente"}'>Pendente</span>
+							</x:td>
+							<x:td>${each.reason}</x:td>
 						</x:tr>
 					</x:tbody>
 				</x:table>

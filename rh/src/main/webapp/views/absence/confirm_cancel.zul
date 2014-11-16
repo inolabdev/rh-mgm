@@ -1,0 +1,28 @@
+<window id="modalDialog" width="460px" position="center,center" xmlns:x="xhtml"
+	closable="true" action="show: slideDown;hide: slideUp">
+    
+    <div sclass="col-md-12">
+    	<div sclass="box box-warning">
+    		<div sclass="box-header">
+    			<x:i class="fa fa-warning"></x:i>
+    			<x:h3 class="box-title">Cancelar Requisição</x:h3>
+    		</div>
+    		<div sclass="box-body">
+    			<div sclass="alert alert-warning alert-dismissable">
+    				<x:i class="fa fa-ban"/>
+    				<x:b>Atenção!</x:b> Deseja cancelar a requisição??
+    			</div>
+    			<div sclass="box-footer clearfix" >
+    				<div sclass="pull-right">
+    					<button zclass="btn btn-warning btn-flat margin" onClick="@command('cancelRequest')" label="Cancelar" />
+    					<button zclass="btn btn-flat margin" onClick="close()" label="Cancelar" />
+    				</div>
+    			</div>
+    			<zscript>
+    				public void close(){modalDialog.detach();}
+    			</zscript>
+    		</div>
+    	</div>
+    </div>
+
+</window>
