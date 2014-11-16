@@ -1,4 +1,4 @@
-<window id="modalDialog" width="460px" position="center,center" xmlns:x="xhtml"
+<window id="modalDialog" width="460px" position="center,center" xmlns:x="xhtml" title="Confirmação"
 	closable="true" action="show: slideDown;hide: slideUp">
     
     <div sclass="col-md-12">
