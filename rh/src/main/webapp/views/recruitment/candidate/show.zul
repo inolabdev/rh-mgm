@@ -4,76 +4,52 @@
 		<div zclass="col-md-10" id ="newInterview">
 			<div zclass="box box-primary">
 				<div zclass="box-header">
-					<x:h3 class="box-title">
-						Candidate: #${arg.candidate.id}
-					</x:h3>
-					<x:table class="table table-condensed">
-						<x:tbody>
-							<x:tr>
-								<x:th style="width:50%">
-									Candidate Full name:
-								</x:th>
-								<x:td>${arg.candidate.fullName()}</x:td>
-							</x:tr>
-							<x:tr>
-								<x:th>Email:</x:th>
-								<x:td>
-									<label class=""
-										forEach="${arg.candidate.emails}">
-										${each.value}
-									</label>
-								</x:td>
-							</x:tr>
-							<x:tr>
-								<x:th>CellPhone:</x:th>
-								<x:td>
-									<label
-										forEach="${arg.candidate.cellPhones}">
-										${each.value}
-									</label>
-								</x:td>
-							</x:tr>
-							<x:tr>
-								<x:th>Vacancy:</x:th>
-								<x:td>
-									<label
-										forEach="${arg.candidate.vacancies}">
-										${each.name}
-									</label>
-								</x:td>
-							</x:tr>
-							<x:tr>
-								<x:th>Status</x:th>
-								<x:td>
-									${arg.candidate.status}
-								</x:td>
-							</x:tr>
-							<x:tr>
-								<x:th>Resume</x:th>
-								<x:td>
-									<label
-										forEach="${arg.candidate.documents}">
-										${each.fileName}
-									</label>
-									<separator orient="vertical"
-										width="2px" />
-									<x:a class="btn  btn btn-primary btn-sm">
-										<x:i class="fa-file-o"></x:i>
-										Abrir
-									</x:a>		
-								</x:td>
-							</x:tr>
-							<x:tr>
-								<x:th>Date of Application:</x:th>
-								<x:td>${arg.candidate.created}</x:td>
-							</x:tr>
-						</x:tbody>
-					</x:table>
+					<div sclass="profile-header"><label value="Candidate: #${arg.candidate.id}"></label></div>
+					<x:table class="table">
+	                 <x:tbody>
+	                   <x:tr>
+	                     <x:td><x:strong>Candidate Full name:</x:strong></x:td>
+	                     <x:td><textbox value="${arg.candidate.fullName()}" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                   	 <x:td><x:strong>Email:</x:strong></x:td>
+	                     <x:td><textbox forEach="${arg.candidate.emails}" value="${each.value}" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>CellPhone:</x:strong></x:td>
+	                     <x:td><textbox forEach="${arg.candidate.cellPhones}" value="${each.value}" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                   	 <x:td><x:strong>Vacancy:</x:strong></x:td>
+	                     <x:td><textbox forEach="${arg.candidate.vacancies}" value="${each.name}" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Status:</x:strong></x:td>
+	                     <x:td><textbox value="${arg.candidate.status}" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                   	 <x:td><x:strong>Resume:</x:strong></x:td>
+	                     <x:td>
+	                     	<textbox forEach="${arg.candidate.documents}" value="${each.fileName}" sclass="form-control" readonly="true"></textbox>
+	                     	<x:a class="btn btn btn-primary btn-flat btn-sm" style="color:white;">
+								<x:i class="fa fa-folder-open-o"></x:i>
+								Abrir
+							</x:a>
+	                     </x:td>
+	                   </x:tr>
+	                   <x:tr>
+	                     <x:td><x:strong>Date of Application:</x:strong></x:td>
+	                     <x:td><textbox value="${arg.candidate.created}" sclass="form-control" readonly="true"></textbox></x:td>
+	                   </x:tr>
+	                 </x:tbody>
+	               </x:table>
 				</div>
 			</div>
+			<div sclass="profile-header"></div>
 			<div class="pull-left">
-				<button label="Edit" zclass="btn btn-primary btn-flat"/>
-				<button label="delete" zclass="btn btn-danger btn-flat"/>
+				<x:a sclass="btn bg-orange btn-flat">Edit <x:i class="fa fa-edit"></x:i></x:a>
+				<separator orient="vertical" width="3px"></separator>
+				<x:a sclass="btn bg-red btn-flat">Delete <x:i class="fa fa-eraser"></x:i></x:a>
 				<menupopup id="m1" onCreate="@command('selectActions', popup = self, candidate = mdl)">
 					<custom-attributes mdl="${arg.candidate}" />
 				</menupopup>

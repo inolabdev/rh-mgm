@@ -234,3 +234,29 @@ legend.scheduler-border {
 	border-radius: 3px;
 	font-size: .85em;
 }
+
+.z-menu-text, .z-menuitem-text {
+	font-size: 14px !important;
+	font-family: 'MyriadPro-Regular' !important;
+	font-weight: normal;
+	display: inline-block;
+	line-height: 16px;
+	text-shadow: 0 1px #fff;
+	font-family: 'MyriadPro-Regular' !important;
+}
+
+.z-window-header {
+	font-size: 14px !important;
+	font-family: 'MyriadPro-Regular' !important;
+	font-weight: normal;
+	font-weight: normal;
+	font-style: normal;
+	color: #363636;
+	padding: 3px 0 5px 0;
+	line-height: 24px;
+	overflow: hidden;
+	zoom: 1;
+	cursor: default;
+	font-family: 'MyriadPro-Regular' !important;
+	font-weight: normal;
+}
