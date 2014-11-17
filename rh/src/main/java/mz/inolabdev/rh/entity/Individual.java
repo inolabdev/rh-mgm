@@ -1,5 +1,6 @@
 package mz.inolabdev.rh.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
@@ -83,6 +84,18 @@ public class Individual extends IdEntity {
 	public String dateFormat() {
 
 		return DateFormat.formated(this.birthday);
+	}
+
+	public Integer age() {
+
+		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(birthday);
+
+		int brdY = cal.get(Calendar.YEAR);
+
+		return currentYear - brdY;
 	}
 
 	// getter and setters

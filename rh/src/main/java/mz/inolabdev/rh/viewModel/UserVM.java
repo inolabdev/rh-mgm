@@ -1,5 +1,6 @@
 package mz.inolabdev.rh.viewModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,12 +8,16 @@ import java.util.List;
 import java.util.Set;
 
 import mz.inolabdev.rh.entity.Employee;
+import mz.inolabdev.rh.entity.Project;
 import mz.inolabdev.rh.entity.Role;
 import mz.inolabdev.rh.entity.User;
 import mz.inolabdev.rh.services.EmployeeService;
+import mz.inolabdev.rh.services.ImageService;
+import mz.inolabdev.rh.services.ProjectService;
 import mz.inolabdev.rh.services.RoleService;
 import mz.inolabdev.rh.services.UserService;
 
+import org.zkoss.bind.BindContext;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -20,6 +25,7 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.image.AImage;
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zhtml.Button;
 import org.zkoss.zhtml.Ol;
@@ -31,6 +37,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 
@@ -49,6 +56,9 @@ public class UserVM extends AbstractViewModel {
 
 	@WireVariable
 	private EmployeeService employeeService;
+
+	@WireVariable
+	private ImageService imageService;
 
 	private Set<Role> storedRoles;
 	private List<Role> stored;
@@ -79,6 +89,12 @@ public class UserVM extends AbstractViewModel {
 	@Wire
 	private Button btnSave;
 
+	@Wire
+	private Image imgProfile;
+	
+	@WireVariable
+	private ProjectService projectService;
+
 	private User user;
 
 	private String newPass;
@@ -89,17 +105,40 @@ public class UserVM extends AbstractViewModel {
 
 	private User loggedUser;
 
+	private mz.inolabdev.rh.entity.Image profileImg;
+	
+	private List<Project> projects = new ArrayList<Project>();
+
 	@AfterCompose
 	public void initSetup(@ContextParam(ContextType.VIEW) Component view,
 			@ExecutionArgParam("target") Div target,
-			@ExecutionArgParam("breadcrumb") Ol ol) {
+			@ExecutionArgParam("breadcrumb") Ol ol) throws IOException {
 
 		Selectors.wireComponents(view, this, false);
 
 		this.target = target;
 		this.ol = ol;
-		
-		loggedUser = userService.find(Executions.getCurrent().getUserPrincipal().getName());
+
+		loggedUser = userService.find(Executions.getCurrent()
+				.getUserPrincipal().getName());
+
+		if (imgProfile != null) {
+
+			mz.inolabdev.rh.entity.Image image = loggedUser.getUserProfile()
+					.getImageProfile();
+
+			if (image == null)
+
+				imgProfile.setSrc("img/default_image.png");
+
+			else {
+
+				org.zkoss.image.Image img = new AImage(image.getFileName(),
+						image.getContent());
+
+				imgProfile.setContent(img);
+			}
+		}
 
 	}
 
@@ -118,8 +157,11 @@ public class UserVM extends AbstractViewModel {
 		employeeList = employeeService.allWhereUserIdIsNull();
 
 		adminUsers = userService.getAll();
+
+		loggedUser = userService.find(Executions.getCurrent()
+				.getUserPrincipal().getName());
 		
-		loggedUser = userService.find(Executions.getCurrent().getUserPrincipal().getName());
+		setProjects(projectService.projectsByEmployee(loggedUser.getUserProfile()));
 	}
 
 	@Command
@@ -269,6 +311,57 @@ public class UserVM extends AbstractViewModel {
 
 	}
 
+	@Command
+	public void upLoadImage(
+			@ContextParam(ContextType.BIND_CONTEXT) BindContext ctx)
+			throws IOException {
+
+		profileImg = new mz.inolabdev.rh.entity.Image();
+		FileManager fileManager = new FileManager();
+		profileImg = fileManager.uploadImage(ctx);
+
+		imgProfile.setSrc(null);
+
+		org.zkoss.image.Image img = new AImage(profileImg.getFileName(),
+				profileImg.getContent());
+
+		imgProfile.setContent(img);
+	}
+
+	@Command
+	public void savePicture() {
+
+		if (profileImg == null) {
+			Clients.showNotification("Selecione uma imagem primeiro!",
+					"warning", imgProfile, "before_center", -1);
+		} else {
+
+			Employee current = loggedUser.getUserProfile();
+
+			if (current.getImageProfile() != null) {
+
+				imageService.update(current.getImageProfile());
+				Clients.showNotification("Imagem actualizada com sucesso!",
+						"info", imgProfile, "before_center", -1);
+			}
+
+			else {
+				profileImg.setHolder(current);
+				imageService.create(profileImg);
+
+				current.setImageProfile(profileImg);
+				
+				System.out.println(current.getImageProfile());
+				
+				employeeService.update(current);
+
+				Clients.showNotification("Imagem gravada com sucesso!",
+						"info", imgProfile, "before_center", -1);
+			}
+
+		}
+	}
+
 	private void clearErrors(String error) {
 
 		erros.remove(error);
@@ -371,5 +464,13 @@ public class UserVM extends AbstractViewModel {
 
 	public void setLoggedUser(User loggedUser) {
 		this.loggedUser = loggedUser;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 }

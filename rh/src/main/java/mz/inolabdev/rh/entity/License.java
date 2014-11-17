@@ -33,6 +33,10 @@ public class License extends IdEntity {
 	private String description;
 	
 	private String status;
+	
+	@OneToOne
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
 
 	public Integer getYear() {
 		return year;
@@ -88,6 +92,14 @@ public class License extends IdEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 }

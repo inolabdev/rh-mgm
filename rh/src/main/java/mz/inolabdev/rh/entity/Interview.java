@@ -1,6 +1,6 @@
 package mz.inolabdev.rh.entity;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -20,9 +20,13 @@ public class Interview extends IdEntity {
 
 	private String title;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "date_time")
-	private Calendar dateAndTime;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "date")
+	private Date date;
+	
+	@Temporal(TemporalType.TIME)
+	@Column(name = "time")
+	private Date time;
 	
 	private String status; //,failed, passed
 	
@@ -46,19 +50,27 @@ public class Interview extends IdEntity {
 		this.title = title;
 	}
 
-	public Calendar getDateAndTime() {
-		return dateAndTime;
-	}
-
-	public void setDateAndTime(Calendar dateAndTime) {
-		this.dateAndTime = dateAndTime;
-	}
-
 	public String getStatus() {
 		return status;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
 	}
 }

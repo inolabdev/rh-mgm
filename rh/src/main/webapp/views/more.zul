@@ -117,19 +117,40 @@
 	</div>
 	
 	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.DocumentTypeViewModel')">
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.LicenceTypeVM')">
 		<div zclass="box box-solid box-primary">
 			<div zclass="box-header bg-inoLab">
 				<x:h3 class="box-title">
-	            	<x:i class="fa fa-qrcode"/> ${c:l('model.documentType')}
+	            	<x:i class="fa fa-qrcode"/> ${c:l('model.licence_type')}
 	            </x:h3>
 			</div>
 			<div zclass="box-body">
 				<x:center>
-					<x:h3>150</x:h3>
-					<x:p>${c:l('model.documentTypes')}</x:p>
+					<x:h3>${vm.licenseTypes.size()}</x:h3>
+					<x:p>${c:l('model.licence_types')}</x:p>
 					<x:a class="btn btn-flat"
-						onClick="@command('documentTypeList')">
+						onClick="@command('licenceTypeList')">
+						<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
+					</x:a>
+				</x:center>
+			</div>
+		</div>
+	</div>
+	
+	<div zclass="col-md-4" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.ReasonVM')">
+		<div zclass="box box-solid box-primary">
+			<div zclass="box-header bg-inoLab">
+				<x:h3 class="box-title">
+	            	<x:i class="fa fa-envelope"/> ${c:l('model.reason')}
+	            </x:h3>
+			</div>
+			<div zclass="box-body">
+				<x:center>
+					<x:h3>${vm.reasons.size()}</x:h3>
+					<x:p>${c:l('model.reasons')}</x:p>
+					<x:a class="btn btn-flat"
+						onClick="@command('reasonList')">
 						<x:code>${c:l('view')} <x:i class="fa fa-arrow-circle-right"/></x:code>
 					</x:a>
 				</x:center>

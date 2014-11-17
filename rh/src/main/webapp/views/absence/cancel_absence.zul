@@ -2,7 +2,7 @@
 	<window apply="org.zkoss.bind.BindComposer"
 	 viewModel="@id('vm')@init('mz.inolabdev.rh.viewModel.AbsenceVM')">
 	<div zclass="col-md-12">
-		<div zclass="box box-primary" validationMessages="@id('vmsgs')">
+		<div zclass="box box-primary" id="divCancelation">
 		    <div zclass="box-header">
 		        <x:h3 class="box-title">Licenças</x:h3>
 		    </div>
@@ -21,24 +21,20 @@
 						</x:tr>
 					</x:thead>
 					<x:tbody>
-						<x:tr>
-							<x:td>1</x:td>
-							<x:td>Jorge José Mulungo</x:td>
-							<x:td>16, Nov/2014</x:td>
-							<x:td>26, Nov/2014</x:td>
-							<x:td><x:span class="label label-success">Pendente</x:span></x:td>
-							<x:td>Formação</x:td>
-							<x:td><button zclass="btn btn-sm btn-flat bg-orange fa fa-eraser"></button></x:td>
+						<x:tr forEach="${vm.pendingLicences}">
+							<x:td>${each.id}</x:td>
+							<x:td>${each.employee}</x:td>
+							<x:td>${dateFormat.format(each.begin)}</x:td>
+							<x:td>${dateFormat.format(each.end)}</x:td>
+							<x:td><span sclass="label label-info">Pendente</span></x:td>
+							<x:td>${each.reason}</x:td>
+							<x:td>
+								<button onClick="@command('cancelModal', licence = mdl)" zclass="btn btn-sm btn-flat bg-red fa fa-eraser">
+									<custom-attributes mdl="${each}" />
+								</button>
+							</x:td>
 						</x:tr>
-						<x:tr>
-							<x:td>7</x:td>
-							<x:td>Eusébio José Maposse</x:td>
-							<x:td>03, Dez/2014</x:td>
-							<x:td>10, Dez/2014</x:td>
-							<x:td><x:span class="label label-success">Pendente</x:span></x:td>
-							<x:td>Outras Licenças</x:td>
-							<x:td><button zclass="btn btn-sm btn-flat bg-orange fa fa-eraser"></button></x:td>
-						</x:tr>
+						<x:tr if='${vm.pendingLicences.size() == 0}'><x:td colspan="7" >Nenhuma requisição pendente!</x:td></x:tr>
 					</x:tbody>
 				</x:table>
 			</div>

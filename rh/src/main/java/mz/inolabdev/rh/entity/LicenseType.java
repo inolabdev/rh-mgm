@@ -13,6 +13,12 @@ public class LicenseType extends IdEntity {
 	private static final long serialVersionUID = -2498207089970990920L;
 	
 	private String name;
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 
 	public String getName() {
 		return name;

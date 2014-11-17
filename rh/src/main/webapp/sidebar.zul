@@ -3,7 +3,7 @@
    <x:section class="sidebar">
      <x:div class="user-panel">
        <div class="pull-left image">
-         <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
+         <image sclass="img-circle" id="imgPflSide"></image>
        </div>
        <div class="pull-left info">
          <x:p>Olá, ${vm.user.userProfile.name}</x:p>
@@ -12,12 +12,12 @@
        </div>
      </x:div>
      <x:ul class="sidebar-menu">
-       <x:li sclass="">
+       <x:li sclass="@bind(vm.initPage)">
          <x:a class="cursor" onClick="@command('home')">
            <x:i class="fa fa-dashboard"></x:i> <x:span>Painel Inicial</x:span>
          </x:a>
        </x:li>
-       <x:li class="treeview">
+       <x:li sclass="treeview ${vm.hoursPage}">
          <x:a href="#">
            <x:i class="fa fa-calendar-o"></x:i>
            <x:span> Horas</x:span>
@@ -33,12 +33,12 @@
            </x:li>
          </x:ul>
        </x:li>
-       <x:li sclass="">
+       <x:li sclass="@bind(vm.recruitPage)">
          <x:a class="cursor" onClick="@command('sideBarRecruitment')">
            <x:i class="fa fa-retweet"></x:i> <x:span> Recrutamento</x:span>
          </x:a>
        </x:li>
-       <x:li class="treeview">
+       <x:li sclass="treeview ${vm.perfomPage}">
          <x:a href="#">
            <x:i class="fa fa-rss"></x:i>
            <x:span>Desempenho</x:span>
@@ -68,7 +68,7 @@
            </x:li>
          </x:ul>
        </x:li>
-       <x:li class="treeview">
+       <x:li sclass="treeview ${vm.leavePage}">
          <x:a href="#">
            <x:i class="fa fa-plane"></x:i>
            <x:span>Gestão de Ausências</x:span>
@@ -98,7 +98,7 @@
            </x:li>
          </x:ul>
        </x:li>
-       <x:li class="treeview">
+       <x:li sclass="treeview ${vm.trainPage}">
          <x:a href="#">
            <x:i class="fa fa-trophy"></x:i>
            <x:span>Treinamento</x:span>
@@ -122,17 +122,17 @@
            </x:li>
          </x:ul>
        </x:li>
-       <x:li sclass="">
+       <x:li sclass="@bind(vm.recPage)">
          <x:a class="cursor" onClick="@command('sideBarMore')">
            <x:i class="fa fa-money"></x:i> <x:span>Recibos de Salários</x:span>
          </x:a>
        </x:li>
-       <x:li sclass="">
+       <x:li sclass="@bind(vm.aproovPage)">
          <x:a class="cursor" onClick="@command('sideBarMore')">
            <x:i class="fa fa-check-circle-o"></x:i> <x:span>Aprovações</x:span>
          </x:a>
        </x:li>
-       <x:li sclass="">
+       <x:li sclass="@bind(vm.morePage)">
          <x:a class="cursor" onClick="@command('sideBarMore')">
            <x:i class="fa fa-sort"></x:i> <x:span>${c:l('sidebar.more')}</x:span>
          </x:a>

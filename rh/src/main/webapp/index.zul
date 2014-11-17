@@ -40,7 +40,7 @@
                 </x:a>
                 <x:ul sclass="dropdown-menu ">
                   <x:li sclass="user-header bg-light-blue">
-                    <x:img src="img/avatar5.png" class="img-circle" alt="User Image" />
+                    <image sclass="img-circle" id="imgPfl"></image>
                     <x:p> ${vm.user.userProfile} - ${vm.user.userProfile.jobPosition.type}
                     	<zscript>
                     		
@@ -74,7 +74,7 @@
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd, MMM/yyyy", ptBr);
 	  </zscript>
       <div sclass="wrapper row-offcanvas row-offcanvas-left">
-		<include src = "sidebar.zul"/>
+		<include src = "sidebar.zul" id="sidebar"/>
         <x:aside class="right-side">
         	<div sclass="content-header">
 	          <x:section class="content-header">

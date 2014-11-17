@@ -31,7 +31,7 @@ public class ContactPoint extends IdEntity {
 	
 	@Override
 	public String toString() {
-		return "ContactPoint [type=" + type + ", value=" + value + "]";
+		return value;
 	}
 	
 	public String getValue() {

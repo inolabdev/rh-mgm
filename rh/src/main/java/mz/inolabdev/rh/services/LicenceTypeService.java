@@ -4,15 +4,19 @@ import java.util.List;
 
 import mz.inolabdev.rh.entity.LicenseType;
 
-public interface LicenseTypeService extends GenericService<LicenseType> {
+public interface LicenceTypeService {
 
-	public LicenseType create(LicenseType licenseType);
+	public LicenseType create(LicenseType licenceType);
 
 	public List<LicenseType> getAll();
 
 	public LicenseType find(Long id);
 
+	public LicenseType update(LicenseType licenceType);
+
 	public long count();
+
+	public void delete(Object id);
 	
 	public LicenseType first();
     

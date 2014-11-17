@@ -15,6 +15,12 @@ public class Reason extends IdEntity {
 	private String type;
 	
 	private String description;
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return type;
+	}
 
 	public String getType() {
 		return type;

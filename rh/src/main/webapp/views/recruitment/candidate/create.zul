@@ -44,16 +44,16 @@
 								creatable="true" createMessage="Create new email '{0}'"
 								onSearch="@command('newCellPhone', cellPhone=event.value)" />
 						</div>
-						<div class="form-group ">
-							<textbox sclass="file-input-default"
-								value="@load(vm.currentFileName )">
-							</textbox>
-							<button label="Choose File"
-								sclass="file-upload-button" upload="true"
-								style="height: 22px; clip: rect(auto, auto, auto, 1143px);"
-								onUpload="@command('onUploadFile',upEvent=event)"
-								zk:onChange="currFileName.value=self.value">
-							</button>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button label="Choose File" sclass="file-upload-button" upload="true"
+										style="height: 22px; clip: rect(auto, auto, auto, 1143px);"
+										onUpload="@command('onUploadFile',upEvent=event)"
+									/>
+								</span>
+								<textbox value="@load(vm.currentFileName )" style="display: block; text-align:center;" readonly="true"/>
+							</div>
 						</div>
 						<div class="form-group">
 							<x:label>Select The Vacancy:</x:label>

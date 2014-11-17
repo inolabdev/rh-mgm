@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import mz.inolabdev.rh.entity.Document;
+import mz.inolabdev.rh.entity.Image;
 import mz.inolabdev.rh.util.Consts;
 
 import org.zkoss.bind.BindContext;
@@ -43,6 +44,35 @@ public class FileManager {
 			document.setContent(media.getByteData());
 		}
 		return document;
+	}
+	
+	public Image uploadImage(BindContext ctx) throws IOException {
+		UploadEvent upEvent = null;
+
+		Object objUploadEvent = ctx.getTriggerEvent();
+		Image image = new Image();
+		
+		if (objUploadEvent != null && (objUploadEvent instanceof UploadEvent)) {
+			upEvent = (UploadEvent) objUploadEvent;
+		}
+
+		if (upEvent != null) {
+
+			Media media = upEvent.getMedia();
+			String filePath = Executions.getCurrent().getDesktop().getWebApp()
+					.getRealPath("/");
+			File baseDir = new File(filePath);
+			if (!baseDir.exists()) {
+				baseDir.mkdirs();
+			}
+			Files.copy(new File(filePath + media.getName()),
+					media.getStreamData());
+
+			image.setFileName(media.getName());
+			image.setFileType(media.getContentType());
+			image.setContent(media.getByteData());
+		}
+		return image;
 	}
 
 	// this must be generic as it is! we can change this name
