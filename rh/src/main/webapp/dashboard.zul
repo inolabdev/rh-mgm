@@ -120,6 +120,7 @@
         		<x:fieldset class="scheduler-border">
         			<x:br></x:br>
 		        	<x:legend class="scheduler-border">Não sei</x:legend>
+		        	<html><div class="bootstrap-switch-container"><span class="bootstrap-switch-handle-on bootstrap-switch-primary">ON</span><label class="bootstrap-switch-label">a</label><span class="bootstrap-switch-handle-off bootstrap-switch-default">OFF</span><input type="checkbox" class="make-switch" data-on-color="primary" checked=""/></div></html>
 		        </x:fieldset>
 		    </div>
 		    <div zclass="col-xs-4">

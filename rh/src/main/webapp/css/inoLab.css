@@ -260,3 +260,12 @@ legend.scheduler-border {
 	font-family: 'MyriadPro-Regular' !important;
 	font-weight: normal;
 }
+
+.navbar-nav>li>a {
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
+}
+
+.skin-blue .navbar .sidebar-toggle .icon-bar {
+	background: rgba(255, 255, 255, 0.8) !important;
+}

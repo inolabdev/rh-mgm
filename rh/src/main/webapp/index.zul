@@ -31,6 +31,11 @@
       <x:header class="header">
        <a href="#" class="logo">${c:l('appName')}</a>
         <x:nav class="navbar navbar-static-top" role="navigation">
+          <x:a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+              <x:span class="icon-bar"></x:span>
+              <x:span class="icon-bar"></x:span>
+              <x:span class="icon-bar"></x:span>
+          </x:a>
           <x:div class="navbar-right">
             <x:ul sclass="nav navbar-nav">
               <x:li class="dropdown user user-menu">
