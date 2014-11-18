@@ -43,7 +43,7 @@
 
 	</properties>
 
-	<!-- <packaging>war</packaging> -->
+	<packaging>war</packaging>
 	<name>The rh Project</name>
 	<description>The rh Project</description>
 	<licenses>
